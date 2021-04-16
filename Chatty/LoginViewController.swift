@@ -8,6 +8,7 @@
 
 import UIKit
 import Parse
+import Toast_Swift
 
 class LoginViewController: UIViewController {
 
@@ -23,7 +24,7 @@ class LoginViewController: UIViewController {
         // Do any additional setup after loading the view.
     }
     
-    
+    //Login with Parse function
     @IBAction func btnLogin(_ sender: Any) {
         let username = tfUsername.text!
         let password = tfPassword.text!
@@ -35,25 +36,14 @@ class LoginViewController: UIViewController {
                 self.performSegue(withIdentifier: "toMainSegue", sender: self)
             }else{
                 print("Error Logging in: \(error?.localizedDescription)")
+                self.view.makeToast(error?.localizedDescription)
             }
         }
     }
     
     
     @IBAction func btnSignup(_ sender: Any) {
-        let user = PFUser()
-        user.username = tfUsername.text
-        user.password = tfPassword.text
-        
-        user.signUpInBackground { (success, error) in
-            if success{
-                print("Signed Up successfully!")
-                self.performSegue(withIdentifier: "toMainSegue", sender: self)
-            } else{
-                print("Error Signing Up: \(error?.localizedDescription)")
-            }
-        }
-        
+        //the button is for guiding user to the sign up page
     }
     
     /*

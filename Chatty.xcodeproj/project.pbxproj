@@ -7,6 +7,10 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		0494A1D226275FB9007F8D66 /* EditProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0494A1D126275FB9007F8D66 /* EditProfileViewController.swift */; };
+		049852032628A7E100D523CF /* HomeCellTableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 049852022628A7E100D523CF /* HomeCellTableView.swift */; };
+		049852052628CD2600D523CF /* AddStoryViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 049852042628CD2600D523CF /* AddStoryViewController.swift */; };
+		049C889B26261E8B002508C1 /* ProfileTabViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 049C889A26261E8B002508C1 /* ProfileTabViewController.swift */; };
 		04F0084D2624F6850013D71E /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04F0084C2624F6850013D71E /* AppDelegate.swift */; };
 		04F0084F2624F6850013D71E /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04F0084E2624F6850013D71E /* SceneDelegate.swift */; };
 		04F008542624F6850013D71E /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 04F008522624F6850013D71E /* Main.storyboard */; };
@@ -16,6 +20,8 @@
 		04F0086F2624F6870013D71E /* ChattyUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04F0086E2624F6870013D71E /* ChattyUITests.swift */; };
 		04F0087D2624FBC50013D71E /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04F0087C2624FBC50013D71E /* LoginViewController.swift */; };
 		04F0087F2624FBDB0013D71E /* HomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04F0087E2624FBDB0013D71E /* HomeViewController.swift */; };
+		04F0088126255F600013D71E /* SignUpViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04F0088026255F600013D71E /* SignUpViewController.swift */; };
+		04F008832625677C0013D71E /* MakeProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04F008822625677C0013D71E /* MakeProfileViewController.swift */; };
 		0E8126913AB3962333B3367F /* Pods_ChattyTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7B037D88374B578F24D3C105 /* Pods_ChattyTests.framework */; };
 		44051332C7C20220BF8C5B3C /* Pods_Chatty.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4F386584F7845C1F79A2223E /* Pods_Chatty.framework */; };
 		D806F49ABBF57B3EC2BF156D /* Pods_Chatty_ChattyUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F03F4A9F255D4A36B6C025A5 /* Pods_Chatty_ChattyUITests.framework */; };
@@ -39,6 +45,10 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		0494A1D126275FB9007F8D66 /* EditProfileViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditProfileViewController.swift; sourceTree = "<group>"; };
+		049852022628A7E100D523CF /* HomeCellTableView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeCellTableView.swift; sourceTree = "<group>"; };
+		049852042628CD2600D523CF /* AddStoryViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddStoryViewController.swift; sourceTree = "<group>"; };
+		049C889A26261E8B002508C1 /* ProfileTabViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileTabViewController.swift; sourceTree = "<group>"; };
 		04F008492624F6850013D71E /* Chatty.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Chatty.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		04F0084C2624F6850013D71E /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		04F0084E2624F6850013D71E /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -54,6 +64,8 @@
 		04F008702624F6870013D71E /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		04F0087C2624FBC50013D71E /* LoginViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
 		04F0087E2624FBDB0013D71E /* HomeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewController.swift; sourceTree = "<group>"; };
+		04F0088026255F600013D71E /* SignUpViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignUpViewController.swift; sourceTree = "<group>"; };
+		04F008822625677C0013D71E /* MakeProfileViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MakeProfileViewController.swift; sourceTree = "<group>"; };
 		11FCE0FE57FB816175868093 /* Pods-Chatty-ChattyUITests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Chatty-ChattyUITests.release.xcconfig"; path = "Target Support Files/Pods-Chatty-ChattyUITests/Pods-Chatty-ChattyUITests.release.xcconfig"; sourceTree = "<group>"; };
 		21C80FA64F5666EE5671F593 /* Pods-ChattyTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ChattyTests.release.xcconfig"; path = "Target Support Files/Pods-ChattyTests/Pods-ChattyTests.release.xcconfig"; sourceTree = "<group>"; };
 		4C304A64F7FC4007A0CF0108 /* Pods-Chatty-ChattyUITests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Chatty-ChattyUITests.debug.xcconfig"; path = "Target Support Files/Pods-Chatty-ChattyUITests/Pods-Chatty-ChattyUITests.debug.xcconfig"; sourceTree = "<group>"; };
@@ -96,6 +108,7 @@
 		04F008402624F6850013D71E = {
 			isa = PBXGroup;
 			children = (
+				049C889A26261E8B002508C1 /* ProfileTabViewController.swift */,
 				04F0084B2624F6850013D71E /* Chatty */,
 				04F008622624F6870013D71E /* ChattyTests */,
 				04F0086D2624F6870013D71E /* ChattyUITests */,
@@ -121,7 +134,12 @@
 				04F0084C2624F6850013D71E /* AppDelegate.swift */,
 				04F0084E2624F6850013D71E /* SceneDelegate.swift */,
 				04F008522624F6850013D71E /* Main.storyboard */,
+				049852042628CD2600D523CF /* AddStoryViewController.swift */,
+				049852022628A7E100D523CF /* HomeCellTableView.swift */,
+				0494A1D126275FB9007F8D66 /* EditProfileViewController.swift */,
+				04F008822625677C0013D71E /* MakeProfileViewController.swift */,
 				04F0087C2624FBC50013D71E /* LoginViewController.swift */,
+				04F0088026255F600013D71E /* SignUpViewController.swift */,
 				04F0087E2624FBDB0013D71E /* HomeViewController.swift */,
 				04F008552624F6860013D71E /* Assets.xcassets */,
 				04F008572624F6860013D71E /* LaunchScreen.storyboard */,
@@ -410,10 +428,16 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				0494A1D226275FB9007F8D66 /* EditProfileViewController.swift in Sources */,
 				04F0087F2624FBDB0013D71E /* HomeViewController.swift in Sources */,
+				049852052628CD2600D523CF /* AddStoryViewController.swift in Sources */,
+				049C889B26261E8B002508C1 /* ProfileTabViewController.swift in Sources */,
 				04F0087D2624FBC50013D71E /* LoginViewController.swift in Sources */,
 				04F0084D2624F6850013D71E /* AppDelegate.swift in Sources */,
 				04F0084F2624F6850013D71E /* SceneDelegate.swift in Sources */,
+				04F008832625677C0013D71E /* MakeProfileViewController.swift in Sources */,
+				04F0088126255F600013D71E /* SignUpViewController.swift in Sources */,
+				049852032628A7E100D523CF /* HomeCellTableView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

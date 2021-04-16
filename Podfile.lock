@@ -10,11 +10,13 @@ PODS:
     - Parse/Core (= 1.19.2)
   - Parse/Core (1.19.2):
     - Bolts/Tasks (= 1.9.1)
+  - Toast-Swift (5.0.1)
 
 DEPENDENCIES:
   - AlamofireImage
   - MessageInputBar
   - Parse
+  - Toast-Swift (~> 5.0.1)
 
 SPEC REPOS:
   trunk:
@@ -23,6 +25,7 @@ SPEC REPOS:
     - Bolts
     - MessageInputBar
     - Parse
+    - Toast-Swift
 
 SPEC CHECKSUMS:
   Alamofire: 2291f7d21ca607c491dd17642e5d40fdcda0e65c
@@ -30,7 +33,8 @@ SPEC CHECKSUMS:
   Bolts: 8c1e8aab2f603387b8b9924f57d1d64f43d3ffdc
   MessageInputBar: e81c7535347f1f7b923de7080409a535a004b6e4
   Parse: 081fb8755c3000fd11df817eec235def233d0af3
+  Toast-Swift: 9b6a70f28b3bf0b96c40d46c0c4b9d6639846711
 
-PODFILE CHECKSUM: 7cf74141540be5a9930652eece978efb28099756
+PODFILE CHECKSUM: 839b8b90d1169e47af3745a5ae48377f743eda10
 
 COCOAPODS: 1.10.1
