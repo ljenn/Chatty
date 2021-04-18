@@ -3,9 +3,14 @@ PODS:
   - AlamofireImage (4.1.0):
     - Alamofire (~> 5.1)
   - Bolts/Tasks (1.9.1)
+  - InputBarAccessoryView (5.3.1):
+    - InputBarAccessoryView/Core (= 5.3.1)
+  - InputBarAccessoryView/Core (5.3.1)
   - MessageInputBar (0.4.1):
     - MessageInputBar/Core (= 0.4.1)
   - MessageInputBar/Core (0.4.1)
+  - MessageKit (3.6.0):
+    - InputBarAccessoryView (~> 5.3.1)
   - Parse (1.19.2):
     - Parse/Core (= 1.19.2)
   - Parse/Core (1.19.2):
@@ -15,6 +20,7 @@ PODS:
 DEPENDENCIES:
   - AlamofireImage
   - MessageInputBar
+  - MessageKit
   - Parse
   - Toast-Swift (~> 5.0.1)
 
@@ -23,7 +29,9 @@ SPEC REPOS:
     - Alamofire
     - AlamofireImage
     - Bolts
+    - InputBarAccessoryView
     - MessageInputBar
+    - MessageKit
     - Parse
     - Toast-Swift
 
@@ -31,10 +39,12 @@ SPEC CHECKSUMS:
   Alamofire: 2291f7d21ca607c491dd17642e5d40fdcda0e65c
   AlamofireImage: c4a2ba349885fb3064feb74d2e547bd42ce9be10
   Bolts: 8c1e8aab2f603387b8b9924f57d1d64f43d3ffdc
+  InputBarAccessoryView: 1f75d8c9f75e5e57f3ffac36ed58635a8005e0bc
   MessageInputBar: e81c7535347f1f7b923de7080409a535a004b6e4
+  MessageKit: a8efaf55b021672b19ffdd5a85ce1c2f3b53058e
   Parse: 081fb8755c3000fd11df817eec235def233d0af3
   Toast-Swift: 9b6a70f28b3bf0b96c40d46c0c4b9d6639846711
 
-PODFILE CHECKSUM: 839b8b90d1169e47af3745a5ae48377f743eda10
+PODFILE CHECKSUM: 3126b3311a21075f0cc13ee6df1961d24d6f3452
 
 COCOAPODS: 1.10.1

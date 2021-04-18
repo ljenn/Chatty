@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		0435A9B4262A39E10064CDA4 /* ChatViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0435A9B3262A39E10064CDA4 /* ChatViewController.swift */; };
+		0435A9B6262A3FB90064CDA4 /* ConvoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0435A9B5262A3FB90064CDA4 /* ConvoViewController.swift */; };
 		0494A1D226275FB9007F8D66 /* EditProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0494A1D126275FB9007F8D66 /* EditProfileViewController.swift */; };
 		049852032628A7E100D523CF /* HomeCellTableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 049852022628A7E100D523CF /* HomeCellTableView.swift */; };
 		049852052628CD2600D523CF /* AddStoryViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 049852042628CD2600D523CF /* AddStoryViewController.swift */; };
@@ -45,6 +47,8 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		0435A9B3262A39E10064CDA4 /* ChatViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatViewController.swift; sourceTree = "<group>"; };
+		0435A9B5262A3FB90064CDA4 /* ConvoViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConvoViewController.swift; sourceTree = "<group>"; };
 		0494A1D126275FB9007F8D66 /* EditProfileViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditProfileViewController.swift; sourceTree = "<group>"; };
 		049852022628A7E100D523CF /* HomeCellTableView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeCellTableView.swift; sourceTree = "<group>"; };
 		049852042628CD2600D523CF /* AddStoryViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddStoryViewController.swift; sourceTree = "<group>"; };
@@ -134,6 +138,8 @@
 				04F0084C2624F6850013D71E /* AppDelegate.swift */,
 				04F0084E2624F6850013D71E /* SceneDelegate.swift */,
 				04F008522624F6850013D71E /* Main.storyboard */,
+				0435A9B5262A3FB90064CDA4 /* ConvoViewController.swift */,
+				0435A9B3262A39E10064CDA4 /* ChatViewController.swift */,
 				049852042628CD2600D523CF /* AddStoryViewController.swift */,
 				049852022628A7E100D523CF /* HomeCellTableView.swift */,
 				0494A1D126275FB9007F8D66 /* EditProfileViewController.swift */,
@@ -430,7 +436,9 @@
 			files = (
 				0494A1D226275FB9007F8D66 /* EditProfileViewController.swift in Sources */,
 				04F0087F2624FBDB0013D71E /* HomeViewController.swift in Sources */,
+				0435A9B4262A39E10064CDA4 /* ChatViewController.swift in Sources */,
 				049852052628CD2600D523CF /* AddStoryViewController.swift in Sources */,
+				0435A9B6262A3FB90064CDA4 /* ConvoViewController.swift in Sources */,
 				049C889B26261E8B002508C1 /* ProfileTabViewController.swift in Sources */,
 				04F0087D2624FBC50013D71E /* LoginViewController.swift in Sources */,
 				04F0084D2624F6850013D71E /* AppDelegate.swift in Sources */,

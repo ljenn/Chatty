@@ -262,30 +262,41 @@
             </objects>
             <point key="canvasLocation" x="2470" y="156"/>
         </scene>
-        <!--View Controller-->
+        <!--Chat Room-->
         <scene sceneID="TmU-Xu-bYQ">
             <objects>
-                <viewController id="IXm-0z-8I6" sceneMemberID="viewController">
+                <viewController id="IXm-0z-8I6" customClass="ChatViewController" customModule="Chatty" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="FeJ-Fn-Vxc">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="welcome to Chat!" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="nc6-x8-3cm">
-                                <rect key="frame" x="140" y="364" width="134" height="21"/>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="l4t-Y4-1zq">
+                                <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                <nil key="textColor"/>
-                                <nil key="highlightedColor"/>
-                            </label>
+                                <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                                <prototypes>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" rowHeight="64" id="ZPa-nB-H8I">
+                                        <rect key="frame" x="0.0" y="28" width="414" height="64"/>
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="ZPa-nB-H8I" id="oCY-yr-03l">
+                                            <rect key="frame" x="0.0" y="0.0" width="414" height="64"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                        </tableViewCellContentView>
+                                    </tableViewCell>
+                                </prototypes>
+                            </tableView>
                         </subviews>
                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                         <viewLayoutGuide key="safeArea" id="FPT-DM-wNc"/>
                     </view>
-                    <navigationItem key="navigationItem" id="Me8-U7-Dzk"/>
+                    <navigationItem key="navigationItem" title="Chat Room" id="Me8-U7-Dzk"/>
+                    <connections>
+                        <outlet property="ChatTV" destination="l4t-Y4-1zq" id="g9M-sU-Tfa"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="i2j-LF-zfG" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="4767" y="683"/>
+            <point key="canvasLocation" x="4766.666666666667" y="682.36607142857144"/>
         </scene>
         <!--Home-->
         <scene sceneID="aJO-sK-ebe">
@@ -325,7 +336,7 @@
             </objects>
             <point key="canvasLocation" x="3783" y="683"/>
         </scene>
-        <!--Add Story View Controller-->
+        <!--Share Story-->
         <scene sceneID="VYP-UC-KcU">
             <objects>
                 <viewController id="m8c-eg-GtE" customClass="AddStoryViewController" customModule="Chatty" customModuleProvider="target" sceneMemberID="viewController">
@@ -351,7 +362,7 @@
                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                         <viewLayoutGuide key="safeArea" id="UEf-VQ-PMm"/>
                     </view>
-                    <navigationItem key="navigationItem" id="crv-bm-8xM"/>
+                    <navigationItem key="navigationItem" title="Share Story" id="crv-bm-8xM"/>
                     <connections>
                         <outlet property="addStoryTF" destination="sVT-ej-YIe" id="wzy-Dd-Anh"/>
                     </connections>
@@ -449,9 +460,9 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="7P5-aw-oN9" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="6580" y="-736"/>
+            <point key="canvasLocation" x="6532" y="-1408"/>
         </scene>
-        <!--Edit Profile View Controller-->
+        <!--Edit Profile-->
         <scene sceneID="EhW-oh-Zco">
             <objects>
                 <viewController id="VUI-Y7-ic9" customClass="EditProfileViewController" customModule="Chatty" customModuleProvider="target" sceneMemberID="viewController">
@@ -532,7 +543,7 @@
                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                         <viewLayoutGuide key="safeArea" id="r42-mz-mXT"/>
                     </view>
-                    <navigationItem key="navigationItem" id="OWZ-kl-HLr"/>
+                    <navigationItem key="navigationItem" title="Edit Profile" id="OWZ-kl-HLr"/>
                     <connections>
                         <outlet property="editFirst" destination="oRm-UV-J9O" id="xrl-aN-QhP"/>
                         <outlet property="editImage" destination="PGf-Qw-28X" id="M8b-EI-Edq"/>
@@ -548,7 +559,7 @@
                     </connections>
                 </tapGestureRecognizer>
             </objects>
-            <point key="canvasLocation" x="7496" y="-737"/>
+            <point key="canvasLocation" x="7448" y="-1408"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="EpO-Fy-Ho2">
@@ -702,7 +713,7 @@
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="gP1-vo-KKZ" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="5658" y="-737"/>
+            <point key="canvasLocation" x="5610" y="-1408"/>
         </scene>
         <!--Add Story-->
         <scene sceneID="pDA-dy-FL1">
