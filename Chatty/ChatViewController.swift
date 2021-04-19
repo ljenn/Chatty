@@ -21,15 +21,17 @@ class ChatViewController: UIViewController, UITableViewDelegate, UITableViewData
     
     
     override func viewDidAppear(_ animated: Bool) {
-        let query = PFQuery(className: "Conversation")
-        query.includeKeys(["ListOfMessages","Owner"])
+        let query = PFQuery(className: "Profile")
+        query.includeKeys(["ListOfMessages","owner","Conversation"])
         
-        //filter by conversation owners later.
-        //query.whereKey("objectId", equalTo: belongingConvoID)
+        query.whereKey("owner", equalTo: PFUser.current() as Any)
         
-        query.findObjectsInBackground { (arrayOfConversation, error) in
-            if arrayOfConversation != nil {
-                self.ChatCollection =  arrayOfConversation!
+        query.findObjectsInBackground { (arrayOfProfile, error) in
+            if arrayOfProfile != nil {
+                let tempProfile = arrayOfProfile![0]
+                if tempProfile["Chats"] != nil{
+                    self.ChatCollection = tempProfile["Chats"] as! [PFObject]
+                }
                 
                 self.viewDidLoad()
             
@@ -67,8 +69,11 @@ class ChatViewController: UIViewController, UITableViewDelegate, UITableViewData
         //now use generic cell
         let myCell = tableView.dequeueReusableCell(withIdentifier: "cell", for: indexPath)
         
+        
+        
         //Update when we get have conversation owners
-        myCell.textLabel?.text = "Jona"
+        let temp = "Conversation " + String(indexPath.row + 1)
+        myCell.textLabel?.text = temp
         
         //show an arrow at the end of each cell
         myCell.accessoryType = .disclosureIndicator

@@ -83,7 +83,10 @@ class ConvoViewController: MessagesViewController, MessagesDataSource, MessagesL
                 let tempConvo = ArrayOfConversations![0]
 
                 //store the PFObjects of msg from database in local varable
-                self.msgListOfPFObject = tempConvo["ListOfMessages"] as! [PFObject]
+                if tempConvo["ListOfMessages"] != nil{
+                  self.msgListOfPFObject = tempConvo["ListOfMessages"] as! [PFObject]
+                
+                
                 
                 for i in 0...self.msgListOfPFObject.count-1{
                     let singleMsg = self.msgListOfPFObject[i]
@@ -110,8 +113,13 @@ class ConvoViewController: MessagesViewController, MessagesDataSource, MessagesL
                                                       kind: .text(txt)))
                     }
 
+                    }
                 }
+                
+                //TODO: sent message doesn't auto reload
                 self.messagesCollectionView.reloadData()
+                
+                
                 // findObjectsInBackground fxn has a different thread, need to call viewDidLoad (on another thread) to show data. 
                 self.viewDidLoad()
                 

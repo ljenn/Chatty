@@ -76,6 +76,8 @@ class HomeViewController: UIViewController, UITableViewDelegate, UITableViewData
     }
     
     
+    
+    
     //filling the "ProfileCollection" with data fetched from Back4App whenever view appears
     override func viewDidAppear(_ animated: Bool) {
         
@@ -90,25 +92,29 @@ class HomeViewController: UIViewController, UITableViewDelegate, UITableViewData
                 self.ProfileCollection = arrayOfProfile!
                 self.HomeTV.reloadData()
             }else{
-                print("Error getting result from databas: \(error?.localizedDescription)")
+                print("Error getting result from database: \(error?.localizedDescription)")
             }
         }
         
-        
-        
     }
     
 
     
-
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destination.
-        // Pass the selected object to the new view controller.
+        //for navigating to detail screen after a specific cell is tapped on
+
+        let tappedCell = sender as! UITableViewCell
+        let index =  HomeTV.indexPath(for: tappedCell)!
+
+        let selectedProfile = ProfileCollection[index.row]
+        let ProfileDetailVC = segue.destination as! DetailProfileViewController
+
+        //now saved the profile of the selected cell to the detail screen
+        ProfileDetailVC.tappedProfile = selectedProfile
+
     }
-    */
+    
+    
+    
 
 }

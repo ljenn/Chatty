@@ -12,6 +12,7 @@ import AlamofireImage
 
 class MakeProfileViewController: UIViewController, UIImagePickerControllerDelegate, UINavigationControllerDelegate {
 
+    
     @IBOutlet weak var tfFirst: UITextField!
     
     @IBOutlet weak var tfLast: UITextField!
