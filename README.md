@@ -88,9 +88,37 @@ Chatty is a Tinder Clone. It lets the user sign up and log in, giving them acces
 
 ## Schema 
 [This section will be completed in Unit 9]
+
 ### Models
 [Add table of models]
+
 ### Networking
-- [Add list of network requests by screen ]
-- [Create basic snippets for each Parse network request]
-- [OPTIONAL: List endpoints if using existing API such as Yelp]
+#### List of network requests by screen
+   - Home Feed Screen
+      - (Read/GET) Query all user profiles if user does not already ahve a conversation started with user
+         ```swift
+         let query = PFQuery(className: "Profile")
+        query.includeKey("owner")
+        query.whereKey("owner", notEqualTo: PFUser.current() as Any)
+        query.limit = 20
+        query.findObjectsInBackground { (arrayOfProfile, error) in
+            if arrayOfProfile != nil{
+                print("gotten result from database")
+                //initiating ProfileCollection!!
+                self.ProfileCollection = arrayOfProfile!
+                self.HomeTV.reloadData()
+            }else{
+                print("Error getting result from database: \(error?.localizedDescription)")
+            }
+        }
+         ```
+      - (Create/POST) Create a conversation with the user
+      - (Scroll) Mark & deprioritize user profile as "seen" by user
+   - Self Profile Screen
+      - (Read/GET) Query logged in user object
+      - (Update/PUT) Update user profile image
+      - (Update/PUT) Update user profile details
+   - Converstaion Screen
+      - (Delete) Delete existing conversation
+   - Individual Chat Screen
+      - (Create/POST) Create a chat mesage in the 1-on-1 user chat
