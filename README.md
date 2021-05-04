@@ -90,7 +90,54 @@ Chatty is a Tinder Clone. It lets the user sign up and log in, giving them acces
 [This section will be completed in Unit 9]
 
 ### Models
-[Add table of models]
+
+#### Profile
+
+   | Property      | Type     | Description |
+   | ------------- | -------- | ------------|
+   | objectId      | String   | unique id for the user post (default field) |
+| createdAt     | DateTime | date when post is created (default field) |
+   | updatedAt     | DateTime | date when post is last updated (default field) |
+   | owner        | Pointer to User| profile owner |
+   | Picture         | File     | profile picture |
+   | Status | String   | user status |
+   | Stories    | Array (of String)   | stories |
+   | LastN     | String | last name |
+   | FirstN     | String | first name |
+   | Chats    | Array (of Conversation)   | list of conversations user is in |
+   | FriendList    | Array (of Profile)   | list of user's friends |
+   
+   #### Conversation
+
+   | Property      | Type     | Description |
+   | ------------- | -------- | ------------|
+   | objectId      | String   | unique id for the user post (default field) |
+| createdAt     | DateTime | date when post is created (default field) |
+   | updatedAt     | DateTime | date when post is last updated (default field) |
+   | ListOfMessages    | Array (of Message)   | messages belongs to the conversation|
+   | Partipants    | Array (of Profile)   | users participating in the conversation |
+   
+   #### Message
+
+   | Property      | Type     | Description |
+   | ------------- | -------- | ------------|
+   | objectId      | String   | unique id for the user post (default field) |
+| createdAt     | DateTime | date when post is created (default field) |
+   | updatedAt     | DateTime | date when post is last updated (default field) |
+   | Sender        | Pointer to User| sender of the message |
+   | MsgText     | String | text content of the message |
+ 
+   
+   #### User
+
+   | Property      | Type     | Description |
+   | ------------- | -------- | ------------|
+   | objectId      | String   | unique id for the user post (default field) |
+| createdAt     | DateTime | date when post is created (default field) |
+   | updatedAt     | DateTime | date when post is last updated (default field) |
+   | username     | String | username |
+   | password     | String | password |
+   | email     | String | email |
 
 ### Networking
 #### List of network requests by screen
