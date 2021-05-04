@@ -80,8 +80,7 @@ Chatty is a Tinder Clone. It lets the user sign up and log in, giving them acces
    * Click to view full profile details
 
 ## Wireframes
-<img src="https://i.imgur.com/uQh5jUP.jpg" width=400>
-<img src="https://i.imgur.com/uM9Dm2H.jpg" width=200>
+<img src="https://i.imgur.com/Vvl6lAC.jpg" width=400>
 
 ### [BONUS] Digital Wireframes & Mockups
 
