@@ -30,14 +30,14 @@ Chatty is a Tinder Clone. It lets the user sign up and log in, giving them acces
 
 **Required Must-have Stories**
 
-- [ ] User sees app icon in home screen and styled launch screen
-- [ ] User can sign up to create a new account
-- [ ] User can log in
-- [ ] User can view and scroll through a list of profiles of active users
-- [ ] User can chat with other users
-- [ ] User can interact with cell (profile listed) to start a conversation. Conversation will be added to their active conversations list
-- [ ] User can view a list of active conversations
-- [ ] User can tap a conversation (cell) to chat with other users
+- [x] User sees app icon in home screen and styled launch screen
+- [x] User can sign up to create a new account
+- [x] User can log in
+- [x] User can view and scroll through a list of profiles of active users
+- [x] User can chat with other users
+- [x] User can interact with cell (profile listed) to start a conversation. Conversation will be added to their active conversations list
+- [x] User can view a list of active conversations
+- [x] User can tap a conversation (cell) to chat with other users
 
 **Optional Nice-to-have Stories**
 
