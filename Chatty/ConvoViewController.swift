@@ -49,7 +49,7 @@ class ConvoViewController: MessagesViewController, MessagesDataSource, MessagesL
     let myMessageBar = MessageInputBar()
     
     
-    //TODO: should be sent over by the calling item.
+    
     //previously: create convo and pass in objectID.
     var belongingConvoID = String()
     var belongingConvo = PFObject(className: "Conversation")
@@ -72,7 +72,7 @@ class ConvoViewController: MessagesViewController, MessagesDataSource, MessagesL
         
         query.includeKeys(["ListOfMessages","Sender"])
         
-        print(belongingConvoID)
+        //print(belongingConvoID)
         query.whereKey("objectId", equalTo: belongingConvoID)
         
         //query.limit = 3
@@ -195,6 +195,9 @@ class ConvoViewController: MessagesViewController, MessagesDataSource, MessagesL
                     self.belongingConvo.saveInBackground { (success, error) in
                         if success{
                             print("Your message is saved")
+                            //TODO: How to refresh immediately?!
+                            //self.messagesCollectionView.reloadData()
+                            //self.messagesCollectionView.scrollToLastItem()
                         }else{
                             print("Error saving message: \(error?.localizedDescription)")
                         }
@@ -218,6 +221,38 @@ class ConvoViewController: MessagesViewController, MessagesDataSource, MessagesL
         messagesCollectionView.reloadData()
     
     }
+    
+    
+    
+    
+    
+    
+    //VVVVVV delete below::::  tips from online
+//    private func insertNewMessage(_ message: Message) {
+//           guard !messages.contains(message) else {
+//               return
+//           }
+//
+//
+//           messages.append(message)
+//         //  messages.sort(by: message)
+//
+//
+//           let isLatestMessage = messages.index(of: message) == (messages.count - 1)
+//           //let shouldScrollToBottom = messagesCollectionView.isAtBottom && isLatestMessage
+//
+//
+//           messagesCollectionView.reloadData()
+//
+//
+//           if isLatestMessage {
+//               DispatchQueue.main.async {
+//                   self.messagesCollectionView.scrollToBottom(animated: true
+//                   )
+//               }
+//       func save(_ message: Message) {
+//
+//     self.messagesCollectionView.scrollToBottom()
   
     
 

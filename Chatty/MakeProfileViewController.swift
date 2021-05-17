@@ -33,30 +33,6 @@ class MakeProfileViewController: UIViewController, UIImagePickerControllerDelega
     
     @IBAction func btnSubmitProfile(_ sender: Any) {
         
-
-//        let addedUser = PFUser.current()!
-//        addedUser["FirstName"] = tfFirst.text!
-//        addedUser["LastName"] = tfLast.text!
-//        addedUser["Status"] = tfStatus.text!
-//        addedUser.add(tfStory.text!, forKey: "Stories")
-//
-//        let myImageData = imgProfilePic.image?.pngData()
-//        let myImageFile = PFFileObject(name: "Picture.png", data: myImageData!)
-//        addedUser["Picture"] = myImageFile
-//
-//
-//
-//        addedUser.saveInBackground { (success, error) in
-//            if success{
-//                print("User profile saved successfully")
-//                self.performSegue(withIdentifier: "ProfileToMainSegue", sender: self)
-//            } else {
-//                print("Error saving User profile: \(error?.localizedDescription)")
-//            }
-//        }
-        
-        
-        
 //      Create a Profile Class (for the new user who just signed up)
         let addedProfile = PFObject(className: "Profile")
         addedProfile["FirstN"] = tfFirst.text!
@@ -64,11 +40,11 @@ class MakeProfileViewController: UIViewController, UIImagePickerControllerDelega
         addedProfile["Status"] = tfStatus.text!
         addedProfile.add(tfStory.text!,forKey: "Stories")   //the story field is an array
         addedProfile["owner"] = PFUser.current()!
-        
+
         let myImageData = imgProfilePic.image?.pngData()
         let myImageFile = PFFileObject(name: "Picture.png", data: myImageData!)
         addedProfile["Picture"] = myImageFile
-        
+
         addedProfile.saveInBackground { (success, error) in
         if success{
             print("profile saved successfully")
@@ -129,3 +105,4 @@ class MakeProfileViewController: UIViewController, UIImagePickerControllerDelega
     */
 
 }
+

@@ -45,6 +45,7 @@ class EditProfileViewController: UIViewController, UIImagePickerControllerDelega
                 let imageURL = imageFile.url!
                 let ProfileImgURL = URL(string: imageURL)!
                 self.editImage.af.setImage(withURL: ProfileImgURL)
+                
             }else{
                 print("Error fetching profile: \(error?.localizedDescription)")
             }
@@ -65,6 +66,8 @@ class EditProfileViewController: UIViewController, UIImagePickerControllerDelega
         query.findObjectsInBackground { (ProfileArray, error) in
             if ProfileArray != nil{
                 let profileToUpdate = ProfileArray![0]
+                
+                
                 profileToUpdate["FirstN"] = self.editFirst.text
                 profileToUpdate["LastN"] = self.editLast.text
                 profileToUpdate["Status"] = self.editStatus.text

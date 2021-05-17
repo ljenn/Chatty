@@ -17,18 +17,24 @@ class ChatViewController: UIViewController, UITableViewDelegate, UITableViewData
 
     @IBOutlet weak var ChatTV: UITableView!
     
+    
+    //an array of conversation.
     var ChatCollection = [PFObject]()
+    var myProfileID = ""
+    
+    
     
     
     override func viewDidAppear(_ animated: Bool) {
         let query = PFQuery(className: "Profile")
-        query.includeKeys(["ListOfMessages","owner","Conversation"])
+        query.includeKeys(["owner","Chats","Participants","Conversation","Profile"])
         
         query.whereKey("owner", equalTo: PFUser.current() as Any)
         
         query.findObjectsInBackground { (arrayOfProfile, error) in
             if arrayOfProfile != nil {
                 let tempProfile = arrayOfProfile![0]
+                self.myProfileID = tempProfile.objectId!
                 if tempProfile["Chats"] != nil{
                     self.ChatCollection = tempProfile["Chats"] as! [PFObject]
                 }
@@ -40,10 +46,9 @@ class ChatViewController: UIViewController, UITableViewDelegate, UITableViewData
             }
         }
         
-        
-        
-        
     }
+    
+    
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -63,6 +68,8 @@ class ChatViewController: UIViewController, UITableViewDelegate, UITableViewData
         return ChatCollection.count
     }
     
+    
+    
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         //TODO: update later
         //have our customed cell blueprint
@@ -71,15 +78,40 @@ class ChatViewController: UIViewController, UITableViewDelegate, UITableViewData
         
         
         
-        //Update when we get have conversation owners
-        let temp = "Conversation " + String(indexPath.row + 1)
-        myCell.textLabel?.text = temp
+        let oneConvo = ChatCollection[indexPath.row]
+        //record participants in the conversation
+        let participants = oneConvo["Participants"] as! [PFObject]
+    
+        var friendID = ""
+        var friendName = ""
+        
+        //find out the friend's profileID (which is the one not matching current user's ID)
+        for talker in participants{
+            if talker.objectId != myProfileID{
+                friendID = talker.objectId!
+            }
+        }
+        
+        //find the friend's profile by id
+        //set the conversation title to friend's first name.
+        let query = PFQuery(className: "Profile")
+        query.whereKey("objectId", equalTo: friendID)
+        query.findObjectsInBackground { (arr, error) in
+            if arr != nil{
+                let oneFriend = arr![0] as PFObject
+                friendName = oneFriend["FirstN"] as! String
+                myCell.textLabel?.text = friendName
+            }
+        }
+
         
         //show an arrow at the end of each cell
         myCell.accessoryType = .disclosureIndicator
         
         return myCell
     }
+    
+    
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         //if cell is selected, deselect:

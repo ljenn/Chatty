@@ -316,6 +316,7 @@
                                 </state>
                                 <connections>
                                     <action selector="ChatBtnFxn:" destination="5s4-uW-jVy" eventType="touchUpInside" id="Ssa-R1-lAA"/>
+                                    <segue destination="6Kz-8G-2U7" kind="show" id="lvD-X3-RkR"/>
                                 </connections>
                             </button>
                         </subviews>
@@ -416,6 +417,7 @@
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="6Kz-8G-2U7" sceneMemberID="viewController">
                     <tabBarItem key="tabBarItem" title="Chat" image="message" catalog="system" id="rrc-GE-6au"/>
                     <toolbarItems/>
+                    <navigationItem key="navigationItem" id="w3f-gS-QlV"/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="pCC-Xo-a0K">
                         <rect key="frame" x="0.0" y="44" width="414" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
@@ -846,6 +848,7 @@
         <image name="plus.app" catalog="system" width="64" height="56"/>
     </resources>
     <inferredMetricsTieBreakers>
+        <segue reference="lvD-X3-RkR"/>
         <segue reference="mq8-2C-CuW"/>
     </inferredMetricsTieBreakers>
 </document>

@@ -15,7 +15,6 @@ class DetailProfileViewController: UIViewController {
     
     var tappedProfile = PFObject(className: "Profile")
     
-    var myTest = String()
     
     @IBOutlet weak var ChatWithMeBTN: UIButton!
     @IBOutlet weak var imgDP: UIImageView!
@@ -40,9 +39,6 @@ class DetailProfileViewController: UIViewController {
         imgDP.af.setImage(withURL: ProfileImgURL)
         
         
-        
-        print(myTest)
-        
         //set up button
         ChatWithMeBTN.layer.cornerRadius = 5
         ChatWithMeBTN.layer.borderWidth = 1
@@ -60,22 +56,29 @@ class DetailProfileViewController: UIViewController {
         
         
         let mutualConvo = PFObject(className: "Conversation")
+
        
-       
+        var currentUserProfile = PFObject(className: "Profile")
         
-            //Part1: update info in current user's profile
-            //a) find userA profile
-            //b) add userB's objId to userA's freindlist
-            //c) add the new convo to the chatlist of userA profile
+        //Part1: update info in current user's profile
+        //a) find userA profile
+        //b) add userB's objId to userA's freindlist
+        //c) add the new convo to the chatlist of userA profile
         let queryA = PFQuery(className: "Profile")
         queryA.whereKey("owner", equalTo: PFUser.current() as Any)
         queryA.findObjectsInBackground { (resultArray, error) in
             if resultArray != nil{
                 if resultArray!.count >= 1{
-                    let currentUserProfile = resultArray![0]
-                    currentUserProfile.add(self.tappedProfile["owner"] as! PFUser, forKey: "FriendList")
+//                    let currentUserProfile = resultArray![0]
+                     currentUserProfile = resultArray![0]
+//                    currentUserProfile.add(self.tappedProfile["owner"] as! PFUser, forKey: "FriendList")
+                    currentUserProfile.add(self.tappedProfile, forKey: "FriendList")
                     currentUserProfile.add(mutualConvo, forKey: "Chats")
                     currentUserProfile.saveInBackground()
+                    
+                    mutualConvo.add(currentUserProfile,forKey: "Participants")
+                    
+                    
                 }
             }else{
                 print("Error locating the profile: \(error?.localizedDescription)")
@@ -94,14 +97,22 @@ class DetailProfileViewController: UIViewController {
             if resultArray != nil{
                 if resultArray!.count >= 1{
                     let FriendProfile = resultArray![0]
-                    FriendProfile.add(PFUser.current(), forKey: "FriendList")
+                    //FriendProfile.add(PFUser.current(), forKey: "FriendList")
+                    FriendProfile.add(currentUserProfile, forKey:"FriendList")
                     FriendProfile.add(mutualConvo, forKey: "Chats")
                     FriendProfile.saveInBackground()
+                    
+                    mutualConvo.add(FriendProfile, forKey: "Participants")
                 }
             }else{
                 print("Error locating the profile: \(error?.localizedDescription)")
             }
         }
+        
+        
+        
+
+        
 
 
     }
