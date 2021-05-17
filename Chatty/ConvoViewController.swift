@@ -17,6 +17,7 @@ import UIKit
 import MessageKit
 import MessageInputBar
 import Parse
+import AlamofireImage
 
 
 
@@ -64,18 +65,34 @@ class ConvoViewController: MessagesViewController, MessagesDataSource, MessagesL
     let currentUser = Sender(senderId: "1357", displayName: "Jason")
     let AnotherUser = Sender(senderId: "2468", displayName: "Jona")
     
+    
+//    func configureAvatarView(_ avatarView: AvatarView, for message: MessageType, at indexPath: IndexPath, in messagesCollectionView: MessagesCollectionView) {
+//
+//        UIImage a =
+//        avatarView.set(avatar: Avatar(image: <#T##UIImage?#>, initials: "Jason"))
+//    }
+    
+    
     override func viewDidAppear(_ animated: Bool) {
+        
+        //hide senders' profile image...
+        if let layout = messagesCollectionView.collectionViewLayout as? MessagesCollectionViewFlowLayout{
+            layout.textMessageSizeCalculator.outgoingAvatarSize = .zero
+            layout.textMessageSizeCalculator.incomingAvatarSize = .zero
+        }
+
+        
+        //clear out the msg collection (so no duplicate)
+        msgListOfProcessedMESSAGE.removeAll()
+        
         //need to load Message Object (from back 4 app) and create Message (based on MessageKit model)
         //aka initiate the Message History
-
         let query = PFQuery(className: "Conversation")
         
         query.includeKeys(["ListOfMessages","Sender"])
         
         //print(belongingConvoID)
         query.whereKey("objectId", equalTo: belongingConvoID)
-        
-        //query.limit = 3
         
         query.findObjectsInBackground { (ArrayOfConversations, error) in
             if ArrayOfConversations != nil{
@@ -123,6 +140,9 @@ class ConvoViewController: MessagesViewController, MessagesDataSource, MessagesL
                 // findObjectsInBackground fxn has a different thread, need to call viewDidLoad (on another thread) to show data. 
                 self.viewDidLoad()
                 
+                //scrolling to the most recent message:
+                self.messagesCollectionView.scrollToLastItem()
+                
                 
 
             }else{
@@ -133,6 +153,8 @@ class ConvoViewController: MessagesViewController, MessagesDataSource, MessagesL
     
 
     override func viewDidLoad() {
+        
+        
         super.viewDidLoad()
 
         
@@ -194,10 +216,11 @@ class ConvoViewController: MessagesViewController, MessagesDataSource, MessagesL
                     self.belongingConvo.add(freshMessage,forKey: "ListOfMessages")
                     self.belongingConvo.saveInBackground { (success, error) in
                         if success{
-                            print("Your message is saved")
-                            //TODO: How to refresh immediately?!
-                            //self.messagesCollectionView.reloadData()
-                            //self.messagesCollectionView.scrollToLastItem()
+                            
+                            //show sent msg immediately
+                            //pull data from database everytime a msg is sent.
+                            self.viewDidAppear(true)
+                            
                         }else{
                             print("Error saving message: \(error?.localizedDescription)")
                         }
@@ -218,41 +241,9 @@ class ConvoViewController: MessagesViewController, MessagesDataSource, MessagesL
         
         //Step3: reload data so new message shows up
         //not working :(
-        messagesCollectionView.reloadData()
+        //messagesCollectionView.reloadData()
     
     }
-    
-    
-    
-    
-    
-    
-    //VVVVVV delete below::::  tips from online
-//    private func insertNewMessage(_ message: Message) {
-//           guard !messages.contains(message) else {
-//               return
-//           }
-//
-//
-//           messages.append(message)
-//         //  messages.sort(by: message)
-//
-//
-//           let isLatestMessage = messages.index(of: message) == (messages.count - 1)
-//           //let shouldScrollToBottom = messagesCollectionView.isAtBottom && isLatestMessage
-//
-//
-//           messagesCollectionView.reloadData()
-//
-//
-//           if isLatestMessage {
-//               DispatchQueue.main.async {
-//                   self.messagesCollectionView.scrollToBottom(animated: true
-//                   )
-//               }
-//       func save(_ message: Message) {
-//
-//     self.messagesCollectionView.scrollToBottom()
   
     
 

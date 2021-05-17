@@ -119,8 +119,9 @@ class ChatViewController: UIViewController, UITableViewDelegate, UITableViewData
         
         //navigate to specific conversation
         let vc = ConvoViewController()
-        vc.title = "Conversation"
         let selectedConvo = ChatCollection[indexPath.row]
+        vc.title = ChatTV.cellForRow(at: indexPath)?.textLabel?.text
+        //vc.title = "Conversation"
 
         //send the id of the selected conversation to the convo (later to retrieve messages belonging to the convo)
         vc.belongingConvoID = selectedConvo.objectId!
