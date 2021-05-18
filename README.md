@@ -169,3 +169,7 @@ Chatty is a Tinder Clone. It lets the user sign up and log in, giving them acces
       - (Delete) Delete existing conversation
    - Individual Chat Screen
       - (Create/POST) Create a chat mesage in the 1-on-1 user chat
+
+
+### REAME GIF
+<img src='https://github.com/Freebee2day/Chatty/blob/main/readme_recording.gif' title='Full Video Walkthrough' width='' alt='Video Walkthrough' />
