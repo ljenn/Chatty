@@ -56,9 +56,10 @@ class DetailProfileViewController: UIViewController {
         
         
         let mutualConvo = PFObject(className: "Conversation")
-
        
-        var currentUserProfile = PFObject(className: "Profile")
+        //var currentUserProfile = PFObject(className: "Profile")
+        
+        var currentUserProfile: PFObject!  //Credit to Jenny!!!
         
         //Part1: update info in current user's profile
         //a) find userA profile
@@ -68,16 +69,15 @@ class DetailProfileViewController: UIViewController {
         queryA.whereKey("owner", equalTo: PFUser.current() as Any)
         queryA.findObjectsInBackground { (resultArray, error) in
             if resultArray != nil{
-                if resultArray!.count >= 1{
+                if resultArray!.count == 1{
 //                    let currentUserProfile = resultArray![0]
-                     currentUserProfile = resultArray![0]
+                    currentUserProfile = resultArray![0]
 //                    currentUserProfile.add(self.tappedProfile["owner"] as! PFUser, forKey: "FriendList")
                     currentUserProfile.add(self.tappedProfile, forKey: "FriendList")
                     currentUserProfile.add(mutualConvo, forKey: "Chats")
                     currentUserProfile.saveInBackground()
                     
                     mutualConvo.add(currentUserProfile,forKey: "Participants")
-                    
                     
                 }
             }else{
@@ -101,7 +101,7 @@ class DetailProfileViewController: UIViewController {
                     FriendProfile.add(currentUserProfile, forKey:"FriendList")
                     FriendProfile.add(mutualConvo, forKey: "Chats")
                     FriendProfile.saveInBackground()
-                    
+
                     mutualConvo.add(FriendProfile, forKey: "Participants")
                 }
             }else{

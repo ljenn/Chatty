@@ -7,10 +7,6 @@
 //
 
 
-//Problems to fix:
-//limit to only recent messages OR anchord to the end of convo. 
-//auto refresh to display new message!!
-
 
 
 import UIKit
