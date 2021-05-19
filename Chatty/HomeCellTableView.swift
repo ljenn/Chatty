@@ -20,6 +20,8 @@ class HomeCellTableView: UITableViewCell {
     
     @IBOutlet weak var storyHomeCell: UILabel!
     
+    @IBOutlet weak var emoji: UIImageView!
+    
     
 
     override func awakeFromNib() {

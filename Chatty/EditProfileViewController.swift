@@ -10,6 +10,7 @@ import UIKit
 import Parse
 import AlamofireImage
 import Toast_Swift
+import DropDown
 
 
 class EditProfileViewController: UIViewController, UIImagePickerControllerDelegate, UINavigationControllerDelegate{
@@ -20,15 +21,46 @@ class EditProfileViewController: UIViewController, UIImagePickerControllerDelega
     
     @IBOutlet weak var editImage: UIImageView!
     
-    @IBOutlet weak var editStatus: UITextField!
-    
     @IBOutlet weak var editStory: UITextField!
+    
+    @IBOutlet weak var menuView: UIView!
+    
+    @IBOutlet weak var moodLabel: UILabel!
+    
+    @IBOutlet weak var emoji: UIImageView!
+    
+    let moodMenu: DropDown = {
+        let moodMenu = DropDown()
+        moodMenu.dataSource = [
+            "Studying",
+            "Partying",
+            "Exercising",
+            "Eating",
+        ]
+        return moodMenu
+    }()
     
 
     
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        let gesture = UITapGestureRecognizer(target: self, action: #selector(didTapMenu))
+        gesture.numberOfTouchesRequired = 1
+        gesture.numberOfTapsRequired = 1
+        menuView.addGestureRecognizer(gesture)
+        moodMenu.anchorView = menuView
+        menuView.layer.borderWidth = 1
+        menuView.layer.borderColor = UIColor.lightGray.cgColor
+        
+        moodMenu.selectionAction = {index, title in
+            //print("index \(index) and \(title)")
+            self.moodLabel.text = title
+            self.emoji.image = UIImage(named: title)
+        }
+        
+        
         
         //fetch the user's profile info and use as default value in each field
         let query = PFQuery(className: "Profile")
@@ -39,7 +71,10 @@ class EditProfileViewController: UIViewController, UIImagePickerControllerDelega
                 let myProfile = ArrayOfProfiles![0]
                 self.editFirst.text = myProfile["FirstN"] as? String
                 self.editLast.text = myProfile["LastN"] as? String
-                self.editStatus.text = myProfile["Status"] as? String
+                
+                let emojiText = myProfile["Status"] as? String
+                self.moodLabel.text = emojiText
+                self.emoji.image = UIImage(named: emojiText!)
                 
                 let imageFile = myProfile["Picture"] as! PFFileObject
                 let imageURL = imageFile.url!
@@ -52,6 +87,10 @@ class EditProfileViewController: UIViewController, UIImagePickerControllerDelega
         }
 
        
+    }
+    
+    @objc func didTapMenu(){
+        moodMenu.show()
     }
     
 
@@ -70,7 +109,9 @@ class EditProfileViewController: UIViewController, UIImagePickerControllerDelega
                 
                 profileToUpdate["FirstN"] = self.editFirst.text
                 profileToUpdate["LastN"] = self.editLast.text
-                profileToUpdate["Status"] = self.editStatus.text
+                
+
+                profileToUpdate["Status"] = self.moodLabel.text
                 
                 let myImageData = self.editImage.image?.pngData()
                 let myImageFile = PFFileObject(name: "Picture.png", data: myImageData!)

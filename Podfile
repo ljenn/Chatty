@@ -11,6 +11,7 @@ target 'Chatty' do
 	pod 'MessageInputBar'
 	pod 'Toast-Swift', '~> 5.0.1'
 	pod 'MessageKit'
+	pod 'DropDown'
 
   target 'ChattyTests' do
     inherit! :search_paths

@@ -63,8 +63,12 @@ class ConvoViewController: MessagesViewController, MessagesDataSource, MessagesL
     
     
 //    func configureAvatarView(_ avatarView: AvatarView, for message: MessageType, at indexPath: IndexPath, in messagesCollectionView: MessagesCollectionView) {
-//
-//        UIImage a =
+//        
+//        let imageFile = singleProfile["Picture"] as! PFFileObject
+//        let imgURL = imageFile.url!
+//        let profileURL = URL(string: imgURL)!
+//        let myIMG(Image)
+//        
 //        avatarView.set(avatar: Avatar(image: <#T##UIImage?#>, initials: "Jason"))
 //    }
     

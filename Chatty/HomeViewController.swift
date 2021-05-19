@@ -20,6 +20,8 @@ class HomeViewController: UIViewController, UITableViewDelegate, UITableViewData
     var mylist = [PFObject]()
     
     
+    
+    
     @IBOutlet weak var HomeTV: UITableView!
     
 
@@ -68,7 +70,11 @@ class HomeViewController: UIViewController, UITableViewDelegate, UITableViewData
         //creating a new cell to hold the profile
         let myCell = HomeTV.dequeueReusableCell(withIdentifier: "HomeCellTableView") as! HomeCellTableView
         
-        myCell.statusHomeCell.text = singleProfile["Status"] as? String
+        let myMood = singleProfile["Status"] as? String
+        myCell.statusHomeCell.text = myMood
+        myCell.emoji.image = UIImage(named: myMood!)
+        
+        
         myCell.firstNHomeCell.text = singleProfile["FirstN"] as? String
         
         let imageFile = singleProfile["Picture"] as! PFFileObject

@@ -3,6 +3,7 @@ PODS:
   - AlamofireImage (4.1.0):
     - Alamofire (~> 5.1)
   - Bolts/Tasks (1.9.1)
+  - DropDown (2.3.13)
   - InputBarAccessoryView (5.3.1):
     - InputBarAccessoryView/Core (= 5.3.1)
   - InputBarAccessoryView/Core (5.3.1)
@@ -19,6 +20,7 @@ PODS:
 
 DEPENDENCIES:
   - AlamofireImage
+  - DropDown
   - MessageInputBar
   - MessageKit
   - Parse
@@ -29,6 +31,7 @@ SPEC REPOS:
     - Alamofire
     - AlamofireImage
     - Bolts
+    - DropDown
     - InputBarAccessoryView
     - MessageInputBar
     - MessageKit
@@ -39,12 +42,13 @@ SPEC CHECKSUMS:
   Alamofire: 2291f7d21ca607c491dd17642e5d40fdcda0e65c
   AlamofireImage: c4a2ba349885fb3064feb74d2e547bd42ce9be10
   Bolts: 8c1e8aab2f603387b8b9924f57d1d64f43d3ffdc
+  DropDown: 8a2116376c1981888557f72ec2ffc9a5e0e456ec
   InputBarAccessoryView: 1f75d8c9f75e5e57f3ffac36ed58635a8005e0bc
   MessageInputBar: e81c7535347f1f7b923de7080409a535a004b6e4
   MessageKit: a8efaf55b021672b19ffdd5a85ce1c2f3b53058e
   Parse: 081fb8755c3000fd11df817eec235def233d0af3
   Toast-Swift: 9b6a70f28b3bf0b96c40d46c0c4b9d6639846711
 
-PODFILE CHECKSUM: 3126b3311a21075f0cc13ee6df1961d24d6f3452
+PODFILE CHECKSUM: f173ebc2241655bfead72b7ecf1015709f8a1d2b
 
 COCOAPODS: 1.10.1
