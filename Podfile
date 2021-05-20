@@ -8,10 +8,10 @@ target 'Chatty' do
   # Pods for Chatty
  	pod 'Parse'
  	pod 'AlamofireImage'
-	pod 'MessageInputBar'
 	pod 'Toast-Swift', '~> 5.0.1'
 	pod 'MessageKit'
 	pod 'DropDown'
+	# pod 'InputBarAccessoryView'
 
   target 'ChattyTests' do
     inherit! :search_paths
