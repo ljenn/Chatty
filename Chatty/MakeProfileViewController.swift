@@ -9,6 +9,7 @@
 import UIKit
 import Parse
 import AlamofireImage
+import DropDown
 
 class MakeProfileViewController: UIViewController, UIImagePickerControllerDelegate, UINavigationControllerDelegate {
 
@@ -23,13 +24,51 @@ class MakeProfileViewController: UIViewController, UIImagePickerControllerDelega
     
     @IBOutlet weak var imgProfilePic: UIImageView!
     
+    @IBOutlet weak var menuView: UIView!
+    
+    @IBOutlet weak var emoji: UIImageView!
+    
+    @IBOutlet weak var moodLabel: UILabel!
+    
+    
+    
+    let moodMenu: DropDown = {
+        let moodMenu = DropDown()
+        moodMenu.dataSource = [
+            "Studying",
+            "Partying",
+            "Exercising",
+            "Eating",
+        ]
+        return moodMenu
+    }()
+    
     
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        // Do any additional setup after loading the view.
-        
+        let gesture = UITapGestureRecognizer(target: self, action: #selector(didTapMenu))
+        gesture.numberOfTouchesRequired = 1
+        gesture.numberOfTapsRequired = 1
+        menuView.addGestureRecognizer(gesture)
+        moodMenu.anchorView = menuView
+        menuView.layer.borderWidth = 1
+        menuView.layer.borderColor = UIColor.lightGray.cgColor
+
+        moodMenu.selectionAction = {index, title in
+            //print("index \(index) and \(title)")
+            self.moodLabel.text = title
+            self.emoji.image = UIImage(named: title)
+        }
     }
+    
+    @objc func didTapMenu(){
+        moodMenu.show()
+    }
+    
+    
+    
+    
     
     @IBAction func btnSubmitProfile(_ sender: Any) {
         
@@ -38,6 +77,7 @@ class MakeProfileViewController: UIViewController, UIImagePickerControllerDelega
         addedProfile["FirstN"] = tfFirst.text!
         addedProfile["LastN"] = tfLast.text!
         addedProfile["Status"] = tfStatus.text!
+        addedProfile["Mood"] = moodLabel.text!
         addedProfile.add(tfStory.text!,forKey: "Stories")   //the story field is an array
         addedProfile["owner"] = PFUser.current()!
 

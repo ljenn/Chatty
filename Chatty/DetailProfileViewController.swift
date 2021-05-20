@@ -24,9 +24,12 @@ class DetailProfileViewController: UIViewController,UITableViewDelegate,UITableV
     @IBOutlet weak var firstDP: UILabel!
     @IBOutlet weak var lastDP: UILabel!
     @IBOutlet weak var statusDP: UILabel!
-
-
-
+    @IBOutlet weak var moodDP: UILabel!
+    @IBOutlet weak var emojiDP: UIImageView!
+    
+    
+    
+    
     @IBOutlet weak var cellHeight: NSLayoutConstraint!
 
 
@@ -48,6 +51,11 @@ class DetailProfileViewController: UIViewController,UITableViewDelegate,UITableV
         firstDP.text = firstname
         lastDP.text = tappedProfile["LastN"] as? String
         statusDP.text = tappedProfile["Status"] as? String
+        
+        let moodTXT = tappedProfile["Mood"] as? String
+        moodDP.text = moodTXT
+        emojiDP.image = UIImage(named: moodTXT!)
+        
 
         let imageFile = tappedProfile["Picture"] as! PFFileObject
         let imageURL = imageFile.url!

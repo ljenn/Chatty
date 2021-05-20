@@ -22,6 +22,10 @@ class ProfileTabViewController: UIViewController {
     
     @IBOutlet weak var labelStatus: UILabel!
     
+    @IBOutlet weak var moodIMG: UIImageView!
+    
+    @IBOutlet weak var moodTXT: UILabel!
+
     
     
     override func viewDidLoad() {
@@ -39,7 +43,12 @@ class ProfileTabViewController: UIViewController {
                 self.labelFirst.text = myProfile["FirstN"] as? String
                 self.labelLast.text = myProfile["LastN"] as? String
                 self.labelStatus.text = myProfile["Status"] as? String
+              
+                let myMoodName = myProfile["Mood"] as? String
+                self.moodTXT.text = myMoodName
+                self.moodIMG.image = UIImage(named: myMoodName!)
                 
+
                 let imageFile = myProfile["Picture"] as! PFFileObject
                 let imageURL = imageFile.url!
                 let ProfileImgURL = URL(string: imageURL)!
