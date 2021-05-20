@@ -11,7 +11,7 @@
 
 import UIKit
 import MessageKit
-import MessageInputBar
+import InputBarAccessoryView
 import Parse
 import AlamofireImage
 
@@ -40,10 +40,10 @@ struct Message: MessageType {
     
 }
 
-class ConvoViewController: MessagesViewController, MessagesDataSource, MessagesLayoutDelegate, MessagesDisplayDelegate,MessageInputBarDelegate{
+class ConvoViewController: MessagesViewController, MessagesDataSource, MessagesLayoutDelegate, MessagesDisplayDelegate,InputBarAccessoryViewDelegate{
     //(MessagesViewController is a parent class class offered by MsgKit)
     
-    let myMessageBar = MessageInputBar()
+    let myMessageBar = InputBarAccessoryView()
     
     
     
@@ -177,6 +177,7 @@ class ConvoViewController: MessagesViewController, MessagesDataSource, MessagesL
         return currentUser
     }
     
+    
     func messageForItem(at indexPath: IndexPath, in messagesCollectionView: MessagesCollectionView) -> MessageType {
         return msgListOfProcessedMESSAGE[indexPath.section]
     }
@@ -194,8 +195,8 @@ class ConvoViewController: MessagesViewController, MessagesDataSource, MessagesL
         return true
     }
 
-    
-    func messageInputBar(_ inputBar: MessageInputBar, didPressSendButtonWith text: String) {
+
+    func inputBar(_ inputBar: InputBarAccessoryView, didPressSendButtonWith text: String) {
         
         //Step1.1: create a PFO Message object
         let freshMessage = PFObject(className: "Message")
