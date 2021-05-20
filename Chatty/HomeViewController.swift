@@ -70,9 +70,11 @@ class HomeViewController: UIViewController, UITableViewDelegate, UITableViewData
         //creating a new cell to hold the profile
         let myCell = HomeTV.dequeueReusableCell(withIdentifier: "HomeCellTableView") as! HomeCellTableView
         
-        let myMood = singleProfile["Status"] as? String
-        myCell.statusHomeCell.text = myMood
+        let myMood = singleProfile["Mood"] as? String
+        myCell.moodLabel.text = myMood
         myCell.emoji.image = UIImage(named: myMood!)
+        
+        myCell.statusHomeCell.text = singleProfile["Status"] as? String
         
         
         myCell.firstNHomeCell.text = singleProfile["FirstN"] as? String

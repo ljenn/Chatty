@@ -22,6 +22,7 @@ class HomeCellTableView: UITableViewCell {
     
     @IBOutlet weak var emoji: UIImageView!
     
+    @IBOutlet weak var moodLabel: UILabel!
     
 
     override func awakeFromNib() {

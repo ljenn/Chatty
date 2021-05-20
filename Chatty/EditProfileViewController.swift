@@ -29,6 +29,9 @@ class EditProfileViewController: UIViewController, UIImagePickerControllerDelega
     
     @IBOutlet weak var emoji: UIImageView!
     
+    @IBOutlet weak var status: UITextField!
+    
+    
     let moodMenu: DropDown = {
         let moodMenu = DropDown()
         moodMenu.dataSource = [
@@ -71,8 +74,9 @@ class EditProfileViewController: UIViewController, UIImagePickerControllerDelega
                 let myProfile = ArrayOfProfiles![0]
                 self.editFirst.text = myProfile["FirstN"] as? String
                 self.editLast.text = myProfile["LastN"] as? String
+                self.status.text = myProfile["Status"] as? String
                 
-                let emojiText = myProfile["Status"] as? String
+                let emojiText = myProfile["Mood"] as? String
                 self.moodLabel.text = emojiText
                 self.emoji.image = UIImage(named: emojiText!)
                 
@@ -109,9 +113,8 @@ class EditProfileViewController: UIViewController, UIImagePickerControllerDelega
                 
                 profileToUpdate["FirstN"] = self.editFirst.text
                 profileToUpdate["LastN"] = self.editLast.text
-                
-
-                profileToUpdate["Status"] = self.moodLabel.text
+                profileToUpdate["Status"] = self.status.text
+                profileToUpdate["Mood"] = self.moodLabel.text
                 
                 let myImageData = self.editImage.image?.pngData()
                 let myImageFile = PFFileObject(name: "Picture.png", data: myImageData!)
