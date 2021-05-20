@@ -116,7 +116,6 @@
 		04F008402624F6850013D71E = {
 			isa = PBXGroup;
 			children = (
-				049C889A26261E8B002508C1 /* ProfileTabViewController.swift */,
 				04F0084B2624F6850013D71E /* Chatty */,
 				04F008622624F6870013D71E /* ChattyTests */,
 				04F0086D2624F6870013D71E /* ChattyUITests */,
@@ -139,6 +138,7 @@
 		04F0084B2624F6850013D71E /* Chatty */ = {
 			isa = PBXGroup;
 			children = (
+				049C889A26261E8B002508C1 /* ProfileTabViewController.swift */,
 				04F0084C2624F6850013D71E /* AppDelegate.swift */,
 				04F0084E2624F6850013D71E /* SceneDelegate.swift */,
 				04F008522624F6850013D71E /* Main.storyboard */,
