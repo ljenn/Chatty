@@ -87,6 +87,8 @@ class MakeProfileViewController: UIViewController, UIImagePickerControllerDelega
 
         addedProfile.saveInBackground { (success, error) in
         if success{
+            
+            //show next veiwController on a different screen :(
 //            print("profile saved successfully")
 //            self.performSegue(withIdentifier: "ProfileToMainSegue", sender: self)
             
