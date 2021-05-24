@@ -36,8 +36,22 @@ class SignUpViewController: UIViewController {
 
         user.signUpInBackground { (success, error) in
             if success{
-                print("Signed Up successfully!")
-                self.performSegue(withIdentifier: "toMakeProfileSegue", sender: self)
+                //will show on a seperate page :(
+//                print("Signed Up successfully!")
+//                self.performSegue(withIdentifier: "toMakeProfileSegue", sender: self)
+                
+                
+                
+                //show the next viewController on the "same page"
+                let storyboard = UIStoryboard(name: "Main", bundle: nil)
+                let secondVC = storyboard.instantiateViewController(identifier: "createprofile")
+                
+                secondVC.modalPresentationStyle = .fullScreen
+                secondVC.modalTransitionStyle = .crossDissolve
+                
+                self.present(secondVC, animated: true, completion: nil)
+                
+                
                 
             } else{
                 print("Error Signing Up: \(error?.localizedDescription)")

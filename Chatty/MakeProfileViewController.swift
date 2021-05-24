@@ -87,8 +87,20 @@ class MakeProfileViewController: UIViewController, UIImagePickerControllerDelega
 
         addedProfile.saveInBackground { (success, error) in
         if success{
-            print("profile saved successfully")
-            self.performSegue(withIdentifier: "ProfileToMainSegue", sender: self)
+//            print("profile saved successfully")
+//            self.performSegue(withIdentifier: "ProfileToMainSegue", sender: self)
+            
+            //show the next viewController on the "same page"
+            let storyboard = UIStoryboard(name: "Main", bundle: nil)
+            let secondVC = storyboard.instantiateViewController(identifier: "CenterNavigationController") //storyboardID
+
+            secondVC.modalPresentationStyle = .fullScreen
+            secondVC.modalTransitionStyle = .crossDissolve
+
+            self.present(secondVC, animated: true, completion: nil)
+
+            
+            
         } else {
             print("Error saving profile: \(error?.localizedDescription)")
         }

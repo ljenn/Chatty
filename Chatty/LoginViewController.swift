@@ -32,8 +32,17 @@ class LoginViewController: UIViewController {
         PFUser.logInWithUsername(inBackground: username, password: password) { (attemptedUser, error) in
             if attemptedUser != nil{
                 //user found!
-                print("Login Successfully")
-                self.performSegue(withIdentifier: "toMainSegue", sender: self)
+//                print("Login Successfully")
+//                self.performSegue(withIdentifier: "toMainSegue", sender: self)
+                
+                let storyboard = UIStoryboard(name: "Main", bundle: nil)
+                let secondVC = storyboard.instantiateViewController(identifier: "CenterNavigationController")
+
+                secondVC.modalPresentationStyle = .fullScreen
+                secondVC.modalTransitionStyle = .crossDissolve
+
+                self.present(secondVC, animated: true, completion: nil)
+                
             }else{
                 print("Error Logging in: \(error?.localizedDescription)")
                 self.view.makeToast(error?.localizedDescription)
