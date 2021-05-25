@@ -156,6 +156,7 @@ class DetailProfileViewController: UIViewController,UITableViewDelegate,UITableV
                     currentUserProfile.saveInBackground()
 
                     mutualConvo.add(currentUserProfile,forKey: "Participants")
+                    mutualConvo.add(currentUserProfile["FirstN"],forKey: "Speaker")
 
                 }
             }else{
@@ -181,6 +182,7 @@ class DetailProfileViewController: UIViewController,UITableViewDelegate,UITableV
                     FriendProfile.saveInBackground()
 
                     mutualConvo.add(FriendProfile, forKey: "Participants")
+                    mutualConvo.add(FriendProfile["FirstN"],forKey: "Speaker")
                 }
             }else{
                 print("Error locating the profile: \(error?.localizedDescription)")

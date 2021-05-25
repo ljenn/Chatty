@@ -14,15 +14,22 @@ import DropDown
 
 class MakeProfileTwoViewController: UIViewController {
     
+    //user's profile info collected from previous screen
+    var myName: String!
+    var myImage: PFFileObject!
+    var myDOB: Date!
+
     
+    
+    @IBOutlet weak var emoji: UIImageView!
     
     @IBOutlet weak var tfStatus: UITextField!
-    @IBOutlet weak var tfStory: UITextField!
+    
     @IBOutlet weak var menuView: UIView!
-    @IBOutlet weak var emoji: UIImageView!
+    
     @IBOutlet weak var moodLabel: UILabel!
     
-    
+
     
     let moodMenu: DropDown = {
         let moodMenu = DropDown()
@@ -53,24 +60,40 @@ class MakeProfileTwoViewController: UIViewController {
             //print("index \(index) and \(title)")
             self.moodLabel.text = title
             self.emoji.image = UIImage(named: title)
-
-        // Do any additional setup after loading the view.
     }
+}
 
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
+    @objc func didTapMenu(){
+        moodMenu.show()
+    }
+    
+    
+    
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destination.
-        // Pass the selected object to the new view controller.
+        if (segue.identifier == "toProfileThreeSegue") {
+            if let nextViewController = segue.destination as? MakeProfileThreeViewController {
+                nextViewController.theName = myName
+                nextViewController.theDOB = myDOB
+                nextViewController.theImage = myImage
+                nextViewController.theMood = moodLabel.text
+                nextViewController.theStatus = tfStatus.text
+             }
+        }
     }
-    */
+    
+    
+    
+    
+    @IBAction func ContinueII(_ sender: Any) {
+        performSegue(withIdentifier: "toProfileThreeSegue", sender: self)
+        
+    }
+    
+    
 
-}
-
-@objc func didTapMenu(){
-    moodMenu.show()
-}
+    
+    
+    
+    
 
 }

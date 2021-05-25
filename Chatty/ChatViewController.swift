@@ -12,14 +12,17 @@ import Parse
 
 //generic table view show a list of conversations
 
-class ChatViewController: UIViewController, UITableViewDelegate, UITableViewDataSource{
+class ChatViewController: UIViewController, UITableViewDelegate, UITableViewDataSource, UISearchBarDelegate{
     
 
+    @IBOutlet weak var mySearchBar: UISearchBar!
+    
     @IBOutlet weak var ChatTV: UITableView!
     
     
     //an array of conversation.
     var ChatCollection = [PFObject]()
+    var filteredChatCollection = [PFObject]()
     var myProfileID = ""
     
     
@@ -39,12 +42,16 @@ class ChatViewController: UIViewController, UITableViewDelegate, UITableViewData
                     self.ChatCollection = tempProfile["Chats"] as! [PFObject]
                 }
                 
+                //where to put?!
+                self.filteredChatCollection = self.ChatCollection
+                
                 self.viewDidLoad()
             
             }else{
                 print("Error fetching conversation: \(error?.localizedDescription)")
             }
         }
+        
         
     }
     
@@ -56,6 +63,10 @@ class ChatViewController: UIViewController, UITableViewDelegate, UITableViewData
         ChatTV.dataSource = self
         ChatTV.delegate = self
         ChatTV.reloadData()
+        mySearchBar.delegate = self
+        
+        
+
         
         //check if still needed if we have our own cell blueprint
         ChatTV.register(UITableViewCell.self, forCellReuseIdentifier: "cell")
@@ -63,9 +74,34 @@ class ChatViewController: UIViewController, UITableViewDelegate, UITableViewData
     }
     
     
+    func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
+        //clear content
+        filteredChatCollection = []
+
+
+        if searchText == "" {
+            //display all available chat if not searching
+            filteredChatCollection = ChatCollection
+        } else{
+            //check if matches firstname
+            for chat in ChatCollection{
+                let participants = chat["Speaker"] as! [String]
+                for person in participants{
+                    if person.lowercased().contains(searchText.lowercased()){
+                        filteredChatCollection.append(chat)
+                    }
+                }
+            }
+        }
+        self.ChatTV.reloadData()
+    }
+    
+    
+    
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         
-        return ChatCollection.count
+        return filteredChatCollection.count
+        //return ChatCollection.count
     }
     
     
@@ -78,7 +114,9 @@ class ChatViewController: UIViewController, UITableViewDelegate, UITableViewData
         
         
         
-        let oneConvo = ChatCollection[indexPath.row]
+        //let oneConvo = ChatCollection[indexPath.row]
+        let oneConvo = filteredChatCollection[indexPath.row]
+        
         //record participants in the conversation
         let participants = oneConvo["Participants"] as! [PFObject]
     

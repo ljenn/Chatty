@@ -83,6 +83,11 @@ class HomeViewController: UIViewController, UITableViewDelegate, UITableViewData
         let imgURL = imageFile.url!
         let profileURL = URL(string: imgURL)!
         myCell.imgHomeCell.af.setImage(withURL: profileURL)
+        
+        
+        let fetchedDate = singleProfile["Birthday"] as? Date
+        let ageNum = abs(Int(fetchedDate!.timeIntervalSinceNow/31556926.0))
+        myCell.ageCell.text = String(ageNum)
 
         
         

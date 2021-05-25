@@ -15,55 +15,72 @@ class MakeProfileViewController: UIViewController, UIImagePickerControllerDelega
 
     
     @IBOutlet weak var tfFirst: UITextField!
-    @IBOutlet weak var tfLast: UITextField!
     @IBOutlet weak var imgProfilePic: UIImageView!
-    
-
-    
+    @IBOutlet weak var tfAge: UITextField!
+    let myDatePicker = UIDatePicker()
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        }
-    
-    
-    
-    @IBAction func btnSubmitProfile(_ sender: Any) {
         
-//      Create a Profile Class (for the new user who just signed up)
-        let addedProfile = PFObject(className: "Profile")
-        addedProfile["FirstN"] = tfFirst.text!
-        addedProfile["LastN"] = tfLast.text!
-        addedProfile["Status"] = tfStatus.text!
-        addedProfile["Mood"] = moodLabel.text!
-        addedProfile.add(tfStory.text!,forKey: "Stories")   //the story field is an array
-        addedProfile["owner"] = PFUser.current()!
-
-        let myImageData = imgProfilePic.image?.pngData()
-        let myImageFile = PFFileObject(name: "Picture.png", data: myImageData!)
-        addedProfile["Picture"] = myImageFile
-
-        addedProfile.saveInBackground { (success, error) in
-        if success{
-            
-            //show next veiwController on a different screen :(
-//            print("profile saved successfully")
-//            self.performSegue(withIdentifier: "ProfileToMainSegue", sender: self)
-            
-            //show the next viewController on the "same page"
-            let storyboard = UIStoryboard(name: "Main", bundle: nil)
-            let secondVC = storyboard.instantiateViewController(identifier: "CenterNavigationController") //storyboardID
-
-            secondVC.modalPresentationStyle = .fullScreen
-            secondVC.modalTransitionStyle = .crossDissolve
-
-            self.present(secondVC, animated: true, completion: nil)
-
-            
-            
-        } else {
-            print("Error saving profile: \(error?.localizedDescription)")
+        showFormattedDatePicker()
         }
+    
+    
+    
+    func showFormattedDatePicker(){
+        myDatePicker.datePickerMode =  .date
+        tfAge.inputView = myDatePicker
+        
+        let myToolBar = UIToolbar()
+        myToolBar.sizeToFit()
+        
+        let doneBTN = UIBarButtonItem(title: "Done", style: UIBarButtonItem.Style.plain, target: self, action: #selector(donePicking))
+        let space = UIBarButtonItem(barButtonSystemItem: UIBarButtonItem.SystemItem.flexibleSpace, target: self, action: nil)
+        
+        let cancelBTN = UIBarButtonItem(title: "Cancel", style: UIBarButtonItem.Style.plain, target: self, action: #selector(cancelPicking))
+        
+        
+        
+        myToolBar.setItems([cancelBTN,space,doneBTN], animated: true)
+        tfAge.inputAccessoryView = myToolBar
+        tfAge.inputView = myDatePicker
+        
+        
     }
+    
+    @objc func donePicking(){
+        let formatter = DateFormatter()
+        formatter.dateFormat = "MM/dd/yyyy"
+        tfAge.text = formatter.string(from: myDatePicker.date)
+        self.view.endEditing(true)
+        
+        
+        //calculated age. 
+        print(abs(Int(myDatePicker.date.timeIntervalSinceNow/31556926.0)))
+    }
+    
+    @objc func cancelPicking(){
+        self.view.endEditing(true)
+        
+    }
+    
+    
+    
+    
+    
+    
+    
+    @IBAction func ContinueI(_ sender: Any) {
+        
+        performSegue(withIdentifier: "toProfileTwoSegue", sender: self)
+        
+//        let storyboard = UIStoryboard(name: "Main", bundle: nil)
+//        let secondVC = storyboard.instantiateViewController(identifier: "CenterNavigationController") //storyboardID
+//
+//        secondVC.modalPresentationStyle = .fullScreen
+//        secondVC.modalTransitionStyle = .crossDissolve
+//
+//        self.present(secondVC, animated: true, completion: nil)
         
     }
     
@@ -105,15 +122,32 @@ class MakeProfileViewController: UIViewController, UIImagePickerControllerDelega
     
     
     
-    /*
-    // MARK: - Navigation
+   override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+           if (segue.identifier == "toProfileTwoSegue") {
+               if let nextViewController = segue.destination as? MakeProfileTwoViewController {
+                
+                //save first name info to the next screen
+                nextViewController.myName = tfFirst.text
+                
+                //save DOB
+                nextViewController.myDOB = myDatePicker.date
+                
+                
+                //save profile img info
+                let myImageData = imgProfilePic.image?.pngData()
+                let myImageFile = PFFileObject(name: "Picture.png", data: myImageData!)
+                nextViewController.myImage = myImageFile
+                
+                }
+           }
+   }
+   
 
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destination.
-        // Pass the selected object to the new view controller.
-    }
-    */
-
+    
+    
+    
+    
+    
+    
 }
 

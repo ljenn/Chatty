@@ -24,7 +24,8 @@ class HomeCellTableView: UITableViewCell {
     
     @IBOutlet weak var moodLabel: UILabel!
     
-
+    @IBOutlet weak var ageCell: UILabel!
+    
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code

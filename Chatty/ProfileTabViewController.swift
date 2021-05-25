@@ -16,7 +16,7 @@ class ProfileTabViewController: UIViewController {
     
     @IBOutlet weak var labelFirst: UILabel!
     
-    @IBOutlet weak var labelLast: UILabel!
+    @IBOutlet weak var ageLabel: UILabel!
     
     @IBOutlet weak var labelStory: UILabel!
     
@@ -41,8 +41,11 @@ class ProfileTabViewController: UIViewController {
             if ArrayOfProfiles != nil{
                 let myProfile = ArrayOfProfiles![0]
                 self.labelFirst.text = myProfile["FirstN"] as? String
-                self.labelLast.text = myProfile["LastN"] as? String
                 self.labelStatus.text = myProfile["Status"] as? String
+                
+                let fetchedDate = myProfile["Birthday"] as? Date
+                let ageNum = abs(Int(fetchedDate!.timeIntervalSinceNow/31556926.0))
+                self.ageLabel.text = String(ageNum)
               
                 let myMoodName = myProfile["Mood"] as? String
                 self.moodTXT.text = myMoodName
