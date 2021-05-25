@@ -15,58 +15,15 @@ class MakeProfileViewController: UIViewController, UIImagePickerControllerDelega
 
     
     @IBOutlet weak var tfFirst: UITextField!
-    
     @IBOutlet weak var tfLast: UITextField!
-    
-    @IBOutlet weak var tfStatus: UITextField!
-    
-    @IBOutlet weak var tfStory: UITextField!
-    
     @IBOutlet weak var imgProfilePic: UIImageView!
     
-    @IBOutlet weak var menuView: UIView!
-    
-    @IBOutlet weak var emoji: UIImageView!
-    
-    @IBOutlet weak var moodLabel: UILabel!
-    
-    
-    
-    let moodMenu: DropDown = {
-        let moodMenu = DropDown()
-        moodMenu.dataSource = [
-            "Studying",
-            "Partying",
-            "Exercising",
-            "Eating",
-        ]
-        return moodMenu
-    }()
+
     
     
     override func viewDidLoad() {
         super.viewDidLoad()
-
-        let gesture = UITapGestureRecognizer(target: self, action: #selector(didTapMenu))
-        gesture.numberOfTouchesRequired = 1
-        gesture.numberOfTapsRequired = 1
-        menuView.addGestureRecognizer(gesture)
-        moodMenu.anchorView = menuView
-        menuView.layer.borderWidth = 1
-        menuView.layer.borderColor = UIColor.lightGray.cgColor
-
-        moodMenu.selectionAction = {index, title in
-            //print("index \(index) and \(title)")
-            self.moodLabel.text = title
-            self.emoji.image = UIImage(named: title)
         }
-    }
-    
-    @objc func didTapMenu(){
-        moodMenu.show()
-    }
-    
-    
     
     
     
