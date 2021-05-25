@@ -43,6 +43,13 @@ class MakeProfileViewController: UIViewController, UIImagePickerControllerDelega
         return moodMenu
     }()
     
+    let storyPromptMenu: DropDown = {
+        let storyPromptMenu = DropDown()
+        storyPromptMenu.dataSource = [
+            "tell me your best story",
+        ]
+        return storyPromptMenu
+    }()
     
     override func viewDidLoad() {
         super.viewDidLoad()
