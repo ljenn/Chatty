@@ -177,7 +177,7 @@ class DetailProfileViewController: UIViewController,UITableViewDelegate,UITableV
         queryB.findObjectsInBackground { (resultArray, error) in
             if resultArray != nil{
                 if resultArray!.count >= 1{
-                    let FriendProfile = resultArray![0]
+                    let FriendProfile = resultArray![0] 
                     //FriendProfile.add(PFUser.current(), forKey: "FriendList")
                     FriendProfile.add(currentUserProfile, forKey:"FriendList")
                     FriendProfile.add(mutualConvo, forKey: "Chats")
