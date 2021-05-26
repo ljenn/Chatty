@@ -22,7 +22,7 @@ class DetailProfileViewController: UIViewController,UITableViewDelegate,UITableV
     @IBOutlet weak var ChatWithMeBTN: UIButton!
     @IBOutlet weak var imgDP: UIImageView!
     @IBOutlet weak var firstDP: UILabel!
-    @IBOutlet weak var lastDP: UILabel!
+    @IBOutlet weak var ageDP: UILabel!
     @IBOutlet weak var statusDP: UILabel!
     @IBOutlet weak var moodDP: UILabel!
     @IBOutlet weak var emojiDP: UIImageView!
@@ -49,7 +49,13 @@ class DetailProfileViewController: UIViewController,UITableViewDelegate,UITableV
 
         let firstname = tappedProfile["FirstN"] as? String
         firstDP.text = firstname
-        lastDP.text = tappedProfile["LastN"] as? String
+        
+        
+        let fetchedDate = tappedProfile["Birthday"] as? Date
+        let ageNum = abs(Int(fetchedDate!.timeIntervalSinceNow/31556926.0))
+        self.ageDP.text = String(ageNum)
+        
+        
         statusDP.text = tappedProfile["Status"] as? String
         
         let moodTXT = tappedProfile["Mood"] as? String

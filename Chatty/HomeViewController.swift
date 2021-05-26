@@ -9,22 +9,45 @@
 import UIKit
 import Parse
 import Toast_Swift
+import DropDown
 
 
 class HomeViewController: UIViewController, UITableViewDelegate, UITableViewDataSource {
 
     var ProfileCollection = [PFObject]()
     
+    var filteredProfileCollection = [PFObject]()
+    
     var myProfile = PFObject(className: "Profile")
     
     var mylist = [PFObject]()
     
     
+    let moodMenu: DropDown = {
+        let moodMenu = DropDown()
+        moodMenu.dataSource = [
+            "All",
+            "Studying",
+            "Partying",
+            "Exercising",
+            "Eating",
+        ]
+        return moodMenu
+    }()
     
+    
+    @IBOutlet weak var filterBTN: UIBarButtonItem!
     
     @IBOutlet weak var HomeTV: UITableView!
     
-
+    @IBAction func tappedFilter(_ sender: Any) {
+        moodMenu.show()
+    }
+    
+    
+    
+    
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -32,6 +55,28 @@ class HomeViewController: UIViewController, UITableViewDelegate, UITableViewData
         HomeTV.dataSource = self
         HomeTV.reloadData()
         
+        moodMenu.anchorView = filterBTN
+        moodMenu.selectionAction = {index, title in
+            //need to filter out by mood
+            //clear content
+            self.filteredProfileCollection = []
+            
+            if(title == "All"){
+                self.filteredProfileCollection = self.ProfileCollection
+            }else{
+                for profile in self.ProfileCollection{
+                    let theMood = profile["Mood"] as! String
+                    if theMood == title{
+                        self.filteredProfileCollection.append(profile)
+                    }
+                }
+            }
+         
+            self.HomeTV.reloadData()
+            
+            
+        }
+
         
         
         self.HomeTV.rowHeight = 300
@@ -56,15 +101,15 @@ class HomeViewController: UIViewController, UITableViewDelegate, UITableViewData
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return ProfileCollection.count
+        //return ProfileCollection.count
+        return filteredProfileCollection.count
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         
         //holding one single specific profile in collection
-        let singleProfile = ProfileCollection[indexPath.row]
-        
-    
+        //let singleProfile = ProfileCollection[indexPath.row]
+        let singleProfile = filteredProfileCollection[indexPath.row]
         
         
         //creating a new cell to hold the profile
@@ -120,6 +165,8 @@ class HomeViewController: UIViewController, UITableViewDelegate, UITableViewData
                 self.ProfileCollection = arrayOfProfile!
                 
                 self.filterOutFriend()
+                
+                self.filteredProfileCollection = self.ProfileCollection
                 
             }else{
                 print("Error getting result from database: \(error?.localizedDescription)")

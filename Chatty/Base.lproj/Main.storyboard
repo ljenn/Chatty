@@ -201,7 +201,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="aut-a1-Mbf">
-                                <rect key="frame" x="0.0" y="112" width="414" height="769"/>
+                                <rect key="frame" x="0.0" y="56" width="414" height="769"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                                 <prototypes>
@@ -281,9 +281,15 @@
                                 <action selector="btnLogout:" destination="QgW-dy-JIz" id="Xlt-dG-jsr"/>
                             </connections>
                         </barButtonItem>
+                        <barButtonItem key="rightBarButtonItem" title="filter" id="896-9L-4eb">
+                            <connections>
+                                <action selector="tappedFilter:" destination="QgW-dy-JIz" id="hbh-b2-ayU"/>
+                            </connections>
+                        </barButtonItem>
                     </navigationItem>
                     <connections>
                         <outlet property="HomeTV" destination="aut-a1-Mbf" id="RqV-Y2-Mfv"/>
+                        <outlet property="filterBTN" destination="896-9L-4eb" id="geR-Pd-w2t"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="YER-Ue-FWp" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
@@ -330,8 +336,8 @@
                                                 <nil key="textColor"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
-                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="Last Name" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="2Of-es-Ofi">
-                                                <rect key="frame" x="31" y="301" width="85" height="21"/>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="Age" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="2Of-es-Ofi">
+                                                <rect key="frame" x="31" y="301" width="32" height="21"/>
                                                 <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="17"/>
                                                 <nil key="textColor"/>
                                                 <nil key="highlightedColor"/>
@@ -468,11 +474,11 @@
                     <connections>
                         <outlet property="ChatWithMeBTN" destination="LlB-P7-8Tj" id="ZlN-V1-mbR"/>
                         <outlet property="StoryTV" destination="Tac-SG-CVC" id="qcO-JS-lAN"/>
+                        <outlet property="ageDP" destination="whu-Gg-LiJ" id="uz3-2F-N5Z"/>
                         <outlet property="cellHeight" destination="n7z-On-nkX" id="xRs-kg-Xc8"/>
                         <outlet property="emojiDP" destination="Egg-0y-oC3" id="Brs-WY-59A"/>
                         <outlet property="firstDP" destination="9oc-w3-k1H" id="gCL-UW-HOx"/>
                         <outlet property="imgDP" destination="QvL-Gi-4x6" id="Kec-Ya-UUQ"/>
-                        <outlet property="lastDP" destination="whu-Gg-LiJ" id="uz3-2F-N5Z"/>
                         <outlet property="moodDP" destination="qKY-ky-yoC" id="uiG-bu-PQc"/>
                         <outlet property="statusDP" destination="tXI-zl-JY0" id="bcY-ob-mhs"/>
                     </connections>
