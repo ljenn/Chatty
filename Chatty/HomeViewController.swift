@@ -22,6 +22,12 @@ class HomeViewController: UIViewController, UITableViewDelegate, UITableViewData
     
     var mylist = [PFObject]()
     
+    @IBOutlet weak var myfilterBTN: UIButton!
+    
+    @IBAction func tappedMyMenu(_ sender: Any) {
+        moodMenu.show()
+    }
+    
     
     let moodMenu: DropDown = {
         let moodMenu = DropDown()
@@ -35,14 +41,11 @@ class HomeViewController: UIViewController, UITableViewDelegate, UITableViewData
         return moodMenu
     }()
     
-    
-    @IBOutlet weak var filterBTN: UIBarButtonItem!
-    
     @IBOutlet weak var HomeTV: UITableView!
     
-    @IBAction func tappedFilter(_ sender: Any) {
-        moodMenu.show()
-    }
+
+    
+
     
     
     
@@ -58,8 +61,8 @@ class HomeViewController: UIViewController, UITableViewDelegate, UITableViewData
         HomeTV.dataSource = self
         HomeTV.reloadData()
         
-        moodMenu.anchorView = filterBTN
         
+        moodMenu.anchorView = myfilterBTN
         
         //needed?
         viewDidAppear(true)
@@ -103,6 +106,7 @@ class HomeViewController: UIViewController, UITableViewDelegate, UITableViewData
                 
                 //^^for user not using filter
                 //VV for user using filter
+                //(everytime screen reload, filter is gone => default to "All")
                 
                 
                 
