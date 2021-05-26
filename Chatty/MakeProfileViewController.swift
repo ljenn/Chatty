@@ -26,7 +26,7 @@ class MakeProfileViewController: UIViewController, UIImagePickerControllerDelega
         }
     
     
-    
+
     func showFormattedDatePicker(){
         myDatePicker.datePickerMode =  .date
         tfAge.inputView = myDatePicker
@@ -47,6 +47,14 @@ class MakeProfileViewController: UIViewController, UIImagePickerControllerDelega
         
         
     }
+
+    let storyPromptMenu: DropDown = {
+        let storyPromptMenu = DropDown()
+        storyPromptMenu.dataSource = [
+            "tell me your best story",
+        ]
+        return storyPromptMenu
+    }()
     
     @objc func donePicking(){
         let formatter = DateFormatter()

@@ -43,6 +43,13 @@ class EditProfileViewController: UIViewController, UIImagePickerControllerDelega
         return moodMenu
     }()
     
+    let storyPromptMenu: DropDown = {
+        let storyPromptMenu = DropDown()
+        storyPromptMenu.dataSource = [
+            "tell me your best story",
+        ]
+        return storyPromptMenu
+    }()
 
     
     
@@ -55,7 +62,7 @@ class EditProfileViewController: UIViewController, UIImagePickerControllerDelega
         menuView.addGestureRecognizer(gesture)
         moodMenu.anchorView = menuView
         menuView.layer.borderWidth = 1
-        menuView.layer.borderColor = UIColor.lightGray.cgColor
+        menuView.layer.borderColor = UIColor.systemTeal.cgColor
         
         moodMenu.selectionAction = {index, title in
             //print("index \(index) and \(title)")

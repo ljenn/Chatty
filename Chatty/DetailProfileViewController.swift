@@ -42,9 +42,6 @@ class DetailProfileViewController: UIViewController,UITableViewDelegate,UITableV
 //        cellHeight.constant = CGFloat(Double(count) * 50)
 
 
-
-
-
         //set display attributes
 
         let firstname = tappedProfile["FirstN"] as? String
@@ -54,12 +51,12 @@ class DetailProfileViewController: UIViewController,UITableViewDelegate,UITableV
         let fetchedDate = tappedProfile["Birthday"] as? Date
         let ageNum = abs(Int(fetchedDate!.timeIntervalSinceNow/31556926.0))
         self.ageDP.text = String(ageNum)
-        
-        
+
+//        lastDP.text = tappedProfile["LastN"] as? String
         statusDP.text = tappedProfile["Status"] as? String
         
         let moodTXT = tappedProfile["Mood"] as? String
-        moodDP.text = moodTXT
+//        moodDP.text = moodTXT
         emojiDP.image = UIImage(named: moodTXT!)
         
 
@@ -69,10 +66,9 @@ class DetailProfileViewController: UIViewController,UITableViewDelegate,UITableV
         imgDP.af.setImage(withURL: ProfileImgURL)
 
         //set up button
-        ChatWithMeBTN.layer.cornerRadius = 5
+        ChatWithMeBTN.layer.cornerRadius = 20
         ChatWithMeBTN.layer.borderWidth = 1
-        ChatWithMeBTN.layer.borderColor = UIColor.brown.cgColor
-            ChatWithMeBTN.setTitle("Chat with " + firstname!, for: .normal)
+        ChatWithMeBTN.setTitle("Say hello to " + firstname!, for: .normal)
 
         //set up to display list of stories
         StoryTV.delegate = self
