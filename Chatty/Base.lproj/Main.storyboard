@@ -644,6 +644,12 @@
                     </view>
                     <connections>
                         <outlet property="FirstNCheck" destination="Onj-4s-llD" id="Hh0-Fr-pam"/>
+                        <outlet property="ageCheck" destination="4OQ-l2-QOG" id="Pf6-Cx-7pn"/>
+                        <outlet property="emojiCheck" destination="8Mo-ea-MtP" id="jwt-JJ-3ol"/>
+                        <outlet property="imgCheck" destination="oZg-rJ-6Ef" id="kgB-BQ-Ojb"/>
+                        <outlet property="moodCheck" destination="f3A-NJ-j9B" id="9Uh-Gy-oZI"/>
+                        <outlet property="statusCheck" destination="9aM-xX-sub" id="wWd-6f-Xyr"/>
+                        <outlet property="storiesCheck" destination="C3J-9q-kmc" id="EjT-wu-LIx"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="6ml-6L-Riz" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>

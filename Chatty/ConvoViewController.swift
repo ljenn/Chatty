@@ -17,9 +17,6 @@ import AlamofireImage
 
 
 
-
-
-
 //no need to create another class, just use User's info
 struct Sender: SenderType {
     //(SenderType is an interface from MsgKit)
@@ -83,15 +80,6 @@ class ConvoViewController: MessagesViewController, MessagesDataSource, MessagesL
     
     
     override func viewDidAppear(_ animated: Bool) {
-        
-        
-        //not working for showing detail profile vvv delete
-//        let gesture = UITapGestureRecognizer(target: self, action: #selector(didTapTitle))
-//        gesture.numberOfTouchesRequired = 1
-//        gesture.numberOfTapsRequired = 1
-        //self.title.addGestureRecognizer(gesture)
-        
-        
         
         //hide senders' profile image...
         if let layout = messagesCollectionView.collectionViewLayout as? MessagesCollectionViewFlowLayout{
@@ -193,38 +181,11 @@ class ConvoViewController: MessagesViewController, MessagesDataSource, MessagesL
         
     }
     @objc func didTapTitle(){
-        //print(AnotherUserProfile)
-        //regular segue not working!
-        //performSegue(withIdentifier: "showCellDetailSegue", sender: nil)
-        
-        
-        //storyboard not working either!
-//        let storyboard = UIStoryboard(name: "Main", bundle: nil)
-//        let secondVC = storyboard.instantiateViewController(identifier: "detailedCellStoryBoard")
-//
-//        secondVC.modalPresentationStyle = .fullScreen
-//        secondVC.modalTransitionStyle = .crossDissolve
-//
-//
-//        self.present(secondVC, animated: true, completion: nil)
-        
-        
-        
-//        let vc = CheckProfileViewController()
-//        vc.profileID = AnotherUserProfileID
-//        print(vc.profileID)
-//        navigationController?.pushViewController(vc, animated: true)
         
         let storyBoard : UIStoryboard = UIStoryboard(name: "Main", bundle:nil)
         let resultViewController = storyBoard.instantiateViewController(withIdentifier: "checkid") as! CheckProfileViewController
         resultViewController.profileID = AnotherUserProfileID
         self.navigationController?.pushViewController(resultViewController, animated: true)
-        
-        
-        
-//        let vc = self.storyboard?.instantiateViewController(withIdentifier: "checkid") as? CheckProfileViewController
-//        vc?.profileID = AnotherUserProfileID
-//        self.present(vc!, animated: true, completion: nil)
         
     }
     
@@ -305,20 +266,6 @@ class ConvoViewController: MessagesViewController, MessagesDataSource, MessagesL
         //messagesCollectionView.reloadData()
     
     }
-    
-    
-    
-    //segue not working though....
-//    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-//         if (segue.identifier == "showCellDetailSegue") {
-//             if let nextViewController = segue.destination as? DetailProfileViewController {
-//                nextViewController.tappedProfile = AnotherUserProfile
-//              }
-//         }
-//     }
-  
-    
-
 
 
 }

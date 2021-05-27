@@ -162,7 +162,16 @@ class ChatViewController: UIViewController, UITableViewDelegate, UITableViewData
         let selectedConvo = ChatCollection[indexPath.row]
         vc.title = ChatTV.cellForRow(at: indexPath)?.textLabel?.text
         
-        vc.AnotherUserProfileID = friendProfileID
+        
+        let theParticipants = selectedConvo["Participants"] as! [PFObject]
+        //find out the friend's profileID (which is the one not matching current user's ID)
+        for talker in theParticipants{
+            if talker.objectId != myProfileID{
+                vc.AnotherUserProfileID = talker.objectId!
+            }
+        }
+        
+        print("inChatList: \(vc.AnotherUserProfileID)")
 
         //send the id of the selected conversation to the convo (later to retrieve messages belonging to the convo)
         vc.belongingConvoID = selectedConvo.objectId!
