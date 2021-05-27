@@ -109,8 +109,10 @@ class HomeViewController: UIViewController, UITableViewDelegate, UITableViewData
                 
                 self.moodMenu.selectionAction = {index, title in
                     //need to filter out by mood
-
+                    self.myfilterBTN.setTitle(title, for: .normal)
+                    
                     if(title == "All"){
+                        
                         //still need to refresh/syn the 2 collections
                         self.viewDidAppear(true)
                     }else{
@@ -234,6 +236,9 @@ class HomeViewController: UIViewController, UITableViewDelegate, UITableViewData
         }
         
         self.HomeTV.deselectRow(at: indexPath, animated: true)
+        
+        
+        
         
         return myCell
     }

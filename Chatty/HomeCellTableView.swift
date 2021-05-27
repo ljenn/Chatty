@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import Parse
 
 class HomeCellTableView: UITableViewCell {
     
@@ -27,6 +28,11 @@ class HomeCellTableView: UITableViewCell {
     @IBOutlet weak var ageCell: UILabel!
     
     @IBOutlet weak var chatBTN: UIButton!
+    
+    
+    //var cellProfile: PFObject!
+    var userProfile = PFObject(className: "Profile")
+    var cellProfile = PFObject(className: "Profile")
     
     
     

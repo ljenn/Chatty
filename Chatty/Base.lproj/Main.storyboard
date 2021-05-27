@@ -280,9 +280,9 @@
                                 </prototypes>
                             </tableView>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="wSR-pk-I0g">
-                                <rect key="frame" x="190" y="75" width="35" height="30"/>
+                                <rect key="frame" x="140" y="92" width="135" height="22"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <state key="normal" title="Filter"/>
+                                <state key="normal" title="All"/>
                                 <connections>
                                     <action selector="tappedMyMenu:" destination="QgW-dy-JIz" eventType="touchUpInside" id="XCV-bV-gnS"/>
                                 </connections>
@@ -662,7 +662,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="6ml-6L-Riz" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="5865" y="686"/>
+            <point key="canvasLocation" x="5990" y="690"/>
         </scene>
         <!--Home-->
         <scene sceneID="aJO-sK-ebe">
