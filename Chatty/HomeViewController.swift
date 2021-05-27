@@ -246,14 +246,18 @@ class HomeViewController: UIViewController, UITableViewDelegate, UITableViewData
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         //for navigating to detail screen after a specific cell is tapped on
 
-        let tappedCell = sender as! UITableViewCell
-        let index =  HomeTV.indexPath(for: tappedCell)!
-
-        let selectedProfile = filteredProfileCollection[index.row]
-        let ProfileDetailVC = segue.destination as! DetailProfileViewController
-
-        //now saved the profile of the selected cell to the detail screen
-        ProfileDetailVC.tappedProfile = selectedProfile
+        
+        //MARK: no more segue -> try chat on same pg
+        //deleted segue to detail: showCellDetailSegue
+        
+//        let tappedCell = sender as! UITableViewCell
+//        let index =  HomeTV.indexPath(for: tappedCell)!
+//
+//        let selectedProfile = filteredProfileCollection[index.row]
+//        let ProfileDetailVC = segue.destination as! DetailProfileViewController
+//
+//        //now saved the profile of the selected cell to the detail screen
+//        ProfileDetailVC.tappedProfile = selectedProfile
 
     }
     
