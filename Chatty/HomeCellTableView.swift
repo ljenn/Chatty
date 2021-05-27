@@ -26,6 +26,13 @@ class HomeCellTableView: UITableViewCell {
     
     @IBOutlet weak var ageCell: UILabel!
     
+    @IBOutlet weak var chatBTN: UIButton!
+    
+    
+    
+    
+    
+    
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code

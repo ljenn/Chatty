@@ -152,6 +152,7 @@ class HomeViewController: UIViewController, UITableViewDelegate, UITableViewData
                  self.mylist = self.myProfile["FriendList"] as! [PFObject]
                  //not very efficient way to remove freind list from all profile
                  var k = self.filteredProfileCollection.count
+                if(k >= 1){
                  for i in 0...self.mylist.count-1{
                      for j in 0...k-1{
                         if(self.mylist[i].objectId == self.filteredProfileCollection[j].objectId){
@@ -162,8 +163,9 @@ class HomeViewController: UIViewController, UITableViewDelegate, UITableViewData
                              k -= 1
                              break
                          }
-                     }
-                 }
+                    }
+                    }
+                }
             }
 
         self.HomeTV.reloadData();
