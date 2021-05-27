@@ -8,6 +8,7 @@
 
 import UIKit
 import Parse
+import InputBarAccessoryView
 
 class HomeCellTableView: UITableViewCell {
     
@@ -29,32 +30,43 @@ class HomeCellTableView: UITableViewCell {
     
     @IBOutlet weak var chatBTN: UIButton!
     
+   
     
-    //var cellProfile: PFObject!
-    var userProfile = PFObject(className: "Profile")
-    var cellProfile = PFObject(className: "Profile")
+    //noNeed!!
+    //var userProfile = PFObject(className: "Profile")  //mine
+    var cellProfile = PFObject(className: "Profile")  //friend's
+    var homeVC: HomeViewController!
+    var capturedTxt: String!
+    
     
     
     
     @IBAction func clickedChatBTN(_ sender: Any) {
         //btn logic here
-        print(firstNHomeCell.text)
+        print("btnclicked")
+        homeVC.showMsgBar = true
+        homeVC.becomeFirstResponder()
+        homeVC.myMessageBar.inputTextView.becomeFirstResponder()
+        homeVC.selectedProfile = cellProfile
         
+        
+        //MARK: Instruction
         //creat convo, add to convo list.
         //add msg to convo
         //show Toast
         //add to friend list -> remove profile (by reloading data).
         
         //need: Profile of both users, message txt.
-        
-        
     }
+    
     
     
     
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code
+        
+        
     }
 
     override func setSelected(_ selected: Bool, animated: Bool) {

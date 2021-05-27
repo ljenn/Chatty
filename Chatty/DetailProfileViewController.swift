@@ -112,7 +112,7 @@ class DetailProfileViewController: UIViewController,UITableViewDelegate,UITableV
 
         //var currentUserProfile = PFObject(className: "Profile")
 
-        
+    
 
         //Part1: update info in current user's profile
         //a) find userA profile

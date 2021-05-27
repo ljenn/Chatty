@@ -218,7 +218,6 @@ class ConvoViewController: MessagesViewController, MessagesDataSource, MessagesL
     func inputBar(_ inputBar: InputBarAccessoryView, didPressSendButtonWith text: String) {
         
         
-        
         //Step1.1: create a PFO Message object
         let freshMessage = PFObject(className: "Message")
         freshMessage["MsgText"] = text

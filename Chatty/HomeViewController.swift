@@ -10,15 +10,24 @@ import UIKit
 import Parse
 import Toast_Swift
 import DropDown
+import InputBarAccessoryView
 
 
-class HomeViewController: UIViewController, UITableViewDelegate, UITableViewDataSource {
+class HomeViewController: UIViewController, UITableViewDelegate, UITableViewDataSource,InputBarAccessoryViewDelegate{
 
+    
+    
+    let myMessageBar = InputBarAccessoryView()
+    
+    var showMsgBar = false
+    
     var ProfileCollection = [PFObject]()
     
     var filteredProfileCollection = [PFObject]()
     
     var myProfile = PFObject(className: "Profile")
+    
+    var selectedProfile = PFObject(className: "Profile")
     
     var mylist = [PFObject]()
     
@@ -28,7 +37,9 @@ class HomeViewController: UIViewController, UITableViewDelegate, UITableViewData
         moodMenu.show()
     }
     
+    @IBOutlet weak var HomeTV: UITableView!
     
+
     let moodMenu: DropDown = {
         let moodMenu = DropDown()
         moodMenu.dataSource = [
@@ -40,11 +51,6 @@ class HomeViewController: UIViewController, UITableViewDelegate, UITableViewData
         ]
         return moodMenu
     }()
-    
-    @IBOutlet weak var HomeTV: UITableView!
-    
-
-    
 
     
     
@@ -54,24 +60,30 @@ class HomeViewController: UIViewController, UITableViewDelegate, UITableViewData
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        myMessageBar.delegate = self
+        HomeTV.keyboardDismissMode = .interactive
+        
+        let myCenter = NotificationCenter.default
+        myCenter.addObserver(self, selector: #selector(hideMyKeyBoard(note:)), name: UIResponder.keyboardWillHideNotification, object: nil)
         
         
         HomeTV.delegate = self
         HomeTV.dataSource = self
         HomeTV.reloadData()
         
-        
         moodMenu.anchorView = myfilterBTN
-        
         
         viewDidAppear(true)
         
         self.HomeTV.rowHeight = 300
         
-        
-        
     }
     
+    @objc func hideMyKeyBoard(note: Notification){
+        myMessageBar.inputTextView.text = nil
+        showMsgBar = false
+        becomeFirstResponder()
+    }
     
     
     
@@ -102,7 +114,7 @@ class HomeViewController: UIViewController, UITableViewDelegate, UITableViewData
                 
                 
                 //^^for user not using filter
-                //VV for user using filter
+                //vv for user using filter
                 //(everytime screen reload, filter is gone => default to "All")
                 
                 
@@ -209,6 +221,8 @@ class HomeViewController: UIViewController, UITableViewDelegate, UITableViewData
         //creating a new cell to hold the profile
         let myCell = HomeTV.dequeueReusableCell(withIdentifier: "HomeCellTableView") as! HomeCellTableView
         
+        
+        //PartI: setup cell for display on HomeVC
         let myMood = singleProfile["Mood"] as? String
         myCell.moodLabel.text = myMood
         myCell.emoji.image = UIImage(named: myMood!)
@@ -235,16 +249,113 @@ class HomeViewController: UIViewController, UITableViewDelegate, UITableViewData
             myCell.storyHomeCell.text = arrayOfStory[0]
         }
         
-        self.HomeTV.deselectRow(at: indexPath, animated: true)
-        
-        
-        
+        //PartII: pass over information in cell for chatting btn (Table View Cell)
+        //need to know which profile is selected and access they keyboard appearance
+        myCell.cellProfile = singleProfile
+        myCell.homeVC = self
         
         return myCell
     }
     
     
+    
+    func inputBar(_ inputBar: InputBarAccessoryView, didPressSendButtonWith text: String) {
+        
+    //Step1: create convo
 
+        //update conversation list and friend list in "my profile" and "freind's profile"
+        //userA = current User   &&   userB = the new friend
+
+        //Step 1.1 create new conversation
+        let mutualConvo = PFObject(className: "Conversation")
+
+        //Step 1.2: update info in current user's profile
+        //a) find userA profile
+        //b) add userB's profile to userA's freindlist
+        //c) add the new convo to the chatlist of userA profile
+        let queryA = PFQuery(className: "Profile")
+        queryA.whereKey("owner", equalTo: PFUser.current() as Any)
+        queryA.findObjectsInBackground { (resultArray, error) in
+            if resultArray != nil{
+                if resultArray!.count == 1{
+                    let currentUserProfile = resultArray![0]
+                    currentUserProfile.add(self.selectedProfile, forKey: "FriendList")
+                    currentUserProfile.add(mutualConvo, forKey: "Chats")
+                    currentUserProfile.saveInBackground()
+
+                    mutualConvo.add(currentUserProfile,forKey: "Participants")
+                    mutualConvo.add(currentUserProfile["FirstN"],forKey: "Speaker")
+                    
+                    
+                    
+                    //Step 1.3: update info in friend's profile
+                    //a) find userB profile
+                    //b) add userA's Profile to userB's freindlist
+                    //c) add the new convo to the chatlist of userB profile
+                    let queryB = PFQuery(className: "Profile")
+                    queryB.whereKey("owner", equalTo: self.selectedProfile["owner"] as! PFUser)
+                    queryB.findObjectsInBackground { (resultArray, error) in
+                        if resultArray != nil{
+                            if resultArray!.count >= 1{
+                                let FriendProfile = resultArray![0] as PFObject
+                                FriendProfile.add(currentUserProfile, forKey:"FriendList")
+                                
+                                FriendProfile.add(mutualConvo, forKey: "Chats")
+                                FriendProfile.saveInBackground()
+
+                                mutualConvo.add(FriendProfile, forKey: "Participants")
+                                mutualConvo.add(FriendProfile["FirstN"],forKey: "Speaker")
+                            }
+                        }else{
+                            print("Error locating the profile: \(error?.localizedDescription)")
+                        }
+                    }
+                }
+            }else{
+                print("Error locating the profile: \(error?.localizedDescription)")
+            }
+        }
+
+        
+    //Step2: Create the message and append to conversation
+        //Step2.1: create a PFO Message object
+            let freshMessage = PFObject(className: "Message")
+            freshMessage["MsgText"] = self.myMessageBar.inputTextView.text
+            freshMessage["Sender"] = PFUser.current()!
+        //Step2.2 b)add message to the conversation and save
+            mutualConvo.add(freshMessage,forKey: "ListOfMessages")
+        
+        
+    //Step3: clear and dismiss message bar
+        myMessageBar.inputTextView.text = nil
+        showMsgBar = false
+        becomeFirstResponder()
+        myMessageBar.inputTextView.resignFirstResponder()
+        
+        
+    //Step3: show notification
+        view.makeToast("Message Sent!")
+        
+    //Step4: reload data
+        viewDidAppear(true)
+        HomeTV.reloadData()
+    }
+    
+    
+    
+    
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        self.HomeTV.deselectRow(at: indexPath, animated: true)
+    }
+    
+    
+    override var inputAccessoryView: UIView?{
+         return myMessageBar
+     }
+     
+     override var canBecomeFirstResponder: Bool{
+         return showMsgBar
+     }
     
 
     
