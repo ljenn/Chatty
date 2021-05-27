@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		041A8D48265F12C800B1CC47 /* CheckProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 041A8D47265F12C800B1CC47 /* CheckProfileViewController.swift */; };
 		0435A9B4262A39E10064CDA4 /* ChatViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0435A9B3262A39E10064CDA4 /* ChatViewController.swift */; };
 		0435A9B6262A3FB90064CDA4 /* ConvoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0435A9B5262A3FB90064CDA4 /* ConvoViewController.swift */; };
 		044D70A126543B8600CA894E /* StoryCellTableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 044D70A026543B8600CA894E /* StoryCellTableView.swift */; };
@@ -51,6 +52,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		041A8D47265F12C800B1CC47 /* CheckProfileViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CheckProfileViewController.swift; sourceTree = "<group>"; };
 		0435A9B3262A39E10064CDA4 /* ChatViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatViewController.swift; sourceTree = "<group>"; };
 		0435A9B5262A3FB90064CDA4 /* ConvoViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConvoViewController.swift; sourceTree = "<group>"; };
 		044D70A026543B8600CA894E /* StoryCellTableView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StoryCellTableView.swift; sourceTree = "<group>"; };
@@ -146,6 +148,7 @@
 				04F0084C2624F6850013D71E /* AppDelegate.swift */,
 				04F0084E2624F6850013D71E /* SceneDelegate.swift */,
 				04F008522624F6850013D71E /* Main.storyboard */,
+				041A8D47265F12C800B1CC47 /* CheckProfileViewController.swift */,
 				044D70A026543B8600CA894E /* StoryCellTableView.swift */,
 				049852042628CD2600D523CF /* AddStoryViewController.swift */,
 				049852022628A7E100D523CF /* HomeCellTableView.swift */,
@@ -458,6 +461,7 @@
 				049C889B26261E8B002508C1 /* ProfileTabViewController.swift in Sources */,
 				04F0087D2624FBC50013D71E /* LoginViewController.swift in Sources */,
 				04F0084D2624F6850013D71E /* AppDelegate.swift in Sources */,
+				041A8D48265F12C800B1CC47 /* CheckProfileViewController.swift in Sources */,
 				04F0084F2624F6850013D71E /* SceneDelegate.swift in Sources */,
 				04F008832625677C0013D71E /* MakeProfileViewController.swift in Sources */,
 				04F0088126255F600013D71E /* SignUpViewController.swift in Sources */,

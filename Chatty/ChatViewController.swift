@@ -24,6 +24,8 @@ class ChatViewController: UIViewController, UITableViewDelegate, UITableViewData
     var ChatCollection = [PFObject]()
     var filteredChatCollection = [PFObject]()
     var myProfileID = ""
+    var friendProfileID = ""
+    //var friendProfile: PFObject!
     
     
     
@@ -120,20 +122,20 @@ class ChatViewController: UIViewController, UITableViewDelegate, UITableViewData
         //record participants in the conversation
         let participants = oneConvo["Participants"] as! [PFObject]
     
-        var friendID = ""
+        
         var friendName = ""
         
         //find out the friend's profileID (which is the one not matching current user's ID)
         for talker in participants{
             if talker.objectId != myProfileID{
-                friendID = talker.objectId!
+                friendProfileID = talker.objectId!
             }
         }
         
         //find the friend's profile by id
         //set the conversation title to friend's first name.
         let query = PFQuery(className: "Profile")
-        query.whereKey("objectId", equalTo: friendID)
+        query.whereKey("objectId", equalTo: friendProfileID)
         query.findObjectsInBackground { (arr, error) in
             if arr != nil{
                 let oneFriend = arr![0] as PFObject
@@ -160,7 +162,7 @@ class ChatViewController: UIViewController, UITableViewDelegate, UITableViewData
         let selectedConvo = ChatCollection[indexPath.row]
         vc.title = ChatTV.cellForRow(at: indexPath)?.textLabel?.text
         
-        
+        vc.AnotherUserProfileID = friendProfileID
 
         //send the id of the selected conversation to the convo (later to retrieve messages belonging to the convo)
         vc.belongingConvoID = selectedConvo.objectId!

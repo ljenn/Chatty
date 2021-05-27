@@ -14,7 +14,8 @@ import AlamofireImage
 class DetailProfileViewController: UIViewController,UITableViewDelegate,UITableViewDataSource {
 
 
-    var tappedProfile = PFObject(className: "Profile")
+    var tappedProfile = PFObject(className: "Profile") //to be commented out
+    var detailProfileID = ""
     
 
     @IBOutlet weak var StoryTV: UITableView!
@@ -37,28 +38,26 @@ class DetailProfileViewController: UIViewController,UITableViewDelegate,UITableV
     override func viewDidLoad() {
         super.viewDidLoad()
 
-//        let storiesList = tappedProfile["Stories"] as! [String]
-//        let count = storiesList.count
-//        cellHeight.constant = CGFloat(Double(count) * 50)
+
 
 
         //set display attributes
 
         let firstname = tappedProfile["FirstN"] as? String
         firstDP.text = firstname
-        
-        
+
+
         let fetchedDate = tappedProfile["Birthday"] as? Date
         let ageNum = abs(Int(fetchedDate!.timeIntervalSinceNow/31556926.0))
         self.ageDP.text = String(ageNum)
 
 //        lastDP.text = tappedProfile["LastN"] as? String
         statusDP.text = tappedProfile["Status"] as? String
-        
+
         let moodTXT = tappedProfile["Mood"] as? String
-//        moodDP.text = moodTXT
+        moodDP.text = moodTXT
         emojiDP.image = UIImage(named: moodTXT!)
-        
+
 
         let imageFile = tappedProfile["Picture"] as! PFFileObject
         let imageURL = imageFile.url!
@@ -77,44 +76,17 @@ class DetailProfileViewController: UIViewController,UITableViewDelegate,UITableV
 
     }
     
-    
-    // Not working!! To be deleted    VVVVVVVVVVV
-//    override func viewWillAppear(_ animated: Bool) {
-//        self.StoryTV.addObserver(self, forKeyPath: "contentSize", options: .new, context: nil)
-//        self.StoryTV.reloadData()
-//    }
-//
-//    override func viewWillDisappear(_ animated: Bool) {
-//        self.StoryTV.removeObserver(self, forKeyPath: "contentSize")
-//    }
-//
-//    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-//        return UITableView.automaticDimension
-//    }
-//
-//    func tableView(_ tableView: UITableView, estimatedHeightForRowAt indexPath: IndexPath) -> CGFloat {
-//        return UITableView.automaticDimension
-//    }
-//    override func observeValue(forKeyPath keyPath: String?, of object: Any?, change: [NSKeyValueChangeKey : Any]?, context: UnsafeMutableRawPointer?) {
-//        if keyPath == "contentSize"{
-//            if object is UITableView{
-//                if let newvalue = change?[.newKey]{
-//                    let newsize = newvalue as! CGSize
-//                    self.cellHeight.constant = newsize.width
-//                }
-//            }
-//        }
-//    }
 
-
-    //^^^^^^^^
     
     
     
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         let storiesList = tappedProfile["Stories"] as! [String]
+    
         return storiesList.count
+        
+    
     }
 
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
@@ -177,7 +149,7 @@ class DetailProfileViewController: UIViewController,UITableViewDelegate,UITableV
         queryB.findObjectsInBackground { (resultArray, error) in
             if resultArray != nil{
                 if resultArray!.count >= 1{
-                    let FriendProfile = resultArray![0] 
+                    let FriendProfile = resultArray![0]
                     //FriendProfile.add(PFUser.current(), forKey: "FriendList")
                     FriendProfile.add(currentUserProfile, forKey:"FriendList")
                     FriendProfile.add(mutualConvo, forKey: "Chats")
