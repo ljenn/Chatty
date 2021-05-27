@@ -16,6 +16,7 @@ class DetailProfileViewController: UIViewController,UITableViewDelegate,UITableV
 
     var tappedProfile = PFObject(className: "Profile") //to be commented out
     var detailProfileID = ""
+    //var currentUserProfile: PFObject!  //Credit to Jenny!!!
     
 
     @IBOutlet weak var StoryTV: UITableView!
@@ -111,7 +112,7 @@ class DetailProfileViewController: UIViewController,UITableViewDelegate,UITableV
 
         //var currentUserProfile = PFObject(className: "Profile")
 
-        var currentUserProfile: PFObject!  //Credit to Jenny!!!
+        
 
         //Part1: update info in current user's profile
         //a) find userA profile
@@ -122,8 +123,12 @@ class DetailProfileViewController: UIViewController,UITableViewDelegate,UITableV
         queryA.findObjectsInBackground { (resultArray, error) in
             if resultArray != nil{
                 if resultArray!.count == 1{
-//                    let currentUserProfile = resultArray![0]
-                    currentUserProfile = resultArray![0]
+                    let currentUserProfile = resultArray![0]
+                    //self.currentUserProfile = resultArray![0] as PFObject
+                    print("in queryA: \(currentUserProfile)")
+                    
+                    
+                    
 //                    currentUserProfile.add(self.tappedProfile["owner"] as! PFUser, forKey: "FriendList")
                     currentUserProfile.add(self.tappedProfile, forKey: "FriendList")
                     currentUserProfile.add(mutualConvo, forKey: "Chats")
@@ -131,6 +136,37 @@ class DetailProfileViewController: UIViewController,UITableViewDelegate,UITableV
 
                     mutualConvo.add(currentUserProfile,forKey: "Participants")
                     mutualConvo.add(currentUserProfile["FirstN"],forKey: "Speaker")
+                    
+                    
+                    
+                    //Part2: update info in friend's profile
+                    //a) find userB profile
+                    //b) add userA's objId to userB's freindlist
+                    //c) add the new convo to the chatlist of userB profile
+                    let queryB = PFQuery(className: "Profile")
+                    queryB.whereKey("owner", equalTo: self.tappedProfile["owner"] as! PFUser)
+                    queryB.findObjectsInBackground { (resultArray, error) in
+                        if resultArray != nil{
+                            if resultArray!.count >= 1{
+                                let FriendProfile = resultArray![0] as PFObject
+                                //FriendProfile.add(PFUser.current(), forKey: "FriendList")
+                                FriendProfile.add(currentUserProfile, forKey:"FriendList")
+                                print("in QueryB: \(currentUserProfile)")
+                                
+                                FriendProfile.add(mutualConvo, forKey: "Chats")
+                                FriendProfile.saveInBackground()
+
+                                mutualConvo.add(FriendProfile, forKey: "Participants")
+                                mutualConvo.add(FriendProfile["FirstN"],forKey: "Speaker")
+                            }
+                        }else{
+                            print("Error locating the profile: \(error?.localizedDescription)")
+                        }
+                    }
+                    
+                    
+                    
+                    
 
                 }
             }else{
@@ -139,29 +175,32 @@ class DetailProfileViewController: UIViewController,UITableViewDelegate,UITableV
         }
 
 
+        print("middle")
 
-        //Part2: update info in friend's profile
-        //a) find userB profile
-        //b) add userA's objId to userB's freindlist
-        //c) add the new convo to the chatlist of userB profile
-        let queryB = PFQuery(className: "Profile")
-        queryB.whereKey("owner", equalTo: tappedProfile["owner"] as! PFUser)
-        queryB.findObjectsInBackground { (resultArray, error) in
-            if resultArray != nil{
-                if resultArray!.count >= 1{
-                    let FriendProfile = resultArray![0]
-                    //FriendProfile.add(PFUser.current(), forKey: "FriendList")
-                    FriendProfile.add(currentUserProfile, forKey:"FriendList")
-                    FriendProfile.add(mutualConvo, forKey: "Chats")
-                    FriendProfile.saveInBackground()
-
-                    mutualConvo.add(FriendProfile, forKey: "Participants")
-                    mutualConvo.add(FriendProfile["FirstN"],forKey: "Speaker")
-                }
-            }else{
-                print("Error locating the profile: \(error?.localizedDescription)")
-            }
-        }
+//        //Part2: update info in friend's profile
+//        //a) find userB profile
+//        //b) add userA's objId to userB's freindlist
+//        //c) add the new convo to the chatlist of userB profile
+//        let queryB = PFQuery(className: "Profile")
+//        queryB.whereKey("owner", equalTo: tappedProfile["owner"] as! PFUser)
+//        queryB.findObjectsInBackground { (resultArray, error) in
+//            if resultArray != nil{
+//                if resultArray!.count >= 1{
+//                    let FriendProfile = resultArray![0] as PFObject
+//                    //FriendProfile.add(PFUser.current(), forKey: "FriendList")
+//                    FriendProfile.add(self.currentUserProfile, forKey:"FriendList")
+//                    print("in QueryB: \(self.currentUserProfile)")
+//
+//                    FriendProfile.add(mutualConvo, forKey: "Chats")
+//                    FriendProfile.saveInBackground()
+//
+//                    mutualConvo.add(FriendProfile, forKey: "Participants")
+//                    mutualConvo.add(FriendProfile["FirstN"],forKey: "Speaker")
+//                }
+//            }else{
+//                print("Error locating the profile: \(error?.localizedDescription)")
+//            }
+//        }
 
     }
 

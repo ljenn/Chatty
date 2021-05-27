@@ -171,7 +171,6 @@ class ChatViewController: UIViewController, UITableViewDelegate, UITableViewData
             }
         }
         
-        print("inChatList: \(vc.AnotherUserProfileID)")
 
         //send the id of the selected conversation to the convo (later to retrieve messages belonging to the convo)
         vc.belongingConvoID = selectedConvo.objectId!

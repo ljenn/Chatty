@@ -54,7 +54,6 @@ class HomeViewController: UIViewController, UITableViewDelegate, UITableViewData
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        print("in Did Load")
         
         
         HomeTV.delegate = self
@@ -64,7 +63,7 @@ class HomeViewController: UIViewController, UITableViewDelegate, UITableViewData
         
         moodMenu.anchorView = myfilterBTN
         
-        //needed?
+        
         viewDidAppear(true)
         
         self.HomeTV.rowHeight = 300
@@ -78,8 +77,6 @@ class HomeViewController: UIViewController, UITableViewDelegate, UITableViewData
     
     //filling the "ProfileCollection" with data fetched from Back4App whenever view appears
     override func viewDidAppear(_ animated: Bool) {
-        
-       print("in did Appear")
         
         ProfileCollection.removeAll()
         filteredProfileCollection.removeAll()
@@ -136,10 +133,6 @@ class HomeViewController: UIViewController, UITableViewDelegate, UITableViewData
             }
         }
         
-
-        
-        
-        
     }
     
     
@@ -154,7 +147,6 @@ class HomeViewController: UIViewController, UITableViewDelegate, UITableViewData
             let tempArray = result!
             self.myProfile = tempArray[0]
             
-            print("filtering out friends")
             
             if self.myProfile["FriendList"] != nil{
                  self.mylist = self.myProfile["FriendList"] as! [PFObject]
@@ -200,14 +192,13 @@ class HomeViewController: UIViewController, UITableViewDelegate, UITableViewData
     
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        //return ProfileCollection.count
+        
         return filteredProfileCollection.count
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         
         //holding one single specific profile in collection
-        //let singleProfile = ProfileCollection[indexPath.row]
         let singleProfile = filteredProfileCollection[indexPath.row]
         
         
@@ -256,7 +247,6 @@ class HomeViewController: UIViewController, UITableViewDelegate, UITableViewData
         let tappedCell = sender as! UITableViewCell
         let index =  HomeTV.indexPath(for: tappedCell)!
 
-        //let selectedProfile = ProfileCollection[index.row]
         let selectedProfile = filteredProfileCollection[index.row]
         let ProfileDetailVC = segue.destination as! DetailProfileViewController
 
