@@ -60,6 +60,39 @@ class HomeViewController: UIViewController, UITableViewDelegate, UITableViewData
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        print("in did load")
+        
+        //print("called by did load")
+        //viewDidAppear(true)
+        
+//        myMessageBar.delegate = self
+//        HomeTV.keyboardDismissMode = .interactive
+//
+//        let myCenter = NotificationCenter.default
+//        myCenter.addObserver(self, selector: #selector(hideMyKeyBoard(note:)), name: UIResponder.keyboardWillHideNotification, object: nil)
+//
+//
+//        HomeTV.delegate = self
+//        HomeTV.dataSource = self
+//        HomeTV.reloadData()
+//
+//        moodMenu.anchorView = myfilterBTN
+//
+//
+//
+//        self.HomeTV.rowHeight = 300
+        
+        loadHomeTVData()
+        
+    }
+    
+    @objc func hideMyKeyBoard(note: Notification){
+        myMessageBar.inputTextView.text = nil
+        showMsgBar = false
+        becomeFirstResponder()
+    }
+    
+    func loadHomeTVData() {
         myMessageBar.delegate = self
         HomeTV.keyboardDismissMode = .interactive
         
@@ -72,23 +105,28 @@ class HomeViewController: UIViewController, UITableViewDelegate, UITableViewData
         HomeTV.reloadData()
         
         moodMenu.anchorView = myfilterBTN
-        
-        viewDidAppear(true)
-        
+    
         self.HomeTV.rowHeight = 300
-        
     }
     
-    @objc func hideMyKeyBoard(note: Notification){
-        myMessageBar.inputTextView.text = nil
-        showMsgBar = false
-        becomeFirstResponder()
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(true)
+        loadHomeTVData()
+        HomeTV?.reloadData()
     }
     
     
     
     //filling the "ProfileCollection" with data fetched from Back4App whenever view appears
     override func viewDidAppear(_ animated: Bool) {
+        
+        
+        
+        
+        
+        
+        print("in appear")
+        self.myfilterBTN.setTitle("All", for: .normal)
         
         ProfileCollection.removeAll()
         filteredProfileCollection.removeAll()
@@ -146,6 +184,7 @@ class HomeViewController: UIViewController, UITableViewDelegate, UITableViewData
                 print("Error getting result from database: \(error?.localizedDescription)")
             }
         }
+        HomeTV.reloadData()
         
     }
     
@@ -153,6 +192,8 @@ class HomeViewController: UIViewController, UITableViewDelegate, UITableViewData
 
     
     func filterOutFriend(){
+        print("in friend filter")
+        
         //looking up current user's profile to check friend's list.
         let friendListquery = PFQuery(className: "Profile")
         friendListquery.includeKeys(["User","owner"])
@@ -337,8 +378,10 @@ class HomeViewController: UIViewController, UITableViewDelegate, UITableViewData
         view.makeToast("Message Sent!")
         
     //Step4: reload data
-        viewDidAppear(true)
-        HomeTV.reloadData()
+        
+        //self.viewDidAppear(false)
+        //viewDidLoad()
+        
     }
     
     

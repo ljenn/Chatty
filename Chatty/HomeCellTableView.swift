@@ -43,20 +43,10 @@ class HomeCellTableView: UITableViewCell {
     
     @IBAction func clickedChatBTN(_ sender: Any) {
         //btn logic here
-        print("btnclicked")
         homeVC.showMsgBar = true
         homeVC.becomeFirstResponder()
         homeVC.myMessageBar.inputTextView.becomeFirstResponder()
         homeVC.selectedProfile = cellProfile
-        
-        
-        //MARK: Instruction
-        //creat convo, add to convo list.
-        //add msg to convo
-        //show Toast
-        //add to friend list -> remove profile (by reloading data).
-        
-        //need: Profile of both users, message txt.
     }
     
     
