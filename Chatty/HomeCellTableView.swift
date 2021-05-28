@@ -20,8 +20,6 @@ class HomeCellTableView: UITableViewCell {
     
     @IBOutlet weak var statusHomeCell: UILabel!
     
-    @IBOutlet weak var storyHomeCell: UILabel!
-    
     @IBOutlet weak var emoji: UIImageView!
     
     @IBOutlet weak var moodLabel: UILabel!
@@ -30,7 +28,8 @@ class HomeCellTableView: UITableViewCell {
     
     @IBOutlet weak var chatBTN: UIButton!
     
-   
+    @IBOutlet weak var storyContentView: UIView!
+    
     
     //noNeed!!
     //var userProfile = PFObject(className: "Profile")  //mine

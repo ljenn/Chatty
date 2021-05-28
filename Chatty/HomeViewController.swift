@@ -53,7 +53,7 @@ class HomeViewController: UIViewController, UITableViewDelegate, UITableViewData
     }()
 
     
-    
+
     
     
     
@@ -119,11 +119,7 @@ class HomeViewController: UIViewController, UITableViewDelegate, UITableViewData
     
     //filling the "ProfileCollection" with data fetched from Back4App whenever view appears
     override func viewDidAppear(_ animated: Bool) {
-        
-        
-        
-        
-        
+   
         
         print("in appear")
         self.myfilterBTN.setTitle("All", for: .normal)
@@ -148,6 +144,8 @@ class HomeViewController: UIViewController, UITableViewDelegate, UITableViewData
                 self.filterOutFriend()
                 
                 self.HomeTV.reloadData()
+                
+
                 
                 
                 
@@ -176,7 +174,9 @@ class HomeViewController: UIViewController, UITableViewDelegate, UITableViewData
                             }
                         }
                     }
+
                     self.HomeTV.reloadData()
+                
                 }
                 
                 
@@ -185,6 +185,8 @@ class HomeViewController: UIViewController, UITableViewDelegate, UITableViewData
             }
         }
         HomeTV.reloadData()
+    
+
         
     }
     
@@ -284,11 +286,14 @@ class HomeViewController: UIViewController, UITableViewDelegate, UITableViewData
         myCell.ageCell.text = String(ageNum)
 
         
-        
+        //MARK: work on story pagination!
         let arrayOfStory = singleProfile["Stories"] as! [String]
         if arrayOfStory.count >= 1{
-            myCell.storyHomeCell.text = arrayOfStory[0]
+            //myCell.storyHomeCell.text = arrayOfStory[0]
         }
+        
+        
+        
         
         //PartII: pass over information in cell for chatting btn (Table View Cell)
         //need to know which profile is selected and access they keyboard appearance
@@ -377,11 +382,10 @@ class HomeViewController: UIViewController, UITableViewDelegate, UITableViewData
     //Step3: show notification
         view.makeToast("Message Sent!")
         
-    //Step4: reload data
-        
-        //self.viewDidAppear(false)
-        //viewDidLoad()
-        
+    //Step4: reload data not working!!!!
+        viewDidAppear(true)
+        HomeTV.reloadData()
+    
     }
     
     

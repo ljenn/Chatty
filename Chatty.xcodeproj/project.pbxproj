@@ -18,6 +18,8 @@
 		049852032628A7E100D523CF /* HomeCellTableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 049852022628A7E100D523CF /* HomeCellTableView.swift */; };
 		049852052628CD2600D523CF /* AddStoryViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 049852042628CD2600D523CF /* AddStoryViewController.swift */; };
 		049C889B26261E8B002508C1 /* ProfileTabViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 049C889A26261E8B002508C1 /* ProfileTabViewController.swift */; };
+		04A5BF2E2661750300450A53 /* StoryBoxViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04A5BF2D2661750300450A53 /* StoryBoxViewController.swift */; };
+		04A5BF302661767100450A53 /* StoryPageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04A5BF2F2661767100450A53 /* StoryPageViewController.swift */; };
 		04F0084D2624F6850013D71E /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04F0084C2624F6850013D71E /* AppDelegate.swift */; };
 		04F0084F2624F6850013D71E /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04F0084E2624F6850013D71E /* SceneDelegate.swift */; };
 		04F008542624F6850013D71E /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 04F008522624F6850013D71E /* Main.storyboard */; };
@@ -63,6 +65,8 @@
 		049852022628A7E100D523CF /* HomeCellTableView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeCellTableView.swift; sourceTree = "<group>"; };
 		049852042628CD2600D523CF /* AddStoryViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddStoryViewController.swift; sourceTree = "<group>"; };
 		049C889A26261E8B002508C1 /* ProfileTabViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileTabViewController.swift; sourceTree = "<group>"; };
+		04A5BF2D2661750300450A53 /* StoryBoxViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StoryBoxViewController.swift; sourceTree = "<group>"; };
+		04A5BF2F2661767100450A53 /* StoryPageViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StoryPageViewController.swift; sourceTree = "<group>"; };
 		04F008492624F6850013D71E /* Chatty.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Chatty.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		04F0084C2624F6850013D71E /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		04F0084E2624F6850013D71E /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -148,6 +152,8 @@
 				04F0084C2624F6850013D71E /* AppDelegate.swift */,
 				04F0084E2624F6850013D71E /* SceneDelegate.swift */,
 				04F008522624F6850013D71E /* Main.storyboard */,
+				04A5BF2F2661767100450A53 /* StoryPageViewController.swift */,
+				04A5BF2D2661750300450A53 /* StoryBoxViewController.swift */,
 				041A8D47265F12C800B1CC47 /* CheckProfileViewController.swift */,
 				044D70A026543B8600CA894E /* StoryCellTableView.swift */,
 				049852042628CD2600D523CF /* AddStoryViewController.swift */,
@@ -451,8 +457,10 @@
 			files = (
 				044D70A126543B8600CA894E /* StoryCellTableView.swift in Sources */,
 				047CF302265C77F800C0F6C9 /* MakeProfileTwoViewController.swift in Sources */,
+				04A5BF302661767100450A53 /* StoryPageViewController.swift in Sources */,
 				0494A1D226275FB9007F8D66 /* EditProfileViewController.swift in Sources */,
 				04F0087F2624FBDB0013D71E /* HomeViewController.swift in Sources */,
+				04A5BF2E2661750300450A53 /* StoryBoxViewController.swift in Sources */,
 				04770B4E262CE6ED00AC4B39 /* DetailProfileViewController.swift in Sources */,
 				047CF304265C8B1900C0F6C9 /* MakeProfileThreeViewController.swift in Sources */,
 				0435A9B4262A39E10064CDA4 /* ChatViewController.swift in Sources */,

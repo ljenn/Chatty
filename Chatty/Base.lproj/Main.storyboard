@@ -234,13 +234,6 @@
                                                     <nil key="textColor"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
-                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="story" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="hEg-Fq-0Gh">
-                                                    <rect key="frame" x="0.0" y="363" width="414" height="276"/>
-                                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                                    <nil key="textColor"/>
-                                                    <nil key="highlightedColor"/>
-                                                </label>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Age" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="gIU-3e-G06">
                                                     <rect key="frame" x="327" y="4" width="30" height="21"/>
                                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
@@ -263,6 +256,11 @@
                                                     <nil key="textColor"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
+                                                <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Pkg-vC-q0M" userLabel="storyboxViewHolder">
+                                                    <rect key="frame" x="87" y="340" width="240" height="128"/>
+                                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                    <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                                                </view>
                                             </subviews>
                                         </tableViewCellContentView>
                                         <gestureRecognizers/>
@@ -274,7 +272,7 @@
                                             <outlet property="imgHomeCell" destination="w8R-Y6-hIN" id="a0J-kp-5zG"/>
                                             <outlet property="moodLabel" destination="Io9-TJ-f7P" id="rZ0-lW-HUJ"/>
                                             <outlet property="statusHomeCell" destination="NnZ-3m-NVH" id="ZhQ-c5-nhZ"/>
-                                            <outlet property="storyHomeCell" destination="hEg-Fq-0Gh" id="aSh-Uq-JlS"/>
+                                            <outlet property="storyContentView" destination="Pkg-vC-q0M" id="t3d-ww-SbJ"/>
                                         </connections>
                                     </tableViewCell>
                                 </prototypes>
@@ -307,24 +305,59 @@
             </objects>
             <point key="canvasLocation" x="4766.666666666667" y="-737.27678571428567"/>
         </scene>
+        <!--Story Box View Controller-->
+        <scene sceneID="2tn-4s-dWL">
+            <objects>
+                <viewController id="nKU-jk-boA" customClass="StoryBoxViewController" customModule="Chatty" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="csh-c5-674">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="story txt" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="3jW-2z-LKA">
+                                <rect key="frame" x="110" y="359" width="195" height="144"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                        </subviews>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                        <viewLayoutGuide key="safeArea" id="Sdq-XX-Cuz"/>
+                    </view>
+                    <connections>
+                        <outlet property="storytxtLabel" destination="3jW-2z-LKA" id="nHn-PR-Qcj"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="cQ3-oy-eNr" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="5485.507246376812" y="-737.27678571428567"/>
+        </scene>
+        <!--Story Page View Controller-->
+        <scene sceneID="Wln-aM-Cnb">
+            <objects>
+                <pageViewController storyboardIdentifier="StoryPageViewController" autoresizesArchivedViewToFullSize="NO" useStoryboardIdentifierAsRestorationIdentifier="YES" transitionStyle="scroll" navigationOrientation="horizontal" spineLocation="none" id="5W9-Hw-hIO" customClass="StoryPageViewController" customModule="Chatty" customModuleProvider="target" sceneMemberID="viewController"/>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="MyJ-sC-Wv8" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="6184" y="-737"/>
+        </scene>
         <!--Detail Profile View Controller-->
         <scene sceneID="w5i-vO-VxU">
             <objects>
                 <viewController storyboardIdentifier="detailedCellStoryBoard" id="5s4-uW-jVy" customClass="DetailProfileViewController" customModule="Chatty" customModuleProvider="target" sceneMemberID="viewController">
-                    <view key="view" contentMode="scaleToFill" id="bT9-fi-e7J">
+                    <view key="view" contentMode="scaleToFill" ambiguous="YES" id="bT9-fi-e7J">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="XCq-ik-N6H">
+                            <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" ambiguous="YES" translatesAutoresizingMaskIntoConstraints="NO" id="XCq-ik-N6H">
                                 <rect key="frame" x="0.0" y="44" width="414" height="836"/>
                                 <subviews>
-                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="z7M-WJ-Rvu">
+                                    <view contentMode="scaleToFill" ambiguous="YES" translatesAutoresizingMaskIntoConstraints="NO" id="z7M-WJ-Rvu">
                                         <rect key="frame" x="0.0" y="0.0" width="414" height="819"/>
                                         <subviews>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="LlB-P7-8Tj">
-                                                <rect key="frame" x="138.5" y="207" width="137" height="39"/>
+                                                <rect key="frame" x="42.5" y="207" width="329" height="39"/>
                                                 <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="22"/>
-                                                <state key="normal" title="Chat With Me">
+                                                <state key="normal" title="no longer needed to be removed!">
                                                     <color key="titleColor" systemColor="systemBrownColor" red="0.63529411759999999" green="0.51764705879999995" blue="0.36862745099999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                 </state>
                                                 <connections>
@@ -341,7 +374,7 @@
                                                 <nil key="textColor"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
-                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="first label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="9oc-w3-k1H">
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="to be removed" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="9oc-w3-k1H">
                                                 <rect key="frame" x="31" y="265" width="352" height="21"/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                 <nil key="textColor"/>
@@ -496,7 +529,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="TOk-Bg-eAL" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="5647.826086956522" y="-737.27678571428567"/>
+            <point key="canvasLocation" x="3783" y="1555"/>
         </scene>
         <!--Tab Bar Controller-->
         <scene sceneID="rTM-er-kvV">
