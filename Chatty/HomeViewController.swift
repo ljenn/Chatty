@@ -287,10 +287,15 @@ class HomeViewController: UIViewController, UITableViewDelegate, UITableViewData
 
         
         //MARK: work on story pagination!
-        let arrayOfStory = singleProfile["Stories"] as! [String]
-        if arrayOfStory.count >= 1{
-            //myCell.storyHomeCell.text = arrayOfStory[0]
-        }
+        myCell.storyArray = singleProfile["Stories"] as? [String]
+        
+     
+        
+        myCell.configureMyPgViewController()
+        //let dummyData = ["PG1","PG2","PG3","PG4"]
+        
+        //MARK: no need to pass in parameters anymore
+        //myCell.configureMyPgViewController(contentView: myCell.storyContentView, currentVCIndex: myCell.currentIndex,dataArray: dummyData)
         
         
         
@@ -300,8 +305,12 @@ class HomeViewController: UIViewController, UITableViewDelegate, UITableViewData
         myCell.cellProfile = singleProfile
         myCell.homeVC = self
         
+        
+        
         return myCell
     }
+
+    
     
     
     
@@ -423,8 +432,10 @@ class HomeViewController: UIViewController, UITableViewDelegate, UITableViewData
 //        ProfileDetailVC.tappedProfile = selectedProfile
 
     }
-    
-    
-    
 
 }
+
+
+
+
+

@@ -10,8 +10,11 @@ import UIKit
 
 class StoryCellTableView: UITableViewCell {
     
+    //NO NEED: CHECK!! DON'T BE CONFUSED!!!!!
     
     @IBOutlet weak var SingleStoryContext: UILabel!
+    
+    
     
     override func awakeFromNib() {
         super.awakeFromNib()

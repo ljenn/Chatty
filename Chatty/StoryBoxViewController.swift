@@ -12,6 +12,7 @@ class StoryBoxViewController: UIViewController {
 
     @IBOutlet weak var storytxtLabel: UILabel!
     var storyContent: String?
+    var index: Int?
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -33,3 +34,5 @@ class StoryBoxViewController: UIViewController {
     */
 
 }
+
+

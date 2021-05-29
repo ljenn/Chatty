@@ -10,6 +10,9 @@ import UIKit
 
 class StoryPageViewController: UIPageViewController {
 
+    
+    //not really using it (to customize) in this app...
+    
     override func viewDidLoad() {
         super.viewDidLoad()
 

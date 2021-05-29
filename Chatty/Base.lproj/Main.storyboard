@@ -256,7 +256,7 @@
                                                     <nil key="textColor"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
-                                                <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Pkg-vC-q0M" userLabel="storyboxViewHolder">
+                                                <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Pkg-vC-q0M" userLabel="storyContentView">
                                                     <rect key="frame" x="87" y="340" width="240" height="128"/>
                                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                     <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
@@ -308,7 +308,7 @@
         <!--Story Box View Controller-->
         <scene sceneID="2tn-4s-dWL">
             <objects>
-                <viewController id="nKU-jk-boA" customClass="StoryBoxViewController" customModule="Chatty" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="StoryBoxViewController" useStoryboardIdentifierAsRestorationIdentifier="YES" id="nKU-jk-boA" customClass="StoryBoxViewController" customModule="Chatty" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="csh-c5-674">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
