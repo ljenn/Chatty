@@ -11,8 +11,7 @@ import Parse
 import Toast_Swift
 
 class LoginViewController: UIViewController {
-
-
+    
     @IBOutlet weak var tfUsername: UITextField!
     
     @IBOutlet weak var tfPassword: UITextField!
@@ -22,7 +21,7 @@ class LoginViewController: UIViewController {
         super.viewDidLoad()
 
         // Do any additional setup after loading the view.
-    }
+    }    
     
     //Login with Parse function
     @IBAction func btnLogin(_ sender: Any) {
