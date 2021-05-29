@@ -391,7 +391,7 @@ class HomeViewController: UIViewController, UITableViewDelegate, UITableViewData
     //Step3: show notification
         view.makeToast("Message Sent!")
         
-    //Step4: reload data not working!!!!
+    //MARK: Step4: reload data not working!!!!
         viewDidAppear(true)
         HomeTV.reloadData()
     

@@ -281,10 +281,26 @@
                                                         <constraint firstAttribute="width" constant="75" id="jnB-5H-AzD"/>
                                                     </constraints>
                                                 </imageView>
+                                                <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="PEo-EP-7N8">
+                                                    <rect key="frame" x="7" y="383" width="240" height="128"/>
+                                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                    <subviews>
+                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="fvg-7C-REU">
+                                                            <rect key="frame" x="99" y="54" width="42" height="21"/>
+                                                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                            <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                            <nil key="textColor"/>
+                                                            <nil key="highlightedColor"/>
+                                                        </label>
+                                                    </subviews>
+                                                    <viewLayoutGuide key="contentLayoutGuide" id="BCg-Gh-EkM"/>
+                                                    <viewLayoutGuide key="frameLayoutGuide" id="cmv-o2-uFQ"/>
+                                                </scrollView>
                                             </subviews>
                                         </tableViewCellContentView>
                                         <gestureRecognizers/>
                                         <connections>
+                                            <outlet property="CellScrollV" destination="PEo-EP-7N8" id="TjR-iX-OPW"/>
                                             <outlet property="ageCell" destination="gIU-3e-G06" id="Iw2-hQ-QbQ"/>
                                             <outlet property="chatBTN" destination="dCq-kd-E8h" id="1Uk-R8-o66"/>
                                             <outlet property="emoji" destination="HOs-Oa-15D" id="uiZ-5P-dEd"/>
@@ -292,6 +308,7 @@
                                             <outlet property="imgHomeCell" destination="w8R-Y6-hIN" id="a0J-kp-5zG"/>
                                             <outlet property="moodLabel" destination="Io9-TJ-f7P" id="rZ0-lW-HUJ"/>
                                             <outlet property="statusHomeCell" destination="NnZ-3m-NVH" id="ZhQ-c5-nhZ"/>
+                                            <outlet property="storytxtLabel" destination="fvg-7C-REU" id="TGT-v7-OeG"/>
                                         </connections>
                                     </tableViewCell>
                                 </prototypes>
@@ -346,8 +363,8 @@
                     </tabBar>
                     <connections>
                         <segue destination="1v6-ac-MoG" kind="relationship" relationship="viewControllers" id="hDR-ro-fQs"/>
-                        <segue destination="Riz-Qg-iFB" kind="relationship" relationship="viewControllers" id="8Xx-Fs-hCg"/>
                         <segue destination="6Kz-8G-2U7" kind="relationship" relationship="viewControllers" id="6dZ-3B-luM"/>
+                        <segue destination="pwk-Fc-m8z" kind="relationship" relationship="viewControllers" id="TGV-QX-ToS"/>
                     </connections>
                 </tabBarController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="no7-bn-uq0" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
@@ -544,7 +561,7 @@
             <objects>
                 <viewController id="m8c-eg-GtE" customClass="AddStoryViewController" customModule="Chatty" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="g1D-aA-KLR">
-                        <rect key="frame" x="0.0" y="0.0" width="414" height="842"/>
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <textField opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="top" borderStyle="bezel" placeholder="Add A Story..." minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="sVT-ej-YIe">
@@ -566,11 +583,7 @@
                         <viewLayoutGuide key="safeArea" id="UEf-VQ-PMm"/>
                     </view>
                     <navigationItem key="navigationItem" title="Share Story" id="crv-bm-8xM">
-                        <barButtonItem key="rightBarButtonItem" image="person.circle" catalog="system" id="Nlu-f3-VTr">
-                            <connections>
-                                <segue destination="pwk-Fc-m8z" kind="show" id="nBK-dE-MCu"/>
-                            </connections>
-                        </barButtonItem>
+                        <barButtonItem key="rightBarButtonItem" image="person.circle" catalog="system" id="Nlu-f3-VTr"/>
                     </navigationItem>
                     <connections>
                         <outlet property="addStoryTF" destination="sVT-ej-YIe" id="wzy-Dd-Anh"/>
@@ -578,7 +591,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="smO-fr-jnd" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="4766.666666666667" y="-54.241071428571423"/>
+            <point key="canvasLocation" x="1890" y="-1003"/>
         </scene>
         <!--Profile Tab View Controller-->
         <scene sceneID="KkT-al-Vxm">
@@ -675,7 +688,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="7P5-aw-oN9" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="6569.5652173913049" y="-54.241071428571423"/>
+            <point key="canvasLocation" x="4704" y="-4"/>
         </scene>
         <!--Edit Profile-->
         <scene sceneID="EhW-oh-Zco">
@@ -801,7 +814,7 @@
                     </connections>
                 </tapGestureRecognizer>
             </objects>
-            <point key="canvasLocation" x="7486.9565217391309" y="-54.241071428571423"/>
+            <point key="canvasLocation" x="5622" y="-4"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="EpO-Fy-Ho2">
@@ -1104,7 +1117,7 @@
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="gP1-vo-KKZ" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="5648" y="-54"/>
+            <point key="canvasLocation" x="3783" y="-4"/>
         </scene>
         <!--Add Story-->
         <scene sceneID="pDA-dy-FL1">
@@ -1113,7 +1126,7 @@
                     <tabBarItem key="tabBarItem" title="Add Story" image="plus.app" catalog="system" id="aac-RN-Jbs"/>
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="wOl-8Y-1Po">
-                        <rect key="frame" x="0.0" y="0.0" width="414" height="56"/>
+                        <rect key="frame" x="0.0" y="44" width="414" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
                     <nil name="viewControllers"/>
@@ -1123,7 +1136,7 @@
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="u2d-oD-WWg" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="3783" y="-54"/>
+            <point key="canvasLocation" x="1223" y="-1016"/>
         </scene>
     </scenes>
     <resources>

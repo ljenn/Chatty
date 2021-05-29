@@ -28,6 +28,10 @@ class HomeCellTableView: UITableViewCell {
     
     @IBOutlet weak var chatBTN: UIButton!
     
+    @IBOutlet weak var CellScrollV: UIScrollView!
+    
+    @IBOutlet weak var storytxtLabel: UILabel!
+    
     
     var currentIndex = 0
     var storyArray: [String]?
