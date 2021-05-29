@@ -84,7 +84,6 @@ class HomeCellTableView: UITableViewCell {
         
         guard let storyPgVC = homeVC.storyboard?.instantiateViewController(withIdentifier: "StoryPageViewController") as? StoryPageViewController else{
             return
-            //move outside!!
         }
         
         storyPgVC.delegate = self
