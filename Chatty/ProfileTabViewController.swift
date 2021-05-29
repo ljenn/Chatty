@@ -31,6 +31,12 @@ class ProfileTabViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
+
+
+    }
+    
+    override func viewDidAppear(_ animated: Bool) {
+        
         //fetch the current user's profile and display on the user's profile page.
         
         let query = PFQuery(className: "Profile")
@@ -60,7 +66,6 @@ class ProfileTabViewController: UIViewController {
                 print("Error fetching profile: \(error?.localizedDescription)")
             }
         }
-
     }
     
 

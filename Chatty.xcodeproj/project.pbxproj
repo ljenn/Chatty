@@ -14,7 +14,6 @@
 		047CF304265C8B1900C0F6C9 /* MakeProfileThreeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 047CF303265C8B1900C0F6C9 /* MakeProfileThreeViewController.swift */; };
 		0494A1D226275FB9007F8D66 /* EditProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0494A1D126275FB9007F8D66 /* EditProfileViewController.swift */; };
 		049852032628A7E100D523CF /* HomeCellTableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 049852022628A7E100D523CF /* HomeCellTableView.swift */; };
-		049852052628CD2600D523CF /* AddStoryViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 049852042628CD2600D523CF /* AddStoryViewController.swift */; };
 		049C889B26261E8B002508C1 /* ProfileTabViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 049C889A26261E8B002508C1 /* ProfileTabViewController.swift */; };
 		04F0084D2624F6850013D71E /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04F0084C2624F6850013D71E /* AppDelegate.swift */; };
 		04F0084F2624F6850013D71E /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04F0084E2624F6850013D71E /* SceneDelegate.swift */; };
@@ -58,7 +57,6 @@
 		047CF303265C8B1900C0F6C9 /* MakeProfileThreeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MakeProfileThreeViewController.swift; sourceTree = "<group>"; };
 		0494A1D126275FB9007F8D66 /* EditProfileViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditProfileViewController.swift; sourceTree = "<group>"; };
 		049852022628A7E100D523CF /* HomeCellTableView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeCellTableView.swift; sourceTree = "<group>"; };
-		049852042628CD2600D523CF /* AddStoryViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddStoryViewController.swift; sourceTree = "<group>"; };
 		049C889A26261E8B002508C1 /* ProfileTabViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileTabViewController.swift; sourceTree = "<group>"; };
 		04F008492624F6850013D71E /* Chatty.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Chatty.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		04F0084C2624F6850013D71E /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -149,7 +147,6 @@
 				049852022628A7E100D523CF /* HomeCellTableView.swift */,
 				04F0087E2624FBDB0013D71E /* HomeViewController.swift */,
 				041A8D47265F12C800B1CC47 /* CheckProfileViewController.swift */,
-				049852042628CD2600D523CF /* AddStoryViewController.swift */,
 				0435A9B5262A3FB90064CDA4 /* ConvoViewController.swift */,
 				0494A1D126275FB9007F8D66 /* EditProfileViewController.swift */,
 				04F008822625677C0013D71E /* MakeProfileViewController.swift */,
@@ -451,7 +448,6 @@
 				04F0087F2624FBDB0013D71E /* HomeViewController.swift in Sources */,
 				047CF304265C8B1900C0F6C9 /* MakeProfileThreeViewController.swift in Sources */,
 				0435A9B4262A39E10064CDA4 /* ChatViewController.swift in Sources */,
-				049852052628CD2600D523CF /* AddStoryViewController.swift in Sources */,
 				0435A9B6262A3FB90064CDA4 /* ConvoViewController.swift in Sources */,
 				049C889B26261E8B002508C1 /* ProfileTabViewController.swift in Sources */,
 				04F0087D2624FBC50013D71E /* LoginViewController.swift in Sources */,

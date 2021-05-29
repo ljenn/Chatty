@@ -515,7 +515,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="6ml-6L-Riz" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="5990" y="690"/>
+            <point key="canvasLocation" x="6417" y="682"/>
         </scene>
         <!--Home-->
         <scene sceneID="aJO-sK-ebe">
@@ -555,43 +555,6 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="cTY-rC-UHi" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="3783" y="683"/>
-        </scene>
-        <!--Share Story-->
-        <scene sceneID="VYP-UC-KcU">
-            <objects>
-                <viewController id="m8c-eg-GtE" customClass="AddStoryViewController" customModule="Chatty" customModuleProvider="target" sceneMemberID="viewController">
-                    <view key="view" contentMode="scaleToFill" id="g1D-aA-KLR">
-                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
-                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <subviews>
-                            <textField opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="top" borderStyle="bezel" placeholder="Add A Story..." minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="sVT-ej-YIe">
-                                <rect key="frame" x="20" y="163" width="374" height="387"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                <textInputTraits key="textInputTraits"/>
-                            </textField>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="9GM-wI-Gkg">
-                                <rect key="frame" x="165" y="597" width="84" height="30"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <state key="normal" title="ADD STORY"/>
-                                <connections>
-                                    <action selector="AddStoryBTN:" destination="m8c-eg-GtE" eventType="touchUpInside" id="neV-Ui-w3W"/>
-                                </connections>
-                            </button>
-                        </subviews>
-                        <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
-                        <viewLayoutGuide key="safeArea" id="UEf-VQ-PMm"/>
-                    </view>
-                    <navigationItem key="navigationItem" title="Share Story" id="crv-bm-8xM">
-                        <barButtonItem key="rightBarButtonItem" image="person.circle" catalog="system" id="Nlu-f3-VTr"/>
-                    </navigationItem>
-                    <connections>
-                        <outlet property="addStoryTF" destination="sVT-ej-YIe" id="wzy-Dd-Anh"/>
-                    </connections>
-                </viewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="smO-fr-jnd" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="1890" y="-1003"/>
         </scene>
         <!--Profile Tab View Controller-->
         <scene sceneID="KkT-al-Vxm">
@@ -1119,25 +1082,6 @@
             </objects>
             <point key="canvasLocation" x="3783" y="-4"/>
         </scene>
-        <!--Add Story-->
-        <scene sceneID="pDA-dy-FL1">
-            <objects>
-                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="Riz-Qg-iFB" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="Add Story" image="plus.app" catalog="system" id="aac-RN-Jbs"/>
-                    <toolbarItems/>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="wOl-8Y-1Po">
-                        <rect key="frame" x="0.0" y="44" width="414" height="44"/>
-                        <autoresizingMask key="autoresizingMask"/>
-                    </navigationBar>
-                    <nil name="viewControllers"/>
-                    <connections>
-                        <segue destination="m8c-eg-GtE" kind="relationship" relationship="rootViewController" id="gUr-La-0Tv"/>
-                    </connections>
-                </navigationController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="u2d-oD-WWg" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="1223" y="-1016"/>
-        </scene>
     </scenes>
     <resources>
         <image name="kite_text" width="166.5" height="166.5"/>
@@ -1146,10 +1090,8 @@
         <image name="paperplane" width="166.5" height="166.5"/>
         <image name="person.badge.plus" catalog="system" width="64" height="58"/>
         <image name="person.badge.plus.fill" catalog="system" width="64" height="58"/>
-        <image name="person.circle" catalog="system" width="64" height="60"/>
         <image name="person.crop.circle.fill" catalog="system" width="64" height="60"/>
         <image name="person.fill" catalog="system" width="64" height="60"/>
-        <image name="plus.app" catalog="system" width="64" height="56"/>
     </resources>
     <inferredMetricsTieBreakers>
         <segue reference="pqt-hC-TWL"/>
