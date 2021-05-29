@@ -291,7 +291,7 @@ class HomeViewController: UIViewController, UITableViewDelegate, UITableViewData
         
      
         
-        myCell.configureMyPgViewController()
+        //myCell.configureMyPgViewController()
         //let dummyData = ["PG1","PG2","PG3","PG4"]
         
         //MARK: no need to pass in parameters anymore
