@@ -26,6 +26,8 @@
 		04F0087F2624FBDB0013D71E /* HomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04F0087E2624FBDB0013D71E /* HomeViewController.swift */; };
 		04F0088126255F600013D71E /* SignUpViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04F0088026255F600013D71E /* SignUpViewController.swift */; };
 		04F008832625677C0013D71E /* MakeProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04F008822625677C0013D71E /* MakeProfileViewController.swift */; };
+		25201EBB26635CC2008A5CC1 /* Story.swift in Sources */ = {isa = PBXBuildFile; fileRef = 25201EBA26635CC2008A5CC1 /* Story.swift */; };
+		25201EC02663605F008A5CC1 /* SelfProfileStoryCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 25201EBF2663605F008A5CC1 /* SelfProfileStoryCollectionViewCell.swift */; };
 		25B3E5292662DB92000F7087 /* LaunchScreenViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 25B3E5282662DB92000F7087 /* LaunchScreenViewController.swift */; };
 		68CDBC5F6478B954DAF7C5D6 /* Pods_ChattyTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 53D4E4D9C5EE4FDE4F0AD683 /* Pods_ChattyTests.framework */; };
 		A6BE87455ADABE2DA4BEA41B /* Pods_Chatty_ChattyUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 479EA9452AF339CF24F879B3 /* Pods_Chatty_ChattyUITests.framework */; };
@@ -78,6 +80,8 @@
 		0C9CAA8CEBD7F5A2C3004EAD /* Pods_Chatty.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Chatty.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		169FADF2B1E84A11955DA2C5 /* Pods-ChattyTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ChattyTests.release.xcconfig"; path = "Target Support Files/Pods-ChattyTests/Pods-ChattyTests.release.xcconfig"; sourceTree = "<group>"; };
 		2224CA712396393C5E949B59 /* Pods-Chatty.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Chatty.release.xcconfig"; path = "Target Support Files/Pods-Chatty/Pods-Chatty.release.xcconfig"; sourceTree = "<group>"; };
+		25201EBA26635CC2008A5CC1 /* Story.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Story.swift; sourceTree = "<group>"; };
+		25201EBF2663605F008A5CC1 /* SelfProfileStoryCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SelfProfileStoryCollectionViewCell.swift; sourceTree = "<group>"; };
 		25B3E5282662DB92000F7087 /* LaunchScreenViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LaunchScreenViewController.swift; sourceTree = "<group>"; };
 		3443F8D79B2F49D7F9D6FCC2 /* Pods-ChattyTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ChattyTests.debug.xcconfig"; path = "Target Support Files/Pods-ChattyTests/Pods-ChattyTests.debug.xcconfig"; sourceTree = "<group>"; };
 		479EA9452AF339CF24F879B3 /* Pods_Chatty_ChattyUITests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Chatty_ChattyUITests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -159,6 +163,8 @@
 				04F008572624F6860013D71E /* LaunchScreen.storyboard */,
 				04F0085A2624F6860013D71E /* Info.plist */,
 				25B3E5282662DB92000F7087 /* LaunchScreenViewController.swift */,
+				25201EBA26635CC2008A5CC1 /* Story.swift */,
+				25201EBF2663605F008A5CC1 /* SelfProfileStoryCollectionViewCell.swift */,
 			);
 			path = Chatty;
 			sourceTree = "<group>";
@@ -450,7 +456,9 @@
 				0435A9B4262A39E10064CDA4 /* ChatViewController.swift in Sources */,
 				0435A9B6262A3FB90064CDA4 /* ConvoViewController.swift in Sources */,
 				049C889B26261E8B002508C1 /* ProfileTabViewController.swift in Sources */,
+				25201EBB26635CC2008A5CC1 /* Story.swift in Sources */,
 				04F0087D2624FBC50013D71E /* LoginViewController.swift in Sources */,
+				25201EC02663605F008A5CC1 /* SelfProfileStoryCollectionViewCell.swift in Sources */,
 				04F0084D2624F6850013D71E /* AppDelegate.swift in Sources */,
 				25B3E5292662DB92000F7087 /* LaunchScreenViewController.swift in Sources */,
 				041A8D48265F12C800B1CC47 /* CheckProfileViewController.swift in Sources */,
