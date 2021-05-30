@@ -10,28 +10,52 @@ import UIKit
 import AlamofireImage
 import Parse
 
+//extension UIImageView {
+//    func applyBlurEffect() {
+//        let blurEffect = UIBlurEffect(style: .light)
+//        let blurEffectView = UIVisualEffectView(effect: blurEffect)
+//        blurEffectView.frame = bounds
+//        blurEffectView.autoresizingMask = [.flexibleWidth, .flexibleHeight]
+//        addSubview(blurEffectView)
+//    }
+//}
+
 class ProfileTabViewController: UIViewController {
 
     @IBOutlet weak var imgProfile: UIImageView!
-    
     @IBOutlet weak var labelFirst: UILabel!
-    
     @IBOutlet weak var ageLabel: UILabel!
-    
-    @IBOutlet weak var labelStory: UILabel!
-    
+//    @IBOutlet weak var labelStory: UILabel!
     @IBOutlet weak var labelStatus: UILabel!
-    
     @IBOutlet weak var moodIMG: UIImageView!
-    
     @IBOutlet weak var moodTXT: UILabel!
-
+    @IBOutlet weak var storyCollectionView: UICollectionView!
+    
+    var storiesArray = Story.getStories()
     
     
     override func viewDidLoad() {
         super.viewDidLoad()
+//        self.view.backgroundColor = UIColor(patternImage: imgProfile.image!)
+//        
+//        let blurEffect = UIBlurEffect(style: UIBlurEffect.Style.dark)
+//        let blurEffectView = UIVisualEffectView(effect: blurEffect)
+//        blurEffectView.frame = view.bounds
+//        blurEffectView.autoresizingMask = [.flexibleWidth, .flexibleHeight]
+//        self.view.insertSubview(blurEffectView, at: 0)
         
-
+        
+//        let sampleImageView = UIImageView(frame: CGRectMake(0, 200, 300, 325))
+//        let sampleImage:UIImage = UIImage(named: "ic_120x120")!
+//        sampleImageView.image =  sampleImage
+//
+//        //Convert To Blur Image Here
+//        sampleImageView.makeBlurImage(sampleImageView)
+//
+//        self.view.addSubview(sampleImageView)
+        
+        super.viewDidLoad()
+        storyCollectionView.dataSource = self
 
     }
     
@@ -69,4 +93,21 @@ class ProfileTabViewController: UIViewController {
     }
     
 
+}
+
+extension ProfileTabViewController: UICollectionViewDataSource {
+    
+    func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
+        return storiesArray.count
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
+        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "SelfProfileStoryCollectionViewCell", for: indexPath) as! SelfProfileStoryCollectionViewCell
+        let story = storiesArray[indexPath.item]
+        
+        cell.story = story
+        
+        return cell
+    }
+    
 }
