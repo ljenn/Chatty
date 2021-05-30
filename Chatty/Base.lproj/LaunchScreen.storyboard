@@ -17,39 +17,32 @@
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="cloud.fill" catalog="system" translatesAutoresizingMaskIntoConstraints="NO" id="D7N-PE-bfT">
-                                <rect key="frame" x="-140" y="649" width="400" height="394.5"/>
-                                <color key="tintColor" red="0.57817577040000001" green="0.71052458169999999" blue="0.98039215690000003" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                <constraints>
-                                    <constraint firstAttribute="width" constant="400" id="1qc-c5-vdr"/>
-                                    <constraint firstAttribute="width" secondItem="D7N-PE-bfT" secondAttribute="height" id="uqz-2u-w40"/>
-                                </constraints>
-                            </imageView>
-                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="cloud.fill" catalog="system" translatesAutoresizingMaskIntoConstraints="NO" id="n5G-Hh-1Rb">
-                                <rect key="frame" x="224" y="-22" width="250" height="244.5"/>
-                                <color key="tintColor" red="0.63875110170000005" green="0.77082477839999997" blue="0.98039215690000003" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                <constraints>
-                                    <constraint firstAttribute="width" constant="250" id="9zs-k6-108"/>
-                                    <constraint firstAttribute="width" secondItem="n5G-Hh-1Rb" secondAttribute="height" id="nue-Sb-v1l"/>
-                                </constraints>
-                            </imageView>
-                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" fixedFrame="YES" image="kite_image" translatesAutoresizingMaskIntoConstraints="NO" id="dHB-qx-1cm">
-                                <rect key="frame" x="33" y="372" width="349" height="349"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                            </imageView>
-                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" fixedFrame="YES" image="kite_text" translatesAutoresizingMaskIntoConstraints="NO" id="R6B-0g-Ndh">
-                                <rect key="frame" x="94" y="175" width="227" height="227"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                            </imageView>
+                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="center" translatesAutoresizingMaskIntoConstraints="NO" id="NuY-fh-GM2">
+                                <rect key="frame" x="0.0" y="121" width="414" height="400"/>
+                                <subviews>
+                                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" image="kite_text" translatesAutoresizingMaskIntoConstraints="NO" id="YJQ-fE-GXS">
+                                        <rect key="frame" x="107" y="0.0" width="200" height="200"/>
+                                        <constraints>
+                                            <constraint firstAttribute="width" secondItem="YJQ-fE-GXS" secondAttribute="height" multiplier="1:1" id="OFb-H3-gsm"/>
+                                            <constraint firstAttribute="width" constant="200" id="Swi-Sv-7P6"/>
+                                        </constraints>
+                                    </imageView>
+                                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" image="kite_image" translatesAutoresizingMaskIntoConstraints="NO" id="nkq-AU-n2i">
+                                        <rect key="frame" x="107" y="200" width="200" height="200"/>
+                                        <constraints>
+                                            <constraint firstAttribute="width" constant="200" id="iaX-Yz-ZeA"/>
+                                            <constraint firstAttribute="width" secondItem="nkq-AU-n2i" secondAttribute="height" multiplier="1:1" id="q34-Qj-1iI"/>
+                                        </constraints>
+                                    </imageView>
+                                </subviews>
+                            </stackView>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <constraints>
-                            <constraint firstAttribute="trailing" secondItem="n5G-Hh-1Rb" secondAttribute="trailing" constant="-60" id="6Mv-zP-LjB"/>
-                            <constraint firstItem="n5G-Hh-1Rb" firstAttribute="width" secondItem="n5G-Hh-1Rb" secondAttribute="height" id="Iar-wk-ZaD"/>
-                            <constraint firstAttribute="bottom" secondItem="D7N-PE-bfT" secondAttribute="bottom" constant="-150" id="TMh-cJ-G7J"/>
-                            <constraint firstItem="n5G-Hh-1Rb" firstAttribute="top" secondItem="Ze5-6b-2t3" secondAttribute="top" constant="-25" id="pqa-Eu-Ydf"/>
-                            <constraint firstItem="D7N-PE-bfT" firstAttribute="leading" secondItem="Ze5-6b-2t3" secondAttribute="leadingMargin" constant="-160" id="zsY-MZ-TGi"/>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="NuY-fh-GM2" secondAttribute="trailing" id="W75-F5-BUa"/>
+                            <constraint firstAttribute="bottom" secondItem="NuY-fh-GM2" secondAttribute="bottom" constant="375" id="maP-To-6pR"/>
+                            <constraint firstItem="NuY-fh-GM2" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" id="u8q-NN-PUq"/>
                         </constraints>
                     </view>
                 </viewController>
@@ -59,7 +52,6 @@
         </scene>
     </scenes>
     <resources>
-        <image name="cloud.fill" catalog="system" width="128" height="84"/>
         <image name="kite_image" width="166.5" height="166.5"/>
         <image name="kite_text" width="166.5" height="166.5"/>
         <systemColor name="systemBackgroundColor">
