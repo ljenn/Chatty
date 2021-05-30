@@ -11,6 +11,8 @@ target 'Chatty' do
 	pod 'Toast-Swift', '~> 5.0.1'
 	pod 'MessageKit'
 	pod 'DropDown'
+	pod 'lottie-ios'
+	pod 'SkeletonView'
 	# pod 'InputBarAccessoryView'
 
   target 'ChattyTests' do
