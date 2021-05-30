@@ -28,11 +28,11 @@ class HomeCellTableView: UITableViewCell {
     
     @IBOutlet weak var chatBTN: UIButton!
     
-    @IBOutlet weak var CellScrollV: UIScrollView!
-    
+    @IBOutlet var CellScrollV: UIScrollView!
+
     @IBOutlet weak var storytxtLabel: UILabel!
-    
-    @IBOutlet weak var pgControl: UIPageControl!
+
+    @IBOutlet var pgControl: UIPageControl!
     
     var currentIndex = 0
     var storyArray: [String]?
@@ -51,6 +51,7 @@ class HomeCellTableView: UITableViewCell {
     var dummySource = ["PG1","PG2","PG3","PG4"]
     
     
+
     
     
     @IBAction func clickedChatBTN(_ sender: Any) {
@@ -68,10 +69,7 @@ class HomeCellTableView: UITableViewCell {
         super.awakeFromNib()
         // Initialization code
 
-        
-        CellScrollV.addSubview(storytxtLabel)
-    
-        
+        //homeVC.scrollViewDidEndDecelerating(CellScrollV)
         
     }
 
@@ -80,6 +78,8 @@ class HomeCellTableView: UITableViewCell {
 
         // Configure the view for the selected state
     }
+    
+    
     
     
 }

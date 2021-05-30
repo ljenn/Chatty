@@ -62,9 +62,9 @@ class LaunchScreenViewController: UIViewController {
         
         bottomCloudConstraint.constant -= (view.bounds.width * 2.0)
 
-        UIView.animate(withDuration: 3.0, delay: 0) { [weak self] in
-          self?.view.layoutIfNeeded()
-        }
+//        UIView.animate(withDuration: 3.0, delay: 0) { [weak self] in
+//          self?.view.layoutIfNeeded()
+//        }
 
         topCloudConstraint.constant -= (view.bounds.width * 2.0)
 

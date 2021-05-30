@@ -31,6 +31,7 @@ class HomeViewController: UIViewController, UITableViewDelegate, UITableViewData
     
     var mylist = [PFObject]()
     
+    
     @IBOutlet weak var myfilterBTN: UIButton!
     
     @IBAction func tappedMyMenu(_ sender: Any) {
@@ -53,6 +54,10 @@ class HomeViewController: UIViewController, UITableViewDelegate, UITableViewData
     }()
 
     
+    
+    let swipeRight = UISwipeGestureRecognizer(target: self, action: #selector(respondToSwipeGesture))
+    let swipeLeft = UISwipeGestureRecognizer(target: self, action: #selector(respondToSwipeGesture))
+    
 
     
     
@@ -60,29 +65,30 @@ class HomeViewController: UIViewController, UITableViewDelegate, UITableViewData
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        print("in did load")
+        viewDidAppear(true)
         
-        //print("called by did load")
-        //viewDidAppear(true)
+        myMessageBar.delegate = self
+        HomeTV.keyboardDismissMode = .interactive
+
+        let myCenter = NotificationCenter.default
+        myCenter.addObserver(self, selector: #selector(hideMyKeyBoard(note:)), name: UIResponder.keyboardWillHideNotification, object: nil)
+
+
+        HomeTV.delegate = self
+        HomeTV.dataSource = self
+        HomeTV.reloadData()
+
+        moodMenu.anchorView = myfilterBTN
         
-//        myMessageBar.delegate = self
-//        HomeTV.keyboardDismissMode = .interactive
-//
-//        let myCenter = NotificationCenter.default
-//        myCenter.addObserver(self, selector: #selector(hideMyKeyBoard(note:)), name: UIResponder.keyboardWillHideNotification, object: nil)
-//
-//
-//        HomeTV.delegate = self
-//        HomeTV.dataSource = self
-//        HomeTV.reloadData()
-//
-//        moodMenu.anchorView = myfilterBTN
-//
-//
-//
-//        self.HomeTV.rowHeight = 300
+
+        //Gesture not working?!
+        swipeRight.direction = .right
+        swipeLeft.direction = .left
+
+
+        self.HomeTV.rowHeight = 300
         
-        loadHomeTVData()
+        //loadHomeTVData()
         
     }
     
@@ -91,6 +97,24 @@ class HomeViewController: UIViewController, UITableViewDelegate, UITableViewData
         showMsgBar = false
         becomeFirstResponder()
     }
+    
+    
+    @objc func respondToSwipeGesture(gesture: UIGestureRecognizer) {
+
+        if let swipeGesture = gesture as? UISwipeGestureRecognizer {
+
+            switch swipeGesture.direction {
+            case .right:
+                print("Swiped right")
+            case .left:
+                print("Swiped left")
+            default:
+                break
+            }
+        }
+    }
+    
+    
     
     func loadHomeTVData() {
         myMessageBar.delegate = self
@@ -120,6 +144,7 @@ class HomeViewController: UIViewController, UITableViewDelegate, UITableViewData
     //filling the "ProfileCollection" with data fetched from Back4App whenever view appears
     override func viewDidAppear(_ animated: Bool) {
    
+    
         
         print("in appear")
         self.myfilterBTN.setTitle("All", for: .normal)
@@ -289,16 +314,69 @@ class HomeViewController: UIViewController, UITableViewDelegate, UITableViewData
         //MARK: work on story pagination!
         myCell.storyArray = singleProfile["Stories"] as? [String]
        
-        //let dummyData = ["PG1","PG2","PG3","PG4"]
+        let dummyData = ["PG1","PG2","PG3","PG4"]
+        
+        myCell.CellScrollV = UIScrollView(frame: CGRect(x: 0, y: 0, width: 320, height: 150))
+        myCell.CellScrollV.backgroundColor = UIColor.green
+        myCell.CellScrollV.indicatorStyle = .black
+        myCell.CellScrollV.showsHorizontalScrollIndicator = false
+        myCell.CellScrollV.delegate = self
+        
+        myCell.CellScrollV.showsVerticalScrollIndicator = true
+        myCell.CellScrollV.bounces = true
+        myCell.CellScrollV.isPagingEnabled = true
+        myCell.CellScrollV.contentSize = CGSize(width: 640, height: 30)
         
         
         
         
+        myCell.pgControl = UIPageControl(frame: CGRect(x: 0, y: 155, width: 320, height: 40))
+        
+        myCell.pgControl.numberOfPages = dummyData.count
+        myCell.pgControl.currentPage = 0
+        myCell.pgControl.backgroundColor = UIColor.red
+        myCell.pgControl.tintColor = UIColor.white
+        myCell.contentView.addSubview(myCell.pgControl)
+        
+        
+        //myCell.CellScrollV.addGestureRecognizer(swipeLeft)
+        //myCell.CellScrollV.addGestureRecognizer(swipeRight)
+        
+
         
         
         
         
+        //scrollViewDidEndDecelerating(myCell.CellScrollV)
+
         
+        
+        for i in 0..<dummyData.count {
+            var frame = CGRect()
+            frame.origin.x = (myCell.CellScrollV.frame.size.width * CGFloat(i)) + 10
+            frame.origin.y = 0
+            frame.size = CGSize(width: myCell.CellScrollV.frame.size.width - 20, height: myCell.CellScrollV.frame.size.height)
+            
+            let cellLabelView = UILabel(frame: frame)
+            cellLabelView.text = dummyData[i]
+            //when frame puted into scroll veiw.
+            myCell.CellScrollV.addSubview(cellLabelView)
+            
+            //MARK: data source count!
+            let countNum = dummyData.count
+            let theWidth = Int(myCell.CellScrollV.frame.size.width) * countNum
+            let theHeight = Int(myCell.CellScrollV.frame.size.height)
+            
+            myCell.CellScrollV.contentSize = CGSize(width: theWidth, height: theHeight)
+        }
+        
+        
+        
+        
+        myCell.contentView.addSubview(myCell.CellScrollV)
+        
+        
+  
         
         //PartII: pass over information in cell for chatting btn (Table View Cell)
         //need to know which profile is selected and access they keyboard appearance
@@ -309,7 +387,23 @@ class HomeViewController: UIViewController, UITableViewDelegate, UITableViewData
         
         return myCell
     }
-
+    
+    
+    //MARK: DELETE!!
+    //only get called once when loading... can't update the dot
+    func scrollViewDidEndDecelerating(_ scrollView: UIScrollView) {
+        
+        //cell get swiped fxn
+        
+//        let pageWidth = CGFloat(scrollView.frame.size.width)
+//
+//        myCell.pgControl.currentPage = Int(scrollView.contentOffset.x) / Int(pageWidth)
+        
+        //print(myCell.firstNHomeCell.text)
+        
+        //print("Swipped")
+    }
+    
     
     
     
