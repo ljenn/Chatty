@@ -11,24 +11,36 @@ import Parse
 import Toast_Swift
 import DropDown
 import InputBarAccessoryView
-import Lottie
-import SkeletonView
 
 
+class HomeViewController: UIViewController, UITableViewDelegate, UITableViewDataSource,InputBarAccessoryViewDelegate{
 
-class HomeViewController: UIViewController, InputBarAccessoryViewDelegate{
-
-    // Variables
-    var animationView: AnimationView?
-    var refresh = true
+    
     
     let myMessageBar = InputBarAccessoryView()
+    
     var showMsgBar = false
+    
     var ProfileCollection = [PFObject]()
+    
     var filteredProfileCollection = [PFObject]()
+    
     var myProfile = PFObject(className: "Profile")
+    
     var selectedProfile = PFObject(className: "Profile")
+    
     var mylist = [PFObject]()
+    
+    
+    @IBOutlet weak var myfilterBTN: UIButton!
+    
+    @IBAction func tappedMyMenu(_ sender: Any) {
+        moodMenu.show()
+    }
+    
+    @IBOutlet weak var HomeTV: UITableView!
+    
+
     let moodMenu: DropDown = {
         let moodMenu = DropDown()
         moodMenu.dataSource = [
@@ -40,45 +52,45 @@ class HomeViewController: UIViewController, InputBarAccessoryViewDelegate{
         ]
         return moodMenu
     }()
+
     
-    @IBOutlet weak var myfilterBTN: UIButton!
-    @IBAction func tappedMyMenu(_ sender: Any) {
-        moodMenu.show()
-    }
-    @IBOutlet weak var HomeTV: UITableView!
+    
+    let swipeRight = UISwipeGestureRecognizer(target: self, action: #selector(respondToSwipeGesture))
+    let swipeLeft = UISwipeGestureRecognizer(target: self, action: #selector(respondToSwipeGesture))
+    
+
+    
     
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        startAnimations()
         
-        print("in did load")
+        viewDidAppear(true)
         
-        //print("called by did load")
-        //viewDidAppear(true)
-        
-//        myMessageBar.delegate = self
-//        HomeTV.keyboardDismissMode = .interactive
-//
-//        let myCenter = NotificationCenter.default
-//        myCenter.addObserver(self, selector: #selector(hideMyKeyBoard(note:)), name: UIResponder.keyboardWillHideNotification, object: nil)
-//
-//
-//        HomeTV.delegate = self
-//        HomeTV.dataSource = self
-//        HomeTV.reloadData()
-//
-//        moodMenu.anchorView = myfilterBTN
-//
-//
-//
-//        self.HomeTV.rowHeight = 300
-        
-        
-        loadHomeTVData()
-        stopAnimations()
-    }
+        myMessageBar.delegate = self
+        HomeTV.keyboardDismissMode = .interactive
 
+        let myCenter = NotificationCenter.default
+        myCenter.addObserver(self, selector: #selector(hideMyKeyBoard(note:)), name: UIResponder.keyboardWillHideNotification, object: nil)
+
+
+        HomeTV.delegate = self
+        HomeTV.dataSource = self
+        HomeTV.reloadData()
+
+        moodMenu.anchorView = myfilterBTN
+        
+
+        //Gesture not working?!
+        swipeRight.direction = .right
+        swipeLeft.direction = .left
+
+
+        self.HomeTV.rowHeight = 300
+        
+        //loadHomeTVData()
+        
+    }
     
     @objc func hideMyKeyBoard(note: Notification){
         myMessageBar.inputTextView.text = nil
@@ -86,6 +98,40 @@ class HomeViewController: UIViewController, InputBarAccessoryViewDelegate{
         becomeFirstResponder()
     }
     
+    
+    @objc func respondToSwipeGesture(gesture: UIGestureRecognizer) {
+
+        if let swipeGesture = gesture as? UISwipeGestureRecognizer {
+
+            switch swipeGesture.direction {
+            case .right:
+                print("Swiped right")
+            case .left:
+                print("Swiped left")
+            default:
+                break
+            }
+        }
+    }
+    
+    
+    
+    func loadHomeTVData() {
+        myMessageBar.delegate = self
+        HomeTV.keyboardDismissMode = .interactive
+        
+        let myCenter = NotificationCenter.default
+        myCenter.addObserver(self, selector: #selector(hideMyKeyBoard(note:)), name: UIResponder.keyboardWillHideNotification, object: nil)
+        
+        
+        HomeTV.delegate = self
+        HomeTV.dataSource = self
+        HomeTV.reloadData()
+        
+        moodMenu.anchorView = myfilterBTN
+    
+        self.HomeTV.rowHeight = 300
+    }
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(true)
@@ -98,6 +144,7 @@ class HomeViewController: UIViewController, InputBarAccessoryViewDelegate{
     //filling the "ProfileCollection" with data fetched from Back4App whenever view appears
     override func viewDidAppear(_ animated: Bool) {
    
+    
         
         print("in appear")
         self.myfilterBTN.setTitle("All", for: .normal)
@@ -227,6 +274,140 @@ class HomeViewController: UIViewController, InputBarAccessoryViewDelegate{
     }
     
     
+    
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        
+        return filteredProfileCollection.count
+    }
+    
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        
+        //holding one single specific profile in collection
+        let singleProfile = filteredProfileCollection[indexPath.row]
+        
+        
+        //creating a new cell to hold the profile
+        let myCell = HomeTV.dequeueReusableCell(withIdentifier: "HomeCellTableView") as! HomeCellTableView
+        
+        
+        //PartI: setup cell for display on HomeVC
+        let myMood = singleProfile["Mood"] as? String
+        myCell.moodLabel.text = myMood
+        myCell.emoji.image = UIImage(named: myMood!)
+        
+        myCell.statusHomeCell.text = singleProfile["Status"] as? String
+        
+        
+        myCell.firstNHomeCell.text = singleProfile["FirstN"] as? String
+        
+        let imageFile = singleProfile["Picture"] as! PFFileObject
+        let imgURL = imageFile.url!
+        let profileURL = URL(string: imgURL)!
+        myCell.imgHomeCell.af.setImage(withURL: profileURL)
+        
+        
+        let fetchedDate = singleProfile["Birthday"] as? Date
+        let ageNum = abs(Int(fetchedDate!.timeIntervalSinceNow/31556926.0))
+        myCell.ageCell.text = String(ageNum)
+
+        
+        //MARK: work on story pagination!
+        myCell.storyArray = singleProfile["Stories"] as? [String]
+       
+        let dummyData = ["PG1","PG2","PG3","PG4"]
+        
+        myCell.CellScrollV = UIScrollView(frame: CGRect(x: 0, y: 0, width: 320, height: 150))
+        myCell.CellScrollV.backgroundColor = UIColor.green
+        myCell.CellScrollV.indicatorStyle = .black
+        myCell.CellScrollV.showsHorizontalScrollIndicator = false
+        myCell.CellScrollV.delegate = self
+        
+        myCell.CellScrollV.showsVerticalScrollIndicator = true
+        myCell.CellScrollV.bounces = true
+        myCell.CellScrollV.isPagingEnabled = true
+        myCell.CellScrollV.contentSize = CGSize(width: 640, height: 30)
+        
+        
+        
+        
+        myCell.pgControl = UIPageControl(frame: CGRect(x: 0, y: 155, width: 320, height: 40))
+        
+        myCell.pgControl.numberOfPages = dummyData.count
+        myCell.pgControl.currentPage = 0
+        myCell.pgControl.backgroundColor = UIColor.red
+        myCell.pgControl.tintColor = UIColor.white
+        myCell.contentView.addSubview(myCell.pgControl)
+        
+        
+        //myCell.CellScrollV.addGestureRecognizer(swipeLeft)
+        //myCell.CellScrollV.addGestureRecognizer(swipeRight)
+        
+
+        
+        
+        
+        
+        //scrollViewDidEndDecelerating(myCell.CellScrollV)
+
+        
+        
+        for i in 0..<dummyData.count {
+            var frame = CGRect()
+            frame.origin.x = (myCell.CellScrollV.frame.size.width * CGFloat(i)) + 10
+            frame.origin.y = 0
+            frame.size = CGSize(width: myCell.CellScrollV.frame.size.width - 20, height: myCell.CellScrollV.frame.size.height)
+            
+            let cellLabelView = UILabel(frame: frame)
+            cellLabelView.text = dummyData[i]
+            //when frame puted into scroll veiw.
+            myCell.CellScrollV.addSubview(cellLabelView)
+            
+            //MARK: data source count!
+            let countNum = dummyData.count
+            let theWidth = Int(myCell.CellScrollV.frame.size.width) * countNum
+            let theHeight = Int(myCell.CellScrollV.frame.size.height)
+            
+            myCell.CellScrollV.contentSize = CGSize(width: theWidth, height: theHeight)
+        }
+        
+        
+        
+        
+        myCell.contentView.addSubview(myCell.CellScrollV)
+        
+        
+  
+        
+        //PartII: pass over information in cell for chatting btn (Table View Cell)
+        //need to know which profile is selected and access they keyboard appearance
+        myCell.cellProfile = singleProfile
+        myCell.homeVC = self
+        
+        
+        
+        return myCell
+    }
+    
+    
+    //MARK: DELETE!!
+    //only get called once when loading... can't update the dot
+    func scrollViewDidEndDecelerating(_ scrollView: UIScrollView) {
+        
+        //cell get swiped fxn
+        
+//        let pageWidth = CGFloat(scrollView.frame.size.width)
+//
+//        myCell.pgControl.currentPage = Int(scrollView.contentOffset.x) / Int(pageWidth)
+        
+        //print(myCell.firstNHomeCell.text)
+        
+        //print("Swipped")
+    }
+    
+    
+    
+    
+    
     func inputBar(_ inputBar: InputBarAccessoryView, didPressSendButtonWith text: String) {
         
     //Step1: create convo
@@ -312,7 +493,10 @@ class HomeViewController: UIViewController, InputBarAccessoryViewDelegate{
     
     
     
-
+    
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        self.HomeTV.deselectRow(at: indexPath, animated: true)
+    }
     
     
     override var inputAccessoryView: UIView?{
@@ -324,133 +508,6 @@ class HomeViewController: UIViewController, InputBarAccessoryViewDelegate{
      }
     
 
-    
-
-
-}
-
-extension HomeViewController: SkeletonTableViewDataSource {
-        
-        func startAnimations() {
-            // Start Skeleton
-            view.isSkeletonable = true
-            
-            animationView = .init(name: "flyingmachine")
-            // Set the size to the frame
-            animationView!.frame = view.bounds
-//            animationView!.frame = CGRect(x: view.frame.width / 3 , y: 156, width: 100, height: 100)
-
-            // fit the
-            animationView!.contentMode = .scaleAspectFit
-            view.addSubview(animationView!)
-            
-            // 4. Set animation loop mode
-            animationView!.loopMode = .loop
-
-            // Animation speed - Larger number = faste
-            animationView!.animationSpeed = 5
-
-            //  Play animation
-            animationView!.play()
-            
-        }
-        
-        @objc func stopAnimations() {
-            // ----- Stop Animation
-            animationView?.stop()
-            // ------ Change the subview to last and remove the current subview
-            view.subviews.last?.removeFromSuperview()
-            view.hideSkeleton()
-            refresh = false
-        }
-        
-        func collectionSkeletonView(_ skeletonView: UITableView, cellIdentifierForRowAt indexPath: IndexPath) -> ReusableCellIdentifier {
-            return "HomeCellTableView"
-        }
-        
-}
-
-extension HomeViewController: UITableViewDelegate, UITableViewDataSource {
-    
-    
-    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        
-        return filteredProfileCollection.count
-    }
-    
-    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        
-        //holding one single specific profile in collection
-        let singleProfile = filteredProfileCollection[indexPath.row]
-        
-        
-        //creating a new cell to hold the profile
-        let myCell = HomeTV.dequeueReusableCell(withIdentifier: "HomeCellTableView") as! HomeCellTableView
-        
-        
-        //PartI: setup cell for display on HomeVC
-        let myMood = singleProfile["Mood"] as? String
-        myCell.moodLabel.text = myMood
-        myCell.emoji.image = UIImage(named: myMood!)
-        
-        myCell.statusHomeCell.text = singleProfile["Status"] as? String
-        
-        
-        myCell.firstNHomeCell.text = singleProfile["FirstN"] as? String
-        
-        let imageFile = singleProfile["Picture"] as! PFFileObject
-        let imgURL = imageFile.url!
-        let profileURL = URL(string: imgURL)!
-        myCell.imgHomeCell.af.setImage(withURL: profileURL)
-        
-        
-        let fetchedDate = singleProfile["Birthday"] as? Date
-        let ageNum = abs(Int(fetchedDate!.timeIntervalSinceNow/31556926.0))
-        myCell.ageCell.text = String(ageNum)
-
-        
-        //MARK: work on story pagination!
-        myCell.storyArray = singleProfile["Stories"] as? [String]
-       
-        //let dummyData = ["PG1","PG2","PG3","PG4"]
-        
-
-        
-        //PartII: pass over information in cell for chatting btn (Table View Cell)
-        //need to know which profile is selected and access they keyboard appearance
-        myCell.cellProfile = singleProfile
-        myCell.homeVC = self
-        
-        if self.refresh{
-            myCell.showAnimatedSkeleton()
-        } else {
-            myCell.hideSkeleton()
-        }
-        
-        
-        return myCell
-    }
-    
-    func loadHomeTVData() {
-        myMessageBar.delegate = self
-        HomeTV.keyboardDismissMode = .interactive
-        
-        let myCenter = NotificationCenter.default
-        myCenter.addObserver(self, selector: #selector(hideMyKeyBoard(note:)), name: UIResponder.keyboardWillHideNotification, object: nil)
-        
-        
-        HomeTV.delegate = self
-        HomeTV.dataSource = self
-        HomeTV.reloadData()
-        
-        moodMenu.anchorView = myfilterBTN
-    
-        self.HomeTV.rowHeight = 300
-    }
-    
-    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        self.HomeTV.deselectRow(at: indexPath, animated: true)
-    }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         //for navigating to detail screen after a specific cell is tapped on
@@ -470,7 +527,6 @@ extension HomeViewController: UITableViewDelegate, UITableViewDataSource {
 
     }
 
-    
 }
 
 
