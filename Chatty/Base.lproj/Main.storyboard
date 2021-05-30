@@ -286,12 +286,16 @@
                                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                     <subviews>
                                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="fvg-7C-REU">
-                                                            <rect key="frame" x="99" y="54" width="42" height="21"/>
+                                                            <rect key="frame" x="23" y="22" width="42" height="21"/>
                                                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                             <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                             <nil key="textColor"/>
                                                             <nil key="highlightedColor"/>
                                                         </label>
+                                                        <pageControl opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" numberOfPages="3" translatesAutoresizingMaskIntoConstraints="NO" id="yAv-Os-8JJ">
+                                                            <rect key="frame" x="95" y="83" width="39" height="37"/>
+                                                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                        </pageControl>
                                                     </subviews>
                                                     <viewLayoutGuide key="contentLayoutGuide" id="BCg-Gh-EkM"/>
                                                     <viewLayoutGuide key="frameLayoutGuide" id="cmv-o2-uFQ"/>
@@ -307,6 +311,7 @@
                                             <outlet property="firstNHomeCell" destination="ChT-YU-2Rw" id="8mZ-PU-20z"/>
                                             <outlet property="imgHomeCell" destination="w8R-Y6-hIN" id="a0J-kp-5zG"/>
                                             <outlet property="moodLabel" destination="Io9-TJ-f7P" id="rZ0-lW-HUJ"/>
+                                            <outlet property="pgControl" destination="yAv-Os-8JJ" id="Nnv-Kk-n3B"/>
                                             <outlet property="statusHomeCell" destination="NnZ-3m-NVH" id="ZhQ-c5-nhZ"/>
                                             <outlet property="storytxtLabel" destination="fvg-7C-REU" id="TGT-v7-OeG"/>
                                         </connections>

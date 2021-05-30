@@ -288,14 +288,14 @@ class HomeViewController: UIViewController, UITableViewDelegate, UITableViewData
         
         //MARK: work on story pagination!
         myCell.storyArray = singleProfile["Stories"] as? [String]
-        
-     
-        
-        //myCell.configureMyPgViewController()
+       
         //let dummyData = ["PG1","PG2","PG3","PG4"]
         
-        //MARK: no need to pass in parameters anymore
-        //myCell.configureMyPgViewController(contentView: myCell.storyContentView, currentVCIndex: myCell.currentIndex,dataArray: dummyData)
+        
+        
+        
+        
+        
         
         
         

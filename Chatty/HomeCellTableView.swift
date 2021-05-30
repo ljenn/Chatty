@@ -32,9 +32,11 @@ class HomeCellTableView: UITableViewCell {
     
     @IBOutlet weak var storytxtLabel: UILabel!
     
+    @IBOutlet weak var pgControl: UIPageControl!
     
     var currentIndex = 0
     var storyArray: [String]?
+    var celltextLabel: UILabel?
     
     
     
@@ -67,7 +69,8 @@ class HomeCellTableView: UITableViewCell {
         // Initialization code
 
         
-        
+        CellScrollV.addSubview(storytxtLabel)
+    
         
         
     }
