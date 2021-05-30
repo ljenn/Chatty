@@ -17,11 +17,55 @@ class LoginViewController: UIViewController {
     @IBOutlet weak var tfPassword: UITextField!
     
     
+    @IBOutlet weak var kiteStackViewLogin: UIStackView!
+    
+
+    @IBOutlet weak var loginContainerConstraint: NSLayoutConstraint!
+    
+    @IBOutlet weak var loginStackViewConstraint: NSLayoutConstraint!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
 
         // Do any additional setup after loading the view.
-    }    
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        loginContainerConstraint.constant -= view.bounds.height
+        loginStackViewConstraint.constant -= view.bounds.height
+    }
+    
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(animated)
+        cloudAnimation()
+        
+        loginStackViewConstraint.constant = 0
+        UIView.animate(withDuration: 3.0) { [weak self] in
+          self?.view.layoutIfNeeded()
+        }
+        loginContainerConstraint.constant = 0
+        UIView.animate(withDuration: 3.0) { [weak self] in
+          self?.view.layoutIfNeeded()
+        }
+        
+        
+    }
+    
+    // Animation
+    
+    private func cloudAnimation() {
+      let options: UIView.AnimationOptions = [.curveEaseInOut, .repeat, .autoreverse]
+
+        UIView.animate(withDuration: 3.0,
+                       delay: 0,
+                       options: options,
+                       animations: { [weak self] in
+                        self?.kiteStackViewLogin.frame.size.height *= 1.15
+                        self?.kiteStackViewLogin.frame.size.width *= 1.15
+        }, completion: nil)
+    }
+    
     
     //Login with Parse function
     @IBAction func btnLogin(_ sender: Any) {
