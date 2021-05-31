@@ -14,6 +14,7 @@
 		047CF304265C8B1900C0F6C9 /* MakeProfileThreeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 047CF303265C8B1900C0F6C9 /* MakeProfileThreeViewController.swift */; };
 		0494A1D226275FB9007F8D66 /* EditProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0494A1D126275FB9007F8D66 /* EditProfileViewController.swift */; };
 		049852032628A7E100D523CF /* HomeCellTableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 049852022628A7E100D523CF /* HomeCellTableView.swift */; };
+		0498B6FC26654D5200612CD5 /* EditProfileCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0498B6FB26654D5200612CD5 /* EditProfileCollectionViewCell.swift */; };
 		049C889B26261E8B002508C1 /* ProfileTabViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 049C889A26261E8B002508C1 /* ProfileTabViewController.swift */; };
 		04F0084D2624F6850013D71E /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04F0084C2624F6850013D71E /* AppDelegate.swift */; };
 		04F0084F2624F6850013D71E /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04F0084E2624F6850013D71E /* SceneDelegate.swift */; };
@@ -59,6 +60,7 @@
 		047CF303265C8B1900C0F6C9 /* MakeProfileThreeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MakeProfileThreeViewController.swift; sourceTree = "<group>"; };
 		0494A1D126275FB9007F8D66 /* EditProfileViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditProfileViewController.swift; sourceTree = "<group>"; };
 		049852022628A7E100D523CF /* HomeCellTableView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeCellTableView.swift; sourceTree = "<group>"; };
+		0498B6FB26654D5200612CD5 /* EditProfileCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditProfileCollectionViewCell.swift; sourceTree = "<group>"; };
 		049C889A26261E8B002508C1 /* ProfileTabViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileTabViewController.swift; sourceTree = "<group>"; };
 		04F008492624F6850013D71E /* Chatty.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Chatty.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		04F0084C2624F6850013D71E /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -144,7 +146,6 @@
 		04F0084B2624F6850013D71E /* Chatty */ = {
 			isa = PBXGroup;
 			children = (
-				049C889A26261E8B002508C1 /* ProfileTabViewController.swift */,
 				04F0084C2624F6850013D71E /* AppDelegate.swift */,
 				04F0084E2624F6850013D71E /* SceneDelegate.swift */,
 				04F008522624F6850013D71E /* Main.storyboard */,
@@ -153,6 +154,10 @@
 				041A8D47265F12C800B1CC47 /* CheckProfileViewController.swift */,
 				0435A9B5262A3FB90064CDA4 /* ConvoViewController.swift */,
 				0494A1D126275FB9007F8D66 /* EditProfileViewController.swift */,
+				049C889A26261E8B002508C1 /* ProfileTabViewController.swift */,
+				0498B6FB26654D5200612CD5 /* EditProfileCollectionViewCell.swift */,
+				25201EBF2663605F008A5CC1 /* SelfProfileStoryCollectionViewCell.swift */,
+				25201EBA26635CC2008A5CC1 /* Story.swift */,
 				04F008822625677C0013D71E /* MakeProfileViewController.swift */,
 				047CF301265C77F800C0F6C9 /* MakeProfileTwoViewController.swift */,
 				047CF303265C8B1900C0F6C9 /* MakeProfileThreeViewController.swift */,
@@ -163,8 +168,6 @@
 				04F008572624F6860013D71E /* LaunchScreen.storyboard */,
 				04F0085A2624F6860013D71E /* Info.plist */,
 				25B3E5282662DB92000F7087 /* LaunchScreenViewController.swift */,
-				25201EBA26635CC2008A5CC1 /* Story.swift */,
-				25201EBF2663605F008A5CC1 /* SelfProfileStoryCollectionViewCell.swift */,
 			);
 			path = Chatty;
 			sourceTree = "<group>";
@@ -457,6 +460,7 @@
 				0435A9B6262A3FB90064CDA4 /* ConvoViewController.swift in Sources */,
 				049C889B26261E8B002508C1 /* ProfileTabViewController.swift in Sources */,
 				25201EBB26635CC2008A5CC1 /* Story.swift in Sources */,
+				0498B6FC26654D5200612CD5 /* EditProfileCollectionViewCell.swift in Sources */,
 				04F0087D2624FBC50013D71E /* LoginViewController.swift in Sources */,
 				25201EC02663605F008A5CC1 /* SelfProfileStoryCollectionViewCell.swift in Sources */,
 				04F0084D2624F6850013D71E /* AppDelegate.swift in Sources */,

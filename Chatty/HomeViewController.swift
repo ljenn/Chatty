@@ -55,9 +55,6 @@ class HomeViewController: UIViewController, UITableViewDelegate, UITableViewData
 
     
     
-    let swipeRight = UISwipeGestureRecognizer(target: self, action: #selector(respondToSwipeGesture))
-    let swipeLeft = UISwipeGestureRecognizer(target: self, action: #selector(respondToSwipeGesture))
-    
 
     
     
@@ -81,9 +78,7 @@ class HomeViewController: UIViewController, UITableViewDelegate, UITableViewData
         moodMenu.anchorView = myfilterBTN
         
 
-        //Gesture not working?!
-        swipeRight.direction = .right
-        swipeLeft.direction = .left
+
 
 
         self.HomeTV.rowHeight = 300
@@ -99,47 +94,32 @@ class HomeViewController: UIViewController, UITableViewDelegate, UITableViewData
     }
     
     
-    @objc func respondToSwipeGesture(gesture: UIGestureRecognizer) {
-
-        if let swipeGesture = gesture as? UISwipeGestureRecognizer {
-
-            switch swipeGesture.direction {
-            case .right:
-                print("Swiped right")
-            case .left:
-                print("Swiped left")
-            default:
-                break
-            }
-        }
-    }
     
     
     
-    func loadHomeTVData() {
-        myMessageBar.delegate = self
-        HomeTV.keyboardDismissMode = .interactive
-        
-        let myCenter = NotificationCenter.default
-        myCenter.addObserver(self, selector: #selector(hideMyKeyBoard(note:)), name: UIResponder.keyboardWillHideNotification, object: nil)
-        
-        
-        HomeTV.delegate = self
-        HomeTV.dataSource = self
-        HomeTV.reloadData()
-        
-        moodMenu.anchorView = myfilterBTN
-    
-        self.HomeTV.rowHeight = 300
-    }
+//    func loadHomeTVData() {
+//        myMessageBar.delegate = self
+//        HomeTV.keyboardDismissMode = .interactive
+//
+//        let myCenter = NotificationCenter.default
+//        myCenter.addObserver(self, selector: #selector(hideMyKeyBoard(note:)), name: UIResponder.keyboardWillHideNotification, object: nil)
+//
+//
+//        HomeTV.delegate = self
+//        HomeTV.dataSource = self
+//        HomeTV.reloadData()
+//
+//        moodMenu.anchorView = myfilterBTN
+//
+//        self.HomeTV.rowHeight = 300
+//    }
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(true)
-        loadHomeTVData()
+        //loadHomeTVData()
         HomeTV?.reloadData()
         
-        swipeRight.direction = .right
-        swipeLeft.direction = .left
+
     }
     
     
@@ -148,6 +128,9 @@ class HomeViewController: UIViewController, UITableViewDelegate, UITableViewData
     override func viewDidAppear(_ animated: Bool) {
    
     
+//        swipeRight.direction = .right
+//        swipeLeft.direction = .left
+        
         
         print("in appear")
         self.myfilterBTN.setTitle("All", for: .normal)
@@ -222,7 +205,7 @@ class HomeViewController: UIViewController, UITableViewDelegate, UITableViewData
 
     
     func filterOutFriend(){
-        print("in friend filter")
+       
         
         //looking up current user's profile to check friend's list.
         let friendListquery = PFQuery(className: "Profile")
@@ -349,10 +332,10 @@ class HomeViewController: UIViewController, UITableViewDelegate, UITableViewData
 
         myCell.pgControl.numberOfPages = myCell.storyArray.count ?? 0
         myCell.pgControl.currentPage = 0
-        myCell.pgControl.backgroundColor = UIColor.red
-        myCell.pgControl.tintColor = UIColor.white
-//        myCell.pgControl.backgroundColor = UIColor.clear
-//        myCell.pgControl.tintColor = UIColor.clear
+//        myCell.pgControl.backgroundColor = UIColor.red
+//        myCell.pgControl.tintColor = UIColor.white
+        myCell.pgControl.backgroundColor = UIColor.clear
+        myCell.pgControl.tintColor = UIColor.clear
         myCell.contentView.addSubview(myCell.pgControl)
 
 
@@ -412,22 +395,9 @@ class HomeViewController: UIViewController, UITableViewDelegate, UITableViewData
 
             myCell.CellScrollV.contentSize = CGSize(width: theWidth, height: theHeight)
 
-//            cellLabelView.addGestureRecognizer(swipeRight)
-//            cellLabelView.addGestureRecognizer(swipeLeft)
-
         }
 
-//        myCell.contentView.addGestureRecognizer(swipeRight)
-//        myCell.contentView.addGestureRecognizer(swipeLeft)
 
-
-//        myCell.CellScrollV.addGestureRecognizer(swipeRight)
-//        myCell.CellScrollV.addGestureRecognizer(swipeLeft)
-
-//        myCell.pgControl.addGestureRecognizer(swipeRight)
-//        myCell.pgControl.addGestureRecognizer(swipeLeft)
-        myCell.addGestureRecognizer(swipeRight)
-        myCell.addGestureRecognizer(swipeLeft)
 
 
         myCell.contentView.addSubview(myCell.CellScrollV)

@@ -31,6 +31,9 @@ class EditProfileViewController: UIViewController, UIImagePickerControllerDelega
     
     @IBOutlet weak var status: UITextField!
     
+    var storiesArray = Story.getStories()
+    
+    @IBOutlet weak var editCollectionView: UICollectionView!
     
     let moodMenu: DropDown = {
         let moodMenu = DropDown()
@@ -55,6 +58,8 @@ class EditProfileViewController: UIViewController, UIImagePickerControllerDelega
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        editCollectionView.dataSource = self
         
         let gesture = UITapGestureRecognizer(target: self, action: #selector(didTapMenu))
         gesture.numberOfTouchesRequired = 1
@@ -197,4 +202,22 @@ class EditProfileViewController: UIViewController, UIImagePickerControllerDelega
     }
     */
 
+}
+
+
+extension EditProfileViewController: UICollectionViewDataSource {
+    
+    func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
+        return storiesArray.count
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
+        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "EditProfileCollectionViewCell", for: indexPath) as! EditProfileCollectionViewCell
+        let story = storiesArray[indexPath.item]
+        
+        cell.story = story
+        
+        return cell
+    }
+    
 }
