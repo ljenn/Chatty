@@ -31,7 +31,7 @@ class EditProfileViewController: UIViewController, UIImagePickerControllerDelega
     
     @IBOutlet weak var status: UITextField!
     
-    var storiesArray = Story.getStories()
+    var edStoriesArray = EditStory.getedStories()
     
     @IBOutlet weak var editCollectionView: UICollectionView!
     
@@ -210,14 +210,14 @@ class EditProfileViewController: UIViewController, UIImagePickerControllerDelega
 extension EditProfileViewController: UICollectionViewDataSource {
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return storiesArray.count
+        return edStoriesArray.count
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "EditProfileCollectionViewCell", for: indexPath) as! EditProfileCollectionViewCell
-        let story = storiesArray[indexPath.item]
+        let edStory = edStoriesArray[indexPath.item]
         
-        cell.story = story
+        cell.edStory = edStory
         
         return cell
     }

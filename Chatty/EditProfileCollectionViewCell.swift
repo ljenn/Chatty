@@ -11,7 +11,6 @@ import UIKit
 class EditProfileCollectionViewCell: UICollectionViewCell {
     
     
-    
     @IBOutlet weak var editStoryTF: UITextField!
     
     @IBOutlet weak var editMenuView: UIView!
@@ -30,10 +29,10 @@ class EditProfileCollectionViewCell: UICollectionViewCell {
     }
     
     func updateUI() {
-        if let edStory = EditStory {
-            storyBackgroundColor.backgroundColor = edstory.color
-            editDropdownLabel.text = edstory.prompt
-            editStoryTF.text = story.storyContent
+        if let edStory = edStory {
+            storyBackgroundColor.backgroundColor = edStory.color
+            editDropdownLabel.text = edStory.prompt
+            editStoryTF.text = edStory.storyContent
         } else {
             storyBackgroundColor.backgroundColor = nil
             editDropdownLabel.text = nil
