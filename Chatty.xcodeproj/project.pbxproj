@@ -172,8 +172,8 @@
 		04F008622624F6870013D71E /* ChattyTests */ = {
 			isa = PBXGroup;
 			children = (
-				04F008632624F6870013D71E /* ChattyTests.swift */,
 				04F008652624F6870013D71E /* Info.plist */,
+				04F008632624F6870013D71E /* ChattyTests.swift */,
 			);
 			path = ChattyTests;
 			sourceTree = "<group>";
