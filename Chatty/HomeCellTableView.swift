@@ -30,25 +30,17 @@ class HomeCellTableView: UITableViewCell {
     
     @IBOutlet var CellScrollV: UIScrollView!
 
-    @IBOutlet weak var storytxtLabel: UILabel!
-
     @IBOutlet var pgControl: UIPageControl!
     
-    var currentIndex = 0
-    var storyArray: [String]?
-    var celltextLabel: UILabel?
+    var storyArray = [String]()
+    var promptArray = [String]()
     
     
-    
-    
-    //noNeed!!
-    //var userProfile = PFObject(className: "Profile")  //mine
+
     var cellProfile = PFObject(className: "Profile")  //friend's
     var homeVC: HomeViewController!
     var capturedTxt: String!
     
-    
-    var dummySource = ["PG1","PG2","PG3","PG4"]
     
     
 

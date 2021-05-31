@@ -42,7 +42,11 @@ class MakeProfileThreeViewController: UIViewController {
         //addedProfile["LastN"] = tfLast.text!
         addedProfile["Status"] = theStatus
         addedProfile["Mood"] = theMood
-        addedProfile.add(tfStory.text!,forKey: "Stories")   //the story field is an array
+        
+        //the story field is an array, but now chaning to String
+        //addedProfile.add(tfStory.text!,forKey: "Stories")
+        addedProfile["Story1"] = tfStory.text
+        
         addedProfile["owner"] = PFUser.current()!
         addedProfile["Picture"] = theImage
         addedProfile["Birthday"] = theDOB

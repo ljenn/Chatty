@@ -55,9 +55,6 @@ class HomeViewController: UIViewController, UITableViewDelegate, UITableViewData
 
     
     
-    let swipeRight = UISwipeGestureRecognizer(target: self, action: #selector(respondToSwipeGesture))
-    let swipeLeft = UISwipeGestureRecognizer(target: self, action: #selector(respondToSwipeGesture))
-    
 
     
     
@@ -81,9 +78,7 @@ class HomeViewController: UIViewController, UITableViewDelegate, UITableViewData
         moodMenu.anchorView = myfilterBTN
         
 
-        //Gesture not working?!
-        swipeRight.direction = .right
-        swipeLeft.direction = .left
+
 
 
         self.HomeTV.rowHeight = 300
@@ -99,44 +94,32 @@ class HomeViewController: UIViewController, UITableViewDelegate, UITableViewData
     }
     
     
-    @objc func respondToSwipeGesture(gesture: UIGestureRecognizer) {
-
-        if let swipeGesture = gesture as? UISwipeGestureRecognizer {
-
-            switch swipeGesture.direction {
-            case .right:
-                print("Swiped right")
-            case .left:
-                print("Swiped left")
-            default:
-                break
-            }
-        }
-    }
     
     
     
-    func loadHomeTVData() {
-        myMessageBar.delegate = self
-        HomeTV.keyboardDismissMode = .interactive
-        
-        let myCenter = NotificationCenter.default
-        myCenter.addObserver(self, selector: #selector(hideMyKeyBoard(note:)), name: UIResponder.keyboardWillHideNotification, object: nil)
-        
-        
-        HomeTV.delegate = self
-        HomeTV.dataSource = self
-        HomeTV.reloadData()
-        
-        moodMenu.anchorView = myfilterBTN
-    
-        self.HomeTV.rowHeight = 300
-    }
+//    func loadHomeTVData() {
+//        myMessageBar.delegate = self
+//        HomeTV.keyboardDismissMode = .interactive
+//
+//        let myCenter = NotificationCenter.default
+//        myCenter.addObserver(self, selector: #selector(hideMyKeyBoard(note:)), name: UIResponder.keyboardWillHideNotification, object: nil)
+//
+//
+//        HomeTV.delegate = self
+//        HomeTV.dataSource = self
+//        HomeTV.reloadData()
+//
+//        moodMenu.anchorView = myfilterBTN
+//
+//        self.HomeTV.rowHeight = 300
+//    }
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(true)
-        loadHomeTVData()
+        //loadHomeTVData()
         HomeTV?.reloadData()
+        
+
     }
     
     
@@ -145,6 +128,9 @@ class HomeViewController: UIViewController, UITableViewDelegate, UITableViewData
     override func viewDidAppear(_ animated: Bool) {
    
     
+//        swipeRight.direction = .right
+//        swipeLeft.direction = .left
+        
         
         print("in appear")
         self.myfilterBTN.setTitle("All", for: .normal)
@@ -219,7 +205,7 @@ class HomeViewController: UIViewController, UITableViewDelegate, UITableViewData
 
     
     func filterOutFriend(){
-        print("in friend filter")
+       
         
         //looking up current user's profile to check friend's list.
         let friendListquery = PFQuery(className: "Profile")
@@ -311,71 +297,112 @@ class HomeViewController: UIViewController, UITableViewDelegate, UITableViewData
         myCell.ageCell.text = String(ageNum)
 
         
-        //MARK: work on story pagination!
-        myCell.storyArray = singleProfile["Stories"] as? [String]
-       
-        let dummyData = ["PG1","PG2","PG3","PG4"]
+        
+        myCell.storyArray = []
+        myCell.promptArray = []
+        for i in 1...3 {
+            
+            let storyIndex = "Story" + String(i)
+            if (singleProfile[storyIndex] != nil && singleProfile[storyIndex] as! String != ""){
+                myCell.storyArray.append(singleProfile[storyIndex] as! String)
+            }
+            
+            let promptIndex = "Prompt" + String(i)
+            if (singleProfile[promptIndex] != nil && singleProfile[promptIndex] as! String != ""){
+                myCell.promptArray.append(singleProfile[promptIndex] as! String)
+            }
+        }
+     
         
         myCell.CellScrollV = UIScrollView(frame: CGRect(x: 0, y: 0, width: 320, height: 150))
-        myCell.CellScrollV.backgroundColor = UIColor.green
+        myCell.CellScrollV.backgroundColor = UIColor.lightGray
         myCell.CellScrollV.indicatorStyle = .black
         myCell.CellScrollV.showsHorizontalScrollIndicator = false
         myCell.CellScrollV.delegate = self
-        
+
         myCell.CellScrollV.showsVerticalScrollIndicator = true
         myCell.CellScrollV.bounces = true
         myCell.CellScrollV.isPagingEnabled = true
         myCell.CellScrollV.contentSize = CGSize(width: 640, height: 30)
-        
-        
-        
-        
+
+
+
+
         myCell.pgControl = UIPageControl(frame: CGRect(x: 0, y: 155, width: 320, height: 40))
-        
-        myCell.pgControl.numberOfPages = dummyData.count
+
+        myCell.pgControl.numberOfPages = myCell.storyArray.count ?? 0
         myCell.pgControl.currentPage = 0
-        myCell.pgControl.backgroundColor = UIColor.red
-        myCell.pgControl.tintColor = UIColor.white
+//        myCell.pgControl.backgroundColor = UIColor.red
+//        myCell.pgControl.tintColor = UIColor.white
+        myCell.pgControl.backgroundColor = UIColor.clear
+        myCell.pgControl.tintColor = UIColor.clear
         myCell.contentView.addSubview(myCell.pgControl)
-        
-        
-        //myCell.CellScrollV.addGestureRecognizer(swipeLeft)
-        //myCell.CellScrollV.addGestureRecognizer(swipeRight)
-        
 
-        
-        
-        
-        
-        //scrollViewDidEndDecelerating(myCell.CellScrollV)
 
-        
-        
-        for i in 0..<dummyData.count {
-            var frame = CGRect()
-            frame.origin.x = (myCell.CellScrollV.frame.size.width * CGFloat(i)) + 10
-            frame.origin.y = 0
-            frame.size = CGSize(width: myCell.CellScrollV.frame.size.width - 20, height: myCell.CellScrollV.frame.size.height)
-            
-            let cellLabelView = UILabel(frame: frame)
-            cellLabelView.text = dummyData[i]
-            //when frame puted into scroll veiw.
-            myCell.CellScrollV.addSubview(cellLabelView)
-            
-            //MARK: data source count!
-            let countNum = dummyData.count
+        for i in 0..<myCell.storyArray.count {
+
+            //MARK: change the frame layout here!!
+            //set up prompt label
+            var frame_prompt = CGRect()
+            frame_prompt.origin.x = (myCell.CellScrollV.frame.size.width * CGFloat(i)) + 10
+            frame_prompt.origin.y = 0
+            frame_prompt.size = CGSize(width: myCell.CellScrollV.frame.size.width - 20, height: (myCell.CellScrollV.frame.size.height) * 0.2)
+
+            let promptLableView = UILabel(frame: frame_prompt)
+
+            //label layout
+            promptLableView.lineBreakMode = .byWordWrapping
+            promptLableView.numberOfLines = 0
+            promptLableView.backgroundColor = .cyan
+
+            //hook up prompt data:
+            let txt_title = myCell.promptArray[i]
+            promptLableView.text = txt_title
+
+            //put frame into scroll veiw.
+            myCell.CellScrollV.addSubview(promptLableView)
+
+
+
+
+
+            //set up story label
+            var frame_story = CGRect()
+            frame_story.origin.x = (myCell.CellScrollV.frame.size.width * CGFloat(i)) + 10
+            frame_story.origin.y = (myCell.CellScrollV.frame.size.height) * 0.2
+            frame_story.size = CGSize(width: myCell.CellScrollV.frame.size.width - 20, height: (myCell.CellScrollV.frame.size.height) * 0.75)
+
+            //label data
+            let storyLableView = UILabel(frame: frame_story)
+            storyLableView.text = myCell.storyArray[i]
+
+            //hook up story data
+            storyLableView.lineBreakMode = .byWordWrapping
+            storyLableView.numberOfLines = 0
+            storyLableView.backgroundColor = .green
+
+            //put frame into scroll veiw.
+            myCell.CellScrollV.addSubview(storyLableView)
+
+
+
+
+
+            //MARK: update data source count!
+            let countNum = myCell.storyArray.count
             let theWidth = Int(myCell.CellScrollV.frame.size.width) * countNum
             let theHeight = Int(myCell.CellScrollV.frame.size.height)
-            
+
             myCell.CellScrollV.contentSize = CGSize(width: theWidth, height: theHeight)
+
         }
-        
-        
-        
-        
+
+
+
+
         myCell.contentView.addSubview(myCell.CellScrollV)
-        
-        
+
+
   
         
         //PartII: pass over information in cell for chatting btn (Table View Cell)

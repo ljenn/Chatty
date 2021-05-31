@@ -20,6 +20,11 @@ class Story {
     }
     
     static func getStories() -> [Story] {
+        
+        //get data;
+        //put data into var
+        //replace string in return array with variable
+        
         return [
             Story(color: UIColor.systemIndigo, prompt: "greatest day ever", storyContent: "greatest day? lol i dont have any jk i just honestly cant remember right now so idk"),
             Story(color: UIColor.systemBlue, prompt: "worst day ever", storyContent: "well thinking of prompts is honestly super hard. i want to watch tv and eat and sleep. yup."),
