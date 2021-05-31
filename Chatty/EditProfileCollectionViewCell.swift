@@ -23,16 +23,16 @@ class EditProfileCollectionViewCell: UICollectionViewCell {
     @IBOutlet weak var storyBackgroundColor: UIView!
     
     
-    var story: Story! {
+    var edStory: EditStory! {
         didSet {
             self.updateUI()
         }
     }
     
     func updateUI() {
-        if let story = story {
-            storyBackgroundColor.backgroundColor = story.color
-            editDropdownLabel.text = story.prompt
+        if let edStory = EditStory {
+            storyBackgroundColor.backgroundColor = edstory.color
+            editDropdownLabel.text = edstory.prompt
             editStoryTF.text = story.storyContent
         } else {
             storyBackgroundColor.backgroundColor = nil
