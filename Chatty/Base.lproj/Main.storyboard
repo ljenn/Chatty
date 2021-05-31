@@ -860,28 +860,29 @@
                                 </connections>
                             </button>
                             <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" fixedFrame="YES" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="VVe-j1-TAf">
-                                <rect key="frame" x="26" y="502" width="368" height="211"/>
+                                <rect key="frame" x="0.0" y="369" width="414" height="400"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
-                                <collectionViewFlowLayout key="collectionViewLayout" automaticEstimatedItemSize="YES" minimumLineSpacing="10" minimumInteritemSpacing="10" id="fdG-iu-VUa">
-                                    <size key="itemSize" width="243" height="158"/>
+                                <collectionViewFlowLayout key="collectionViewLayout" scrollDirection="horizontal" minimumLineSpacing="30" minimumInteritemSpacing="20" id="fdG-iu-VUa">
+                                    <size key="itemSize" width="243" height="334"/>
+                                    <size key="estimatedItemSize" width="200" height="200"/>
                                     <size key="headerReferenceSize" width="0.0" height="0.0"/>
                                     <size key="footerReferenceSize" width="0.0" height="0.0"/>
-                                    <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
+                                    <inset key="sectionInset" minX="10" minY="0.0" maxX="10" maxY="0.0"/>
                                 </collectionViewFlowLayout>
-                                <view key="backgroundView" contentMode="scaleToFill" id="pBF-mY-Dth">
-                                    <rect key="frame" x="0.0" y="0.0" width="368" height="211"/>
-                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                    <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
-                                </view>
                                 <cells>
                                     <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" restorationIdentifier="EditProfileCollectionViewCell" reuseIdentifier="EditProfileCollectionViewCell" id="Bg1-sS-sIM" customClass="EditProfileCollectionViewCell" customModule="Chatty" customModuleProvider="target">
-                                        <rect key="frame" x="62.5" y="0.0" width="243" height="158"/>
+                                        <rect key="frame" x="10" y="33" width="243" height="334"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         <collectionViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" id="Mb0-gC-HPY">
-                                            <rect key="frame" x="0.0" y="0.0" width="243" height="158"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="243" height="334"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
+                                                <view contentMode="scaleToFill" id="pBF-mY-Dth">
+                                                    <rect key="frame" x="-85.5" y="-121" width="414" height="400"/>
+                                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                    <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                                                </view>
                                                 <textField opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="storytxtField" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="Llp-GD-KVB">
                                                     <rect key="frame" x="8" y="93" width="109" height="34"/>
                                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
@@ -908,7 +909,7 @@
                                                 </view>
                                             </subviews>
                                         </collectionViewCellContentView>
-                                        <size key="customSize" width="243" height="158"/>
+                                        <size key="customSize" width="243" height="334"/>
                                         <connections>
                                             <outlet property="editDropdownLabel" destination="bU7-XZ-KUh" id="gP6-lV-eAx"/>
                                             <outlet property="editEmojiIMG" destination="PsG-A1-yBW" id="RCo-nC-pe5"/>
