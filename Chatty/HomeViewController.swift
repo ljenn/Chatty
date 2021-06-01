@@ -13,9 +13,11 @@ import DropDown
 import InputBarAccessoryView
 
 
-class HomeViewController: UIViewController, UITableViewDelegate, UITableViewDataSource,InputBarAccessoryViewDelegate{
+class HomeViewController: UIViewController, UICollectionViewDataSource, UICollectionViewDelegate,InputBarAccessoryViewDelegate {
+    
 
     
+    @IBOutlet weak var homeCollectionView: UICollectionView!
     
     let myMessageBar = InputBarAccessoryView()
     
@@ -38,7 +40,6 @@ class HomeViewController: UIViewController, UITableViewDelegate, UITableViewData
         moodMenu.show()
     }
     
-    @IBOutlet weak var HomeTV: UITableView!
     
 
     let moodMenu: DropDown = {
@@ -65,23 +66,26 @@ class HomeViewController: UIViewController, UITableViewDelegate, UITableViewData
         viewDidAppear(true)
         
         myMessageBar.delegate = self
-        HomeTV.keyboardDismissMode = .interactive
+        homeCollectionView.keyboardDismissMode = .interactive
 
         let myCenter = NotificationCenter.default
         myCenter.addObserver(self, selector: #selector(hideMyKeyBoard(note:)), name: UIResponder.keyboardWillHideNotification, object: nil)
 
 
-        HomeTV.delegate = self
-        HomeTV.dataSource = self
-        HomeTV.reloadData()
+        homeCollectionView.delegate = self
+        homeCollectionView.dataSource = self
+        homeCollectionView.reloadData()
 
         moodMenu.anchorView = myfilterBTN
         
 
 
 
+        // idk if i shoulda commented this out:
+//        self.homeCollectionView. = 300
+        //self.homeCollectionView.rowHeight = 300
 
-        self.HomeTV.rowHeight = 300
+
         
         //loadHomeTVData()
         
@@ -117,7 +121,7 @@ class HomeViewController: UIViewController, UITableViewDelegate, UITableViewData
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(true)
         //loadHomeTVData()
-        HomeTV?.reloadData()
+        homeCollectionView?.reloadData()
         
 
     }
@@ -154,7 +158,7 @@ class HomeViewController: UIViewController, UITableViewDelegate, UITableViewData
                 //will filter for both collections
                 self.filterOutFriend()
                 
-                self.HomeTV.reloadData()
+                self.homeCollectionView.reloadData()
                 
 
                 
@@ -186,7 +190,7 @@ class HomeViewController: UIViewController, UITableViewDelegate, UITableViewData
                         }
                     }
 
-                    self.HomeTV.reloadData()
+                    self.homeCollectionView.reloadData()
                 
                 }
                 
@@ -195,7 +199,7 @@ class HomeViewController: UIViewController, UITableViewDelegate, UITableViewData
                 print("Error getting result from database: \(error?.localizedDescription)")
             }
         }
-        HomeTV.reloadData()
+        homeCollectionView.reloadData()
     
 
         
@@ -236,7 +240,7 @@ class HomeViewController: UIViewController, UITableViewDelegate, UITableViewData
                 }
             }
 
-        self.HomeTV.reloadData();
+        self.homeCollectionView.reloadData();
 
         }
 
@@ -260,20 +264,17 @@ class HomeViewController: UIViewController, UITableViewDelegate, UITableViewData
     }
     
     
-    
-    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        
+    func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         return filteredProfileCollection.count
     }
     
-    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        
+    func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         //holding one single specific profile in collection
         let singleProfile = filteredProfileCollection[indexPath.row]
         
         
         //creating a new cell to hold the profile
-        let myCell = HomeTV.dequeueReusableCell(withIdentifier: "HomeCellTableView") as! HomeCellTableView
+        let myCell = homeCollectionView.dequeueReusableCell(withReuseIdentifier: "HomeCollectionViewCell", for: indexPath) as! HomeCollectionViewCell
         
         
         //PartI: setup cell for display on HomeVC
@@ -313,8 +314,8 @@ class HomeViewController: UIViewController, UITableViewDelegate, UITableViewData
             }
         }
      
-        
-        myCell.CellScrollV = UIScrollView(frame: CGRect(x: 0, y: 0, width: 320, height: 150))
+        // was crashing
+        //myCell.CellScrollV = UIScrollView(frame: CGRect(x: 0, y: 0, width: 320, height: 150))
         myCell.CellScrollV.backgroundColor = UIColor.lightGray
         myCell.CellScrollV.indicatorStyle = .black
         myCell.CellScrollV.showsHorizontalScrollIndicator = false
@@ -327,10 +328,10 @@ class HomeViewController: UIViewController, UITableViewDelegate, UITableViewData
 
 
 
+        // was crashing
+//        myCell.pgControl = UIPageControl(frame: CGRect(x: 0, y: 155, width: 320, height: 40))
 
-        myCell.pgControl = UIPageControl(frame: CGRect(x: 0, y: 155, width: 320, height: 40))
-
-        myCell.pgControl.numberOfPages = myCell.storyArray.count ?? 0
+        myCell.pgControl.numberOfPages = myCell.storyArray.count //?? 0
         myCell.pgControl.currentPage = 0
 //        myCell.pgControl.backgroundColor = UIColor.red
 //        myCell.pgControl.tintColor = UIColor.white
@@ -414,6 +415,160 @@ class HomeViewController: UIViewController, UITableViewDelegate, UITableViewData
         
         return myCell
     }
+    
+//    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+//        
+//        return filteredProfileCollection.count
+//    }
+    
+//    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+//
+//        //holding one single specific profile in collection
+//        let singleProfile = filteredProfileCollection[indexPath.row]
+//
+//
+//        //creating a new cell to hold the profile
+//        let myCell = HomeTV.dequeueReusableCell(withIdentifier: "HomeCellTableView") as! HomeCellTableView
+//
+//
+//        //PartI: setup cell for display on HomeVC
+//        let myMood = singleProfile["Mood"] as? String
+//        myCell.moodLabel.text = myMood
+//        myCell.emoji.image = UIImage(named: myMood!)
+//
+//        myCell.statusHomeCell.text = singleProfile["Status"] as? String
+//
+//
+//        myCell.firstNHomeCell.text = singleProfile["FirstN"] as? String
+//
+//        let imageFile = singleProfile["Picture"] as! PFFileObject
+//        let imgURL = imageFile.url!
+//        let profileURL = URL(string: imgURL)!
+//        myCell.imgHomeCell.af.setImage(withURL: profileURL)
+//
+//
+//        let fetchedDate = singleProfile["Birthday"] as? Date
+//        let ageNum = abs(Int(fetchedDate!.timeIntervalSinceNow/31556926.0))
+//        myCell.ageCell.text = String(ageNum)
+//
+//
+//
+//        myCell.storyArray = []
+//        myCell.promptArray = []
+//        for i in 1...3 {
+//
+//            let storyIndex = "Story" + String(i)
+//            if (singleProfile[storyIndex] != nil && singleProfile[storyIndex] as! String != ""){
+//                myCell.storyArray.append(singleProfile[storyIndex] as! String)
+//            }
+//
+//            let promptIndex = "Prompt" + String(i)
+//            if (singleProfile[promptIndex] != nil && singleProfile[promptIndex] as! String != ""){
+//                myCell.promptArray.append(singleProfile[promptIndex] as! String)
+//            }
+//        }
+//
+//
+//        myCell.CellScrollV = UIScrollView(frame: CGRect(x: 0, y: 0, width: 320, height: 150))
+//        myCell.CellScrollV.backgroundColor = UIColor.lightGray
+//        myCell.CellScrollV.indicatorStyle = .black
+//        myCell.CellScrollV.showsHorizontalScrollIndicator = false
+//        myCell.CellScrollV.delegate = self
+//
+//        myCell.CellScrollV.showsVerticalScrollIndicator = true
+//        myCell.CellScrollV.bounces = true
+//        myCell.CellScrollV.isPagingEnabled = true
+//        myCell.CellScrollV.contentSize = CGSize(width: 640, height: 30)
+//
+//
+//
+//
+//        myCell.pgControl = UIPageControl(frame: CGRect(x: 0, y: 155, width: 320, height: 40))
+//
+//        myCell.pgControl.numberOfPages = myCell.storyArray.count ?? 0
+//        myCell.pgControl.currentPage = 0
+////        myCell.pgControl.backgroundColor = UIColor.red
+////        myCell.pgControl.tintColor = UIColor.white
+//        myCell.pgControl.backgroundColor = UIColor.clear
+//        myCell.pgControl.tintColor = UIColor.clear
+//        myCell.contentView.addSubview(myCell.pgControl)
+//
+//
+//        for i in 0..<myCell.storyArray.count {
+//
+//            //MARK: change the frame layout here!!
+//            //set up prompt label
+//            var frame_prompt = CGRect()
+//            frame_prompt.origin.x = (myCell.CellScrollV.frame.size.width * CGFloat(i)) + 10
+//            frame_prompt.origin.y = 0
+//            frame_prompt.size = CGSize(width: myCell.CellScrollV.frame.size.width - 20, height: (myCell.CellScrollV.frame.size.height) * 0.2)
+//
+//            let promptLableView = UILabel(frame: frame_prompt)
+//
+//            //label layout
+//            promptLableView.lineBreakMode = .byWordWrapping
+//            promptLableView.numberOfLines = 0
+//            promptLableView.backgroundColor = .cyan
+//
+//            //hook up prompt data:
+//            let txt_title = myCell.promptArray[i]
+//            promptLableView.text = txt_title
+//
+//            //put frame into scroll veiw.
+//            myCell.CellScrollV.addSubview(promptLableView)
+//
+//
+//
+//
+//
+//            //set up story label
+//            var frame_story = CGRect()
+//            frame_story.origin.x = (myCell.CellScrollV.frame.size.width * CGFloat(i)) + 10
+//            frame_story.origin.y = (myCell.CellScrollV.frame.size.height) * 0.2
+//            frame_story.size = CGSize(width: myCell.CellScrollV.frame.size.width - 20, height: (myCell.CellScrollV.frame.size.height) * 0.75)
+//
+//            //label data
+//            let storyLableView = UILabel(frame: frame_story)
+//            storyLableView.text = myCell.storyArray[i]
+//
+//            //hook up story data
+//            storyLableView.lineBreakMode = .byWordWrapping
+//            storyLableView.numberOfLines = 0
+//            storyLableView.backgroundColor = .green
+//
+//            //put frame into scroll veiw.
+//            myCell.CellScrollV.addSubview(storyLableView)
+//
+//
+//
+//
+//
+//            //MARK: update data source count!
+//            let countNum = myCell.storyArray.count
+//            let theWidth = Int(myCell.CellScrollV.frame.size.width) * countNum
+//            let theHeight = Int(myCell.CellScrollV.frame.size.height)
+//
+//            myCell.CellScrollV.contentSize = CGSize(width: theWidth, height: theHeight)
+//
+//        }
+//
+//
+//
+//
+//        myCell.contentView.addSubview(myCell.CellScrollV)
+//
+//
+//
+//
+//        //PartII: pass over information in cell for chatting btn (Table View Cell)
+//        //need to know which profile is selected and access they keyboard appearance
+//        myCell.cellProfile = singleProfile
+//        myCell.homeVC = self
+//
+//
+//
+//        return myCell
+//    }
     
     
     //MARK: DELETE!!
@@ -514,16 +669,18 @@ class HomeViewController: UIViewController, UITableViewDelegate, UITableViewData
         
     //MARK: Step4: reload data not working!!!!
         viewDidAppear(true)
-        HomeTV.reloadData()
+        homeCollectionView.reloadData()
     
     }
     
     
-    
-    
-    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        self.HomeTV.deselectRow(at: indexPath, animated: true)
+    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        self.homeCollectionView.deselectItem(at: indexPath, animated: true)
     }
+    // also idk if should comment this out but i did:
+//    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+//        self.homeCollectionView.deselectRow(at: indexPath, animated: true)
+//    }
     
     
     override var inputAccessoryView: UIView?{

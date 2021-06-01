@@ -40,7 +40,7 @@ class LoginViewController: UIViewController {
         UIView.animate(withDuration: 0.5) { [weak self] in
           self?.view.layoutIfNeeded()
         }
-        //kiteAnimation()
+        kiteAnimation()
     }
     
     // Animation
