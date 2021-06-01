@@ -19,10 +19,8 @@ class LoginViewController: UIViewController {
     
     @IBOutlet weak var kiteStackViewLogin: UIStackView!
     
-
-    @IBOutlet weak var loginContainerConstraint: NSLayoutConstraint!
-    
-    @IBOutlet weak var loginStackViewConstraint: NSLayoutConstraint!
+    @IBOutlet weak var loginInfo: UIView!
+    @IBOutlet weak var loginInfoConstraint: NSLayoutConstraint!
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -32,33 +30,26 @@ class LoginViewController: UIViewController {
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        loginContainerConstraint.constant -= view.bounds.height
-        loginStackViewConstraint.constant -= view.bounds.height
+        loginInfoConstraint.constant = -330
     }
     
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
-        cloudAnimation()
         
-        loginStackViewConstraint.constant = 0
-        UIView.animate(withDuration: 3.0) { [weak self] in
+        loginInfoConstraint.constant = 0
+        UIView.animate(withDuration: 0.5) { [weak self] in
           self?.view.layoutIfNeeded()
         }
-        loginContainerConstraint.constant = 0
-        UIView.animate(withDuration: 3.0) { [weak self] in
-          self?.view.layoutIfNeeded()
-        }
-        
-        
+        //kiteAnimation()
     }
     
     // Animation
     
-    private func cloudAnimation() {
+    private func kiteAnimation() {
       let options: UIView.AnimationOptions = [.curveEaseInOut, .repeat, .autoreverse]
 
         UIView.animate(withDuration: 3.0,
-                       delay: 0,
+                       delay: 3.0,
                        options: options,
                        animations: { [weak self] in
                         self?.kiteStackViewLogin.frame.size.height *= 1.15

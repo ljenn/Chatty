@@ -18,7 +18,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="center" translatesAutoresizingMaskIntoConstraints="NO" id="NuY-fh-GM2">
-                                <rect key="frame" x="0.0" y="121" width="414" height="400"/>
+                                <rect key="frame" x="0.0" y="64" width="414" height="400"/>
                                 <subviews>
                                     <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" image="kite_text" translatesAutoresizingMaskIntoConstraints="NO" id="YJQ-fE-GXS">
                                         <rect key="frame" x="107" y="0.0" width="200" height="200"/>
@@ -41,8 +41,9 @@
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <constraints>
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="NuY-fh-GM2" secondAttribute="trailing" id="W75-F5-BUa"/>
-                            <constraint firstAttribute="bottom" secondItem="NuY-fh-GM2" secondAttribute="bottom" constant="375" id="maP-To-6pR"/>
+                            <constraint firstItem="NuY-fh-GM2" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" constant="20" id="bb4-vB-5v1"/>
                             <constraint firstItem="NuY-fh-GM2" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" id="u8q-NN-PUq"/>
+                            <constraint firstItem="NuY-fh-GM2" firstAttribute="centerX" secondItem="Ze5-6b-2t3" secondAttribute="centerX" id="y2S-Ue-ktF"/>
                         </constraints>
                     </view>
                 </viewController>
