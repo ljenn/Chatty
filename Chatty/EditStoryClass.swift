@@ -34,17 +34,19 @@ class EditStory {
     }
 
     
-    
-    
-    static func getedStories() -> [EditStory] {
+    //with parameters
+    static func getedStories(prompt1: String, prompt2: String, prompt3: String, story1: String, story2: String, story3: String) -> [EditStory] {
         
         //get data;
         //put data into var
         //replace string in return array with variable
         
         return [
-            EditStory(color: UIColor.systemIndigo, prompt: "greatest day ever", storyContent: "greatest day? lol i dont have any jk i just honestly cant remember right now so idk"),
-            EditStory(color: UIColor.systemBlue, prompt: "worst day ever", storyContent: "well thinking of prompts is honestly super hard. i want to watch tv and eat and sleep. yup."),
-            EditStory(color: UIColor.systemGreen, prompt: "choose something", storyContent: "i choose bread!! and rice. carbs ftw yay!")]
+            EditStory(color: UIColor.systemIndigo, prompt: prompt1, storyContent: story1),
+            EditStory(color: UIColor.systemBlue, prompt: prompt2, storyContent: story2),
+            EditStory(color: UIColor.systemGreen, prompt: prompt3, storyContent: story3)]
     }
+    
+    
+
 }
