@@ -11,7 +11,7 @@ import UIKit
 class EditProfileCollectionViewCell: UICollectionViewCell {
     
     
-    @IBOutlet weak var editStoryTF: UITextField!
+    @IBOutlet weak var editStoryTF: UITextView!
     
     @IBOutlet weak var editMenuView: UIView!
     
@@ -21,6 +21,7 @@ class EditProfileCollectionViewCell: UICollectionViewCell {
     
     @IBOutlet weak var storyBackgroundColor: UIView!
     
+    @IBOutlet weak var saveStoryButton: UIButton!
     
     var edStory: EditStory! {
         didSet {
