@@ -28,8 +28,11 @@ class EditProfileViewController: UIViewController, UIImagePickerControllerDelega
     
     @IBOutlet weak var status: UITextField!
     
-    //var edStoriesArray = EditStory.getedStories()
+    
     var edStoriesArray = [EditStory]()
+    
+    var savingStoryAtIndex: Int!
+    
     
     @IBOutlet weak var editCollectionView: UICollectionView!
     
@@ -95,6 +98,7 @@ class EditProfileViewController: UIViewController, UIImagePickerControllerDelega
                 self.editImage.af.setImage(withURL: ProfileImgURL)
                 
                 //get data for collection view
+                //more efficient way?
                 var pmp1: String
                 if myProfile["Prompt1"] != nil{
                     pmp1 = myProfile["Prompt1"] as! String
@@ -149,7 +153,6 @@ class EditProfileViewController: UIViewController, UIImagePickerControllerDelega
 
     @IBAction func btnSave(_ sender: Any) {
         
-        
         //once user hit submit button, use the data text entries and save changes to database
         let query = PFQuery(className: "Profile")
         query.includeKey("owner")
@@ -168,34 +171,6 @@ class EditProfileViewController: UIViewController, UIImagePickerControllerDelega
                 let myImageData = self.editImage.image?.pngData()
                 let myImageFile = PFFileObject(name: "Picture.png", data: myImageData!)
                 profileToUpdate["Picture"] = myImageFile
-                
-                
-                //MARK: save stories in each collection view cell to data base
-                                
-                                
-                                
-                for i in 0...2{
-                    let index = IndexPath.init(row: i, section: 0)
-                    if(self.editCollectionView.cellForItem(at: index) != nil){
-                        let cell = self.editCollectionView.cellForItem(at: index) as! EditProfileCollectionViewCell
-                        
-                    }
-                }
-                                
-                //
-                //                print(cellONE.editStoryTF.text)
-                //
-                //                let indexTWO = IndexPath.init(row: 1, section: 0)
-                //                let cellTWO = self.editCollectionView.cellForItem(at: indexTWO) as! EditProfileCollectionViewCell
-                //                print(cellTWO.editStoryTF.text)
-                //
-                //
-                //                let indexTHREE = IndexPath.init(row: 2, section: 0)
-                //                let cellTHREE = self.editCollectionView.cellForItem(at: indexTHREE) as! EditProfileCollectionViewCell
-                //                print(cellTHREE.editStoryTF.text)
-                
-                
-                
                 
                 profileToUpdate.saveInBackground()
                 self.view.makeToast("Profile Updated!")
@@ -282,8 +257,13 @@ extension EditProfileViewController: UICollectionViewDataSource {
         let edStory = edStoriesArray[indexPath.item]
         
         cell.edStory = edStory
+        cell.myIndex = indexPath.item
+        cell.parentVC = self
+        
         
         return cell
     }
+
+    
     
 }

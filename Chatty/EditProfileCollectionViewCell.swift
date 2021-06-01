@@ -7,6 +7,8 @@
 //
 
 import UIKit
+import Parse
+import Toast_Swift
 
 class EditProfileCollectionViewCell: UICollectionViewCell {
     
@@ -24,13 +26,67 @@ class EditProfileCollectionViewCell: UICollectionViewCell {
     @IBOutlet weak var saveStoryButton: UIButton!
     
     
-    
-    
+    var myIndex: Int!
+    var parentVC: EditProfileViewController!
     
     
     
     
     @IBAction func uponSavingStory(_ sender: Any) {
+ 
+        //query then save into in corresponding column(index)
+        
+        let query = PFQuery(className: "Profile")
+        query.includeKey("owner")
+        query.whereKey("owner", equalTo: PFUser.current() as Any)
+
+        query.findObjectsInBackground { (ProfileArray, error) in
+            if ProfileArray != nil{
+                let profileToUpdate = ProfileArray![0]
+                
+                
+                //Step1: record story
+                let storyText = self.editStoryTF.text
+                let promtText = self.editDropdownLabel.text
+                
+                switch self.myIndex {
+                    case 0:
+                        profileToUpdate["Story1"] = storyText
+                        profileToUpdate["Prompt1"] = promtText
+                    
+                    case 1:
+                        profileToUpdate["Story2"] = storyText
+                        profileToUpdate["Prompt2"] = promtText
+                    case 2:
+                        profileToUpdate["Story3"] = storyText
+                        profileToUpdate["Prompt3"] = promtText
+                    default:
+                        self.parentVC.view.makeToast("Fail to update story!")
+                        break
+                }
+                
+                
+                //Step2: record other attributes
+                profileToUpdate["Status"] = self.parentVC.status.text
+                profileToUpdate["Mood"] = self.parentVC.moodLabel.text
+                
+                let myImageData = self.parentVC.editImage.image?.pngData()
+                let myImageFile = PFFileObject(name: "Picture.png", data: myImageData!)
+                profileToUpdate["Picture"] = myImageFile
+                
+                
+                profileToUpdate.saveInBackground()
+                self.parentVC.view.makeToast("Story Saved!") //essentially saving the whole profile, not only the story
+                
+                //update text in collection view
+                self.editStoryTF.text = storyText
+                self.parentVC.viewDidAppear(true)
+                self.parentVC.editCollectionView.reloadData()
+                
+                //MARK: todo reload updated data correctly
+        
+            }
+        }
     }
     
     
