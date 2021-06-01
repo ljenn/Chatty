@@ -31,7 +31,8 @@ class ProfileTabViewController: UIViewController {
     @IBOutlet weak var moodTXT: UILabel!
     @IBOutlet weak var storyCollectionView: UICollectionView!
     
-    var storiesArray = Story.getStories()
+//    var storiesArray = Story.getStories()
+    var storiesArray = [Story]()
     
     
     override func viewDidLoad() {
@@ -86,9 +87,38 @@ class ProfileTabViewController: UIViewController {
                 let imageURL = imageFile.url!
                 let ProfileImgURL = URL(string: imageURL)!
                 self.imgProfile.af.setImage(withURL: ProfileImgURL)
+                
+                
+                //fetch story data from database
+
+                var myStoryList = [String]()
+                var myPromptList = [String]()
+                
+                if myProfile["Story1"] != nil && myProfile["Story1"] as! String != "" {
+                    myStoryList.append(myProfile["Story1"] as! String)
+                    myPromptList.append(myProfile["Prompt1"] as! String)
+                }
+                
+                if myProfile["Story2"] != nil && myProfile["Story2"] as! String != "" {
+                    myStoryList.append(myProfile["Story2"] as! String)
+                    myPromptList.append(myProfile["Prompt2"] as! String)
+                }
+                
+                if myProfile["Story3"] != nil && myProfile["Story3"] as! String != "" {
+                    myStoryList.append(myProfile["Story3"] as! String)
+                    myPromptList.append(myProfile["Prompt3"] as! String)
+                }
+                
+                print(myStoryList)
+                print(myPromptList)
+                //pass in two lists for stories and prompt. 
+                self.storiesArray = Story.getedStories(promptList: myPromptList, storyList: myStoryList)
+                
+                
             }else{
                 print("Error fetching profile: \(error?.localizedDescription)")
             }
+            self.storyCollectionView.reloadData()
         }
     }
     

@@ -13,7 +13,7 @@ import InputBarAccessoryView
 class HomeCollectionViewCell: UICollectionViewCell {
     
     //each cell displays a profile on the home page (table of profiles) 
-    @IBOutlet weak var CellScrollV: UIScrollView!
+    @IBOutlet var CellScrollV: UIScrollView!
     @IBOutlet weak var imgHomeCell: UIImageView!
     @IBOutlet weak var chatBTN: UIButton!
     
@@ -39,7 +39,7 @@ class HomeCollectionViewCell: UICollectionViewCell {
 //    @IBOutlet var CellScrollV: UIScrollView!
 
 //    @IBOutlet var pgControl: UIPageControl!
-    @IBOutlet weak var pgControl: UIPageControl!
+    @IBOutlet var pgControl: UIPageControl!
     
     var storyArray = [String]()
     var promptArray = [String]()
@@ -77,7 +77,25 @@ class HomeCollectionViewCell: UICollectionViewCell {
         super.awakeFromNib()
         // Initialization code
 
-        //homeVC.scrollViewDidEndDecelerating(CellScrollV)
+//        CellScrollV = UIScrollView(frame: CGRect(x: 0, y: 0, width: 320, height: 150))
+//        CellScrollV.backgroundColor = UIColor.lightGray
+//        CellScrollV.indicatorStyle = .black
+//        CellScrollV.showsHorizontalScrollIndicator = false
+//        CellScrollV.delegate = homeVC
+//
+//        CellScrollV.showsVerticalScrollIndicator = true
+//        CellScrollV.bounces = true
+//        CellScrollV.isPagingEnabled = true
+//        CellScrollV.contentSize = CGSize(width: 640, height: 30)
+//        
+//        pgControl = UIPageControl(frame: CGRect(x: 0, y: 155, width: 320, height: 40))
+//        pgControl.numberOfPages = storyArray.count //?? 0
+//        pgControl.currentPage = 0
+////        myCell.pgControl.backgroundColor = UIColor.red
+////        myCell.pgControl.tintColor = UIColor.white
+//        pgControl.backgroundColor = UIColor.clear
+//        pgControl.tintColor = UIColor.clear
+//        contentView.addSubview(pgControl)
         
     }
 

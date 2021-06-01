@@ -64,26 +64,13 @@ class EditProfileCollectionViewCell: UICollectionViewCell {
                         self.parentVC.view.makeToast("Fail to update story!")
                         break
                 }
-                
-                
-                //Step2: record other attributes
-                profileToUpdate["Status"] = self.parentVC.status.text
-                profileToUpdate["Mood"] = self.parentVC.moodLabel.text
-                
-                let myImageData = self.parentVC.editImage.image?.pngData()
-                let myImageFile = PFFileObject(name: "Picture.png", data: myImageData!)
-                profileToUpdate["Picture"] = myImageFile
-                
-                
+               
                 profileToUpdate.saveInBackground()
                 self.parentVC.view.makeToast("Story Saved!") //essentially saving the whole profile, not only the story
                 
                 //update text in collection view
                 self.editStoryTF.text = storyText
-                self.parentVC.viewDidAppear(true)
-                self.parentVC.editCollectionView.reloadData()
                 
-                //MARK: todo reload updated data correctly
         
             }
         }

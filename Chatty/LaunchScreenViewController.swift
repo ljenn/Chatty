@@ -59,17 +59,17 @@ class LaunchScreenViewController: UIViewController {
         
         cloud5Constraint.constant += view.bounds.width * 1.2
 
-        UIView.animate(withDuration: 3.0, delay: 3.5, options: []) {
-            [weak self] in
-             self?.view.layoutIfNeeded()
-        }
-        
-        cloud2Constraint.constant -= view.bounds.width * 1.5
-
-        UIView.animate(withDuration: 3.5, delay: 3.8, options: []) {
-            [weak self] in
-             self?.view.layoutIfNeeded()
-        }
+//        UIView.animate(withDuration: 3.0, delay: 3.5, options: []) {
+//            [weak self] in
+//             self?.view.layoutIfNeeded()
+//        }
+//        
+//        cloud2Constraint.constant -= view.bounds.width * 1.5
+//
+//        UIView.animate(withDuration: 3.5, delay: 3.8, options: []) {
+//            [weak self] in
+//             self?.view.layoutIfNeeded()
+//        }
         
         cloud1Constraint.constant += view.bounds.width * 1.2
         

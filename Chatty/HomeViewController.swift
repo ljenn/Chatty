@@ -270,7 +270,8 @@ class HomeViewController: UIViewController, UICollectionViewDataSource, UICollec
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         //holding one single specific profile in collection
-        let singleProfile = filteredProfileCollection[indexPath.row]
+        //let singleProfile = filteredProfileCollection[indexPath.row]
+        let singleProfile = filteredProfileCollection[indexPath.item]
         
         
         //creating a new cell to hold the profile
@@ -316,6 +317,7 @@ class HomeViewController: UIViewController, UICollectionViewDataSource, UICollec
      
         // was crashing
         //myCell.CellScrollV = UIScrollView(frame: CGRect(x: 0, y: 0, width: 320, height: 150))
+        myCell.CellScrollV = UIScrollView()
         myCell.CellScrollV.backgroundColor = UIColor.lightGray
         myCell.CellScrollV.indicatorStyle = .black
         myCell.CellScrollV.showsHorizontalScrollIndicator = false
@@ -328,8 +330,9 @@ class HomeViewController: UIViewController, UICollectionViewDataSource, UICollec
 
 
 
-        // was crashing
-//        myCell.pgControl = UIPageControl(frame: CGRect(x: 0, y: 155, width: 320, height: 40))
+         //was crashing
+        //myCell.pgControl = UIPageControl(frame: CGRect(x: 0, y: 155, width: 320, height: 40))
+        myCell.pgControl = UIPageControl()
 
         myCell.pgControl.numberOfPages = myCell.storyArray.count //?? 0
         myCell.pgControl.currentPage = 0

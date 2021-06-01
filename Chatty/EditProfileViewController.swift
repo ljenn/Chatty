@@ -124,21 +124,21 @@ class EditProfileViewController: UIViewController, UIImagePickerControllerDelega
                 if myProfile["Story1"] != nil{
                     sty1 = myProfile["Story1"] as! String
                 }else{
-                    sty1 = "Enter Story 1"
+                    sty1 = "Enter Story 1..."
                 }
                 
                 var sty2: String
                 if myProfile["Story2"] != nil{
                     sty2 = myProfile["Story2"] as! String
                 }else{
-                    sty2 = "Enter Story 2"
+                    sty2 = "Enter Story 2..."
                 }
                 
                 var sty3: String
                 if myProfile["Story3"] != nil{
                     sty3 = myProfile["Story3"] as! String
                 }else{
-                    sty3 = "Enter Story 3"
+                    sty3 = "Enter Story 3..."
                 }
                 
                 self.edStoriesArray = EditStory.getedStories(prompt1: pmp1, prompt2: pmp2, prompt3: pmp3, story1: sty1, story2: sty2, story3: sty3)

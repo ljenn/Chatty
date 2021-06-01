@@ -34,7 +34,7 @@ class EditStory {
     }
 
     
-    //with parameters
+    //with parameters: will always have 3 columns for stories. 
     static func getedStories(prompt1: String, prompt2: String, prompt3: String, story1: String, story2: String, story3: String) -> [EditStory] {
         
         //get data;

@@ -19,15 +19,41 @@ class Story {
         self.storyContent = storyContent
     }
     
-    static func getStories() -> [Story] {
+    
+    //with parameters: stories are not necessarily 3, can be any count.
+    static func getedStories(promptList: [String], storyList: [String]) -> [Story] {
         
-        //get data;
-        //put data into var
-        //replace string in return array with variable
+        var storyObjects = [Story]()
         
-        return [
-            Story(color: UIColor.systemIndigo, prompt: "greatest day ever", storyContent: "greatest day? lol i dont have any jk i just honestly cant remember right now so idk"),
-            Story(color: UIColor.systemBlue, prompt: "worst day ever", storyContent: "well thinking of prompts is honestly super hard. i want to watch tv and eat and sleep. yup."),
-            Story(color: UIColor.systemGreen, prompt: "choose something", storyContent: "i choose bread!! and rice. carbs ftw yay!")]
+        for i in 0...storyList.count-1{
+            var cellColor = UIColor()
+            switch i {
+            case 0:
+                cellColor = UIColor.systemIndigo
+            case 1:
+                cellColor = UIColor.systemBlue
+            default:
+                cellColor = UIColor.systemGreen
+            }
+            
+            storyObjects.append(Story(color: cellColor, prompt: promptList[i], storyContent: storyList[i]))
+            
+        }
+        
+        return storyObjects
     }
+    
+    
+    
+//    static func getStories() -> [Story] {
+//
+//        //get data;
+//        //put data into var
+//        //replace string in return array with variable
+//
+//        return [
+//            Story(color: UIColor.systemIndigo, prompt: "greatest day ever", storyContent: "greatest day? lol i dont have any jk i just honestly cant remember right now so idk"),
+//            Story(color: UIColor.systemBlue, prompt: "worst day ever", storyContent: "well thinking of prompts is honestly super hard. i want to watch tv and eat and sleep. yup."),
+//            Story(color: UIColor.systemGreen, prompt: "choose something", storyContent: "i choose bread!! and rice. carbs ftw yay!")]
+//    }
 }
