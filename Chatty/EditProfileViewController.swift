@@ -28,7 +28,8 @@ class EditProfileViewController: UIViewController, UIImagePickerControllerDelega
     
     @IBOutlet weak var status: UITextField!
     
-    var edStoriesArray = EditStory.getedStories()
+    //var edStoriesArray = EditStory.getedStories()
+    var edStoriesArray = [EditStory]()
     
     @IBOutlet weak var editCollectionView: UICollectionView!
     
@@ -65,8 +66,16 @@ class EditProfileViewController: UIViewController, UIImagePickerControllerDelega
             self.emoji.image = UIImage(named: title)
         }
         
-        
-        
+
+       
+    }
+    
+    @objc func didTapMenu(){
+        moodMenu.show()
+    }
+    
+    override func viewDidAppear(_ animated: Bool) {
+                
         //fetch the user's profile info and use as default value in each field
         let query = PFQuery(className: "Profile")
         query.includeKey("owner")
@@ -85,16 +94,56 @@ class EditProfileViewController: UIViewController, UIImagePickerControllerDelega
                 let ProfileImgURL = URL(string: imageURL)!
                 self.editImage.af.setImage(withURL: ProfileImgURL)
                 
+                //get data for collection view
+                var pmp1: String
+                if myProfile["Prompt1"] != nil{
+                    pmp1 = myProfile["Prompt1"] as! String
+                }else{
+                    pmp1 = "Select Prompt1"
+                }
+                
+                var pmp2: String
+                if myProfile["Prompt2"] != nil{
+                    pmp2 = myProfile["Prompt2"] as! String
+                }else{
+                    pmp2 = "Select Prompt2"
+                }
+                
+                var pmp3: String
+                if myProfile["Prompt3"] != nil{
+                    pmp3 = myProfile["Prompt3"] as! String
+                }else{
+                    pmp3 = "Select Prompt3"
+                }
+                
+                var sty1: String
+                if myProfile["Story1"] != nil{
+                    sty1 = myProfile["Story1"] as! String
+                }else{
+                    sty1 = "Enter Story 1"
+                }
+                
+                var sty2: String
+                if myProfile["Story2"] != nil{
+                    sty2 = myProfile["Story2"] as! String
+                }else{
+                    sty2 = "Enter Story 2"
+                }
+                
+                var sty3: String
+                if myProfile["Story3"] != nil{
+                    sty3 = myProfile["Story3"] as! String
+                }else{
+                    sty3 = "Enter Story 3"
+                }
+                
+                self.edStoriesArray = EditStory.getedStories(prompt1: pmp1, prompt2: pmp2, prompt3: pmp3, story1: sty1, story2: sty2, story3: sty3)
+                
             }else{
                 print("Error fetching profile: \(error?.localizedDescription)")
             }
+            self.editCollectionView.reloadData()
         }
-
-       
-    }
-    
-    @objc func didTapMenu(){
-        moodMenu.show()
     }
     
 
@@ -119,6 +168,34 @@ class EditProfileViewController: UIViewController, UIImagePickerControllerDelega
                 let myImageData = self.editImage.image?.pngData()
                 let myImageFile = PFFileObject(name: "Picture.png", data: myImageData!)
                 profileToUpdate["Picture"] = myImageFile
+                
+                
+                //MARK: save stories in each collection view cell to data base
+                                
+                                
+                                
+                for i in 0...2{
+                    let index = IndexPath.init(row: i, section: 0)
+                    if(self.editCollectionView.cellForItem(at: index) != nil){
+                        let cell = self.editCollectionView.cellForItem(at: index) as! EditProfileCollectionViewCell
+                        
+                    }
+                }
+                                
+                //
+                //                print(cellONE.editStoryTF.text)
+                //
+                //                let indexTWO = IndexPath.init(row: 1, section: 0)
+                //                let cellTWO = self.editCollectionView.cellForItem(at: indexTWO) as! EditProfileCollectionViewCell
+                //                print(cellTWO.editStoryTF.text)
+                //
+                //
+                //                let indexTHREE = IndexPath.init(row: 2, section: 0)
+                //                let cellTHREE = self.editCollectionView.cellForItem(at: indexTHREE) as! EditProfileCollectionViewCell
+                //                print(cellTHREE.editStoryTF.text)
+                
+                
+                
                 
                 profileToUpdate.saveInBackground()
                 self.view.makeToast("Profile Updated!")
