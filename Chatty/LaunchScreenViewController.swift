@@ -11,46 +11,43 @@ import UIKit
 class LaunchScreenViewController: UIViewController {
     private var animate: Bool = false
     
-    @IBOutlet weak var topCloud: UIImageView!
-    @IBOutlet weak var bottomCloud: UIImageView!
-    @IBOutlet weak var kiteStackView: UIStackView!
+    @IBOutlet weak var cloud1: UIImageView!
+    @IBOutlet weak var cloud2: UIImageView!
+    @IBOutlet weak var cloud5: UIImageView!
     
-    @IBOutlet weak var topCloudConstraint: NSLayoutConstraint!
-    @IBOutlet weak var bottomCloudConstraint: NSLayoutConstraint!
+    @IBOutlet weak var cloud1Constraint: NSLayoutConstraint!
+    @IBOutlet weak var cloud2Constraint: NSLayoutConstraint!
+    @IBOutlet weak var cloud5Constraint: NSLayoutConstraint!
     
-    //    private let imageView: UIImageView = {
-//        let imageView = UIImageView(frame: CGRect(x: 0, y: 0, width: 150, height: 150))
-//        imageView.image = UIImage(named: "logo")
-//        return imageView
-//    }()
-    
+
     private func cloudAnimation() {
       let options: UIView.AnimationOptions = [.curveEaseInOut,
                                               .repeat,
                                               .autoreverse]
 
-//        UIView.animate(withDuration: 3.0,
-//                       delay: 0,
-//                       options: options,
-//                       animations: { [weak self] in
-//                        self?.kiteStackView.frame.size.height *= 1.15
-//                        self?.kiteStackView.frame.size.width *= 1.15
-//        }, completion: nil)
         
-      UIView.animate(withDuration: 2.9,
+        UIView.animate(withDuration: 4.0,
+                       delay: 0,
+                       options: options,
+                       animations: { [weak self] in
+                        self?.cloud5.frame.size.height *= 1.1
+                        self?.cloud5.frame.size.width *= 1.1
+        }, completion: nil)
+        
+      UIView.animate(withDuration: 4.0,
                      delay: 0,
                      options: options,
                      animations: { [weak self] in
-                      self?.bottomCloud.frame.size.height *= 1.18
-                      self?.bottomCloud.frame.size.width *= 1.18
+                        self?.cloud2.frame.size.height *= 0.8
+                        self?.cloud2.frame.size.width *= 0.8
       }, completion: nil)
 
-      UIView.animate(withDuration: 3.0,
+        UIView.animate(withDuration: 4.0,
                      delay: 0,
                      options: options,
                      animations: { [weak self] in
-                      self?.topCloud.frame.size.height *= 1.28
-                      self?.topCloud.frame.size.width *= 1.28
+                      self?.cloud1.frame.size.height *= 1.4
+                      self?.cloud1.frame.size.width *= 1.4
       }, completion: nil)
 
     }
@@ -58,18 +55,26 @@ class LaunchScreenViewController: UIViewController {
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
         
-        cloudAnimation()
+        //cloudAnimation()
         
-        bottomCloudConstraint.constant -= (view.bounds.width * 2.0)
+        cloud5Constraint.constant += view.bounds.width * 1.2
 
-//        UIView.animate(withDuration: 3.0, delay: 0) { [weak self] in
-//          self?.view.layoutIfNeeded()
-//        }
+        UIView.animate(withDuration: 3.0, delay: 3.5, options: []) {
+            [weak self] in
+             self?.view.layoutIfNeeded()
+        }
+        
+        cloud2Constraint.constant -= view.bounds.width * 1.5
 
-        topCloudConstraint.constant -= (view.bounds.width * 2.0)
-
+        UIView.animate(withDuration: 3.5, delay: 3.8, options: []) {
+            [weak self] in
+             self?.view.layoutIfNeeded()
+        }
+        
+        cloud1Constraint.constant += view.bounds.width * 1.2
+        
         UIView.animate(withDuration: 3.0,
-                       delay: 0,
+                       delay: 4.0,
                        options: [],
                        animations: { [weak self] in
                         self?.view.layoutIfNeeded()
@@ -77,22 +82,6 @@ class LaunchScreenViewController: UIViewController {
             self.performSegue(withIdentifier: "launchToLogin", sender: nil)
         }
         
-
-//        passwordTextFieldCenterConstraint.constant = 0
-//
-//
-//        UIView.animate(withDuration: 0.5,
-//                       delay: 0.4,
-//                       animations: { [weak self] in
-//                        self?.view.layoutIfNeeded()
-//          }, completion: nil)
-//
-//        UIView.animate(withDuration: 1,
-//                       delay: 1.2,
-//                       options: .curveEaseInOut,
-//                       animations: { [weak self] in
-//                        self?.loginButton.backgroundColor = .systemYellow
-//          }, completion: nil)
 
     }
 //
@@ -107,8 +96,6 @@ class LaunchScreenViewController: UIViewController {
     
     override func viewWillAppear(_ animated: Bool) {
       super.viewWillAppear(animated)
-        topCloudConstraint.constant += (view.bounds.width * 1.2)
-        bottomCloudConstraint.constant += (view.bounds.width * 1.2)
       
     }
 
