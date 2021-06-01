@@ -7,17 +7,34 @@
 //
 
 import UIKit
+import DropDown
 
 class EditStory {
     var prompt = ""
     var storyContent = ""
     var color: UIColor
     
+    let storyPromptMenu: DropDown = {
+        let storyPromptMenu = DropDown()
+        storyPromptMenu.dataSource = [
+            "ONE Prompt",
+            "TWO Prompt",
+            "THREE Prompt"
+        ]
+        return storyPromptMenu
+    }()
+    
+    
+
+    
     init(color: UIColor, prompt: String, storyContent: String) {
         self.color = color
         self.prompt = prompt
         self.storyContent = storyContent
     }
+
+    
+    
     
     static func getedStories() -> [EditStory] {
         
@@ -31,4 +48,3 @@ class EditStory {
             EditStory(color: UIColor.systemGreen, prompt: "choose something", storyContent: "i choose bread!! and rice. carbs ftw yay!")]
     }
 }
-

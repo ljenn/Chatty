@@ -23,6 +23,19 @@ class EditProfileCollectionViewCell: UICollectionViewCell {
     
     @IBOutlet weak var saveStoryButton: UIButton!
     
+    
+    
+    
+    
+    
+    
+    
+    @IBAction func uponSavingStory(_ sender: Any) {
+    }
+    
+    
+    
+    
     var edStory: EditStory! {
         didSet {
             self.updateUI()
@@ -42,7 +55,29 @@ class EditProfileCollectionViewCell: UICollectionViewCell {
         
         storyBackgroundColor.layer.cornerRadius = 20.0
         storyBackgroundColor.layer.masksToBounds = true
+        
+        
+        let gesture = UITapGestureRecognizer(target: self, action: #selector(didTapMenu))
+        gesture.numberOfTouchesRequired = 1
+        gesture.numberOfTapsRequired = 1
+        editMenuView.addGestureRecognizer(gesture)
+        
+        edStory.storyPromptMenu.anchorView = editMenuView
+        editMenuView.layer.borderWidth = 1
+        editMenuView.layer.borderColor = UIColor.systemTeal.cgColor
+        
+        edStory.storyPromptMenu.selectionAction = {index, title in
+                //print("index \(index) and \(title)")
+            self.edStory.prompt = title
+            self.updateUI()
+        }
+        
+        
 
+    }
+    
+    @objc func didTapMenu(){
+        edStory.storyPromptMenu.show()
     }
     
 }

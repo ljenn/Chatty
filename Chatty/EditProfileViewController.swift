@@ -15,9 +15,6 @@ import DropDown
 
 class EditProfileViewController: UIViewController, UIImagePickerControllerDelegate, UINavigationControllerDelegate{
     
-    @IBOutlet weak var editFirst: UITextField!
-    
-    @IBOutlet weak var editLast: UITextField!
     
     @IBOutlet weak var editImage: UIImageView!
     
@@ -45,15 +42,6 @@ class EditProfileViewController: UIViewController, UIImagePickerControllerDelega
         ]
         return moodMenu
     }()
-    
-    let storyPromptMenu: DropDown = {
-        let storyPromptMenu = DropDown()
-        storyPromptMenu.dataSource = [
-            "tell me your best story",
-        ]
-        return storyPromptMenu
-    }()
-
     
     
     
@@ -86,8 +74,6 @@ class EditProfileViewController: UIViewController, UIImagePickerControllerDelega
         query.findObjectsInBackground { (ArrayOfProfiles, error) in
             if ArrayOfProfiles != nil{
                 let myProfile = ArrayOfProfiles![0]
-                self.editFirst.text = myProfile["FirstN"] as? String
-                self.editLast.text = myProfile["LastN"] as? String
                 self.status.text = myProfile["Status"] as? String
                 
                 let emojiText = myProfile["Mood"] as? String
@@ -125,8 +111,8 @@ class EditProfileViewController: UIViewController, UIImagePickerControllerDelega
                 let profileToUpdate = ProfileArray![0]
                 
                 
-                profileToUpdate["FirstN"] = self.editFirst.text
-                profileToUpdate["LastN"] = self.editLast.text
+//                profileToUpdate["FirstN"] = self.editFirst.text
+//                profileToUpdate["LastN"] = self.editLast.text
                 profileToUpdate["Status"] = self.status.text
                 profileToUpdate["Mood"] = self.moodLabel.text
                 
@@ -214,6 +200,7 @@ extension EditProfileViewController: UICollectionViewDataSource {
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
+        
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "EditProfileCollectionViewCell", for: indexPath) as! EditProfileCollectionViewCell
         let edStory = edStoriesArray[indexPath.item]
         
