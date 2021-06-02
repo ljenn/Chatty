@@ -12,7 +12,7 @@ import AlamofireImage
 import DropDown
 
 //not sure if UIScrollViewDelegate is needed
-class MakeProfileThreeViewController: UIViewController,UIScrollViewDelegate {
+class MakeProfileThreeViewController: UIViewController {
 
     //user's profile info collected from previous screen
     var theName: String!
@@ -21,35 +21,117 @@ class MakeProfileThreeViewController: UIViewController,UIScrollViewDelegate {
     var theImage: PFFileObject!
     var theDOB: Date!
     
-    //needed?
-    @IBOutlet weak var profileScrollView: UIScrollView!
+
     
     
-    
-    @IBOutlet weak var story1txt: UITextView!
-    @IBOutlet weak var prompt1Label: UILabel!
     @IBOutlet weak var menuView1: UIView!
+    @IBOutlet weak var prompt1Label: UILabel!
+    @IBOutlet weak var story1txt: UITextView!
+
+
     
+   
+    
+    @IBOutlet weak var menuView2: UIView!
     @IBOutlet weak var prompt2Label: UILabel!
     @IBOutlet weak var story2txt: UITextView!
-    @IBOutlet weak var menuView2: UIView!
     
+    
+    @IBOutlet weak var menuView3: UIView!
     @IBOutlet weak var prompt3Label: UILabel!
     @IBOutlet weak var story3txt: UITextView!
-    @IBOutlet weak var menuView3: UIView!
+
     
+    let storyPromptMenu1: DropDown = {
+        let storyPromptMenu = DropDown()
+        storyPromptMenu.dataSource = [
+            "ONE Prompt",
+            "TWO Prompt",
+            "THREE Prompt"
+        ]
+        return storyPromptMenu
+    }()
+
+    let storyPromptMenu2: DropDown = {
+        let storyPromptMenu = DropDown()
+        storyPromptMenu.dataSource = [
+            "ONE Prompt",
+            "TWO Prompt",
+            "THREE Prompt"
+        ]
+        return storyPromptMenu
+    }()
     
+    let storyPromptMenu3: DropDown = {
+        let storyPromptMenu = DropDown()
+        storyPromptMenu.dataSource = [
+            "ONE Prompt",
+            "TWO Prompt",
+            "THREE Prompt"
+        ]
+        return storyPromptMenu
+    }()
     
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        
+            //menu1
+            let gesture1 = UITapGestureRecognizer(target: self, action: #selector(didTapMenu1))
+            gesture1.numberOfTouchesRequired = 1
+            gesture1.numberOfTapsRequired = 1
 
+            menuView1.addGestureRecognizer(gesture1)
+            storyPromptMenu1.anchorView = menuView1
+            menuView1.layer.borderWidth = 1
+            menuView1.layer.borderColor = UIColor.lightGray.cgColor
+            storyPromptMenu1.selectionAction = {index, title in
+                    self.prompt1Label.text = title
+                }
+        
+
+            //menu2
+            let gesture2 = UITapGestureRecognizer(target: self, action: #selector(didTapMenu2))
+            gesture2.numberOfTouchesRequired = 1
+            gesture2.numberOfTapsRequired = 1
+
+            menuView2.addGestureRecognizer(gesture2)
+            storyPromptMenu2.anchorView = menuView2
+            menuView2.layer.borderWidth = 1
+            menuView2.layer.borderColor = UIColor.lightGray.cgColor
+            storyPromptMenu2.selectionAction = {index, title in
+                    self.prompt2Label.text = title
+                }
         
         
-        //is it necessary?!!!
-        profileScrollView.delegate = self as UIScrollViewDelegate
+            //menu3
+            let gesture3 = UITapGestureRecognizer(target: self, action: #selector(didTapMenu3))
+            gesture3.numberOfTouchesRequired = 1
+            gesture3.numberOfTapsRequired = 1
+        
+            menuView3.addGestureRecognizer(gesture3)
+            storyPromptMenu3.anchorView = menuView3
+            menuView3.layer.borderWidth = 1
+            menuView3.layer.borderColor = UIColor.lightGray.cgColor
+            storyPromptMenu3.selectionAction = {index, title in
+                    self.prompt3Label.text = title
+                }
+
     }
     
+    
+    @objc func didTapMenu1(){
+        storyPromptMenu1.show()
+    }
+    @objc func didTapMenu2(){
+        storyPromptMenu2.show()
+    }
+    @objc func didTapMenu3(){
+        storyPromptMenu3.show()
+    }
+    
+
     
     
     @IBAction func StartBTN(_ sender: Any) {
@@ -62,9 +144,14 @@ class MakeProfileThreeViewController: UIViewController,UIScrollViewDelegate {
         addedProfile["Status"] = theStatus
         addedProfile["Mood"] = theMood
         
-        //the story field is an array, but now chaning to String
-        //addedProfile.add(tfStory.text!,forKey: "Stories")
         addedProfile["Story1"] = story1txt.text
+        addedProfile["Prompt1"] = prompt1Label.text
+        
+        addedProfile["Story2"] = story2txt.text
+        addedProfile["Prompt2"] = prompt2Label.text
+        
+        addedProfile["Story3"] = story3txt.text
+        addedProfile["Prompt3"] = prompt3Label.text
         
         addedProfile["owner"] = PFUser.current()!
         addedProfile["Picture"] = theImage
