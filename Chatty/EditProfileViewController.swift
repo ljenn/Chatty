@@ -174,7 +174,6 @@ class EditProfileViewController: UIViewController, UIImagePickerControllerDelega
                 
                 profileToUpdate.saveInBackground()
                 self.view.makeToast("Profile Updated!")
-                self.dismiss(animated: true, completion: nil)
                 
                 
             }else{

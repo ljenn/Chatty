@@ -77,46 +77,66 @@ class MakeProfileThreeViewController: UIViewController {
         super.viewDidLoad()
         
         
-            //menu1
-            let gesture1 = UITapGestureRecognizer(target: self, action: #selector(didTapMenu1))
-            gesture1.numberOfTouchesRequired = 1
-            gesture1.numberOfTapsRequired = 1
+        story1txt.layer.borderColor = UIColor.purple.cgColor
+        story1txt.layer.borderWidth = 1
+        story1txt.layer.cornerRadius = 10
+        story1txt.layer.backgroundColor = UIColor(red: 0.90, green: 0.71, blue: 0.98, alpha: 1.00).cgColor
+        
+        
+        story2txt.layer.borderColor = UIColor.blue.cgColor
+        story2txt.layer.borderWidth = 1
+        story2txt.layer.cornerRadius = 10
+        story2txt.layer.backgroundColor = UIColor(red: 0.63, green: 0.86, blue: 0.98, alpha: 1.00).cgColor
+        
+        
+        story3txt.layer.borderColor = UIColor.green.cgColor
+        story3txt.layer.borderWidth = 1
+        story3txt.layer.cornerRadius = 10
+        story3txt.layer.backgroundColor = UIColor(red: 0.78, green: 0.98, blue: 0.71, alpha: 1.00).cgColor
+       
+        
+        
+    
+        //menu1
+        let gesture1 = UITapGestureRecognizer(target: self, action: #selector(didTapMenu1))
+        gesture1.numberOfTouchesRequired = 1
+        gesture1.numberOfTapsRequired = 1
 
-            menuView1.addGestureRecognizer(gesture1)
-            storyPromptMenu1.anchorView = menuView1
-            menuView1.layer.borderWidth = 1
-            menuView1.layer.borderColor = UIColor.lightGray.cgColor
-            storyPromptMenu1.selectionAction = {index, title in
-                    self.prompt1Label.text = title
-                }
-        
+        menuView1.addGestureRecognizer(gesture1)
+        storyPromptMenu1.anchorView = menuView1
+        menuView1.layer.borderWidth = 1
+        menuView1.layer.borderColor = UIColor.lightGray.cgColor
+        storyPromptMenu1.selectionAction = {index, title in
+                self.prompt1Label.text = title
+            }
+    
 
-            //menu2
-            let gesture2 = UITapGestureRecognizer(target: self, action: #selector(didTapMenu2))
-            gesture2.numberOfTouchesRequired = 1
-            gesture2.numberOfTapsRequired = 1
+        //menu2
+        let gesture2 = UITapGestureRecognizer(target: self, action: #selector(didTapMenu2))
+        gesture2.numberOfTouchesRequired = 1
+        gesture2.numberOfTapsRequired = 1
 
-            menuView2.addGestureRecognizer(gesture2)
-            storyPromptMenu2.anchorView = menuView2
-            menuView2.layer.borderWidth = 1
-            menuView2.layer.borderColor = UIColor.lightGray.cgColor
-            storyPromptMenu2.selectionAction = {index, title in
-                    self.prompt2Label.text = title
-                }
-        
-        
-            //menu3
-            let gesture3 = UITapGestureRecognizer(target: self, action: #selector(didTapMenu3))
-            gesture3.numberOfTouchesRequired = 1
-            gesture3.numberOfTapsRequired = 1
-        
-            menuView3.addGestureRecognizer(gesture3)
-            storyPromptMenu3.anchorView = menuView3
-            menuView3.layer.borderWidth = 1
-            menuView3.layer.borderColor = UIColor.lightGray.cgColor
-            storyPromptMenu3.selectionAction = {index, title in
-                    self.prompt3Label.text = title
-                }
+        menuView2.addGestureRecognizer(gesture2)
+        storyPromptMenu2.anchorView = menuView2
+        menuView2.layer.borderWidth = 1
+        menuView2.layer.borderColor = UIColor.lightGray.cgColor
+        storyPromptMenu2.selectionAction = {index, title in
+                self.prompt2Label.text = title
+            }
+    
+    
+        //menu3
+        let gesture3 = UITapGestureRecognizer(target: self, action: #selector(didTapMenu3))
+        gesture3.numberOfTouchesRequired = 1
+        gesture3.numberOfTapsRequired = 1
+    
+        menuView3.addGestureRecognizer(gesture3)
+        storyPromptMenu3.anchorView = menuView3
+        menuView3.layer.borderWidth = 1
+        menuView3.layer.borderColor = UIColor.lightGray.cgColor
+        storyPromptMenu3.selectionAction = {index, title in
+                self.prompt3Label.text = title
+            }
 
     }
     
