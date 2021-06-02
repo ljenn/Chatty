@@ -11,7 +11,8 @@ import Parse
 import AlamofireImage
 import DropDown
 
-class MakeProfileThreeViewController: UIViewController {
+//not sure if UIScrollViewDelegate is needed
+class MakeProfileThreeViewController: UIViewController,UIScrollViewDelegate {
 
     //user's profile info collected from previous screen
     var theName: String!
@@ -20,7 +21,22 @@ class MakeProfileThreeViewController: UIViewController {
     var theImage: PFFileObject!
     var theDOB: Date!
     
-    @IBOutlet weak var tfStory: UITextField!
+    //needed?
+    @IBOutlet weak var profileScrollView: UIScrollView!
+    
+    
+    
+    @IBOutlet weak var story1txt: UITextView!
+    @IBOutlet weak var prompt1Label: UILabel!
+    @IBOutlet weak var menuView1: UIView!
+    
+    @IBOutlet weak var prompt2Label: UILabel!
+    @IBOutlet weak var story2txt: UITextView!
+    @IBOutlet weak var menuView2: UIView!
+    
+    @IBOutlet weak var prompt3Label: UILabel!
+    @IBOutlet weak var story3txt: UITextView!
+    @IBOutlet weak var menuView3: UIView!
     
     
     
@@ -28,7 +44,10 @@ class MakeProfileThreeViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        // Do any additional setup after loading the view.
+        
+        
+        //is it necessary?!!!
+        profileScrollView.delegate = self as UIScrollViewDelegate
     }
     
     
@@ -45,7 +64,7 @@ class MakeProfileThreeViewController: UIViewController {
         
         //the story field is an array, but now chaning to String
         //addedProfile.add(tfStory.text!,forKey: "Stories")
-        addedProfile["Story1"] = tfStory.text
+        addedProfile["Story1"] = story1txt.text
         
         addedProfile["owner"] = PFUser.current()!
         addedProfile["Picture"] = theImage
