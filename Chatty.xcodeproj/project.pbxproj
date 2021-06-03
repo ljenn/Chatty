@@ -28,6 +28,7 @@
 		04F0087F2624FBDB0013D71E /* HomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04F0087E2624FBDB0013D71E /* HomeViewController.swift */; };
 		04F0088126255F600013D71E /* SignUpViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04F0088026255F600013D71E /* SignUpViewController.swift */; };
 		04F008832625677C0013D71E /* MakeProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04F008822625677C0013D71E /* MakeProfileViewController.swift */; };
+		04F7F6BE266961AE00213DE3 /* CheckProfileCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04F7F6BD266961AE00213DE3 /* CheckProfileCollectionViewCell.swift */; };
 		25201EBB26635CC2008A5CC1 /* Story.swift in Sources */ = {isa = PBXBuildFile; fileRef = 25201EBA26635CC2008A5CC1 /* Story.swift */; };
 		25201EC02663605F008A5CC1 /* SelfProfileStoryCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 25201EBF2663605F008A5CC1 /* SelfProfileStoryCollectionViewCell.swift */; };
 		25B3E5292662DB92000F7087 /* LaunchScreenViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 25B3E5282662DB92000F7087 /* LaunchScreenViewController.swift */; };
@@ -81,6 +82,7 @@
 		04F0087E2624FBDB0013D71E /* HomeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewController.swift; sourceTree = "<group>"; };
 		04F0088026255F600013D71E /* SignUpViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignUpViewController.swift; sourceTree = "<group>"; };
 		04F008822625677C0013D71E /* MakeProfileViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MakeProfileViewController.swift; sourceTree = "<group>"; };
+		04F7F6BD266961AE00213DE3 /* CheckProfileCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CheckProfileCollectionViewCell.swift; sourceTree = "<group>"; };
 		0C9CAA8CEBD7F5A2C3004EAD /* Pods_Chatty.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Chatty.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		169FADF2B1E84A11955DA2C5 /* Pods-ChattyTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ChattyTests.release.xcconfig"; path = "Target Support Files/Pods-ChattyTests/Pods-ChattyTests.release.xcconfig"; sourceTree = "<group>"; };
 		2224CA712396393C5E949B59 /* Pods-Chatty.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Chatty.release.xcconfig"; path = "Target Support Files/Pods-Chatty/Pods-Chatty.release.xcconfig"; sourceTree = "<group>"; };
@@ -151,6 +153,7 @@
 				04F0084C2624F6850013D71E /* AppDelegate.swift */,
 				04F0084E2624F6850013D71E /* SceneDelegate.swift */,
 				04F008522624F6850013D71E /* Main.storyboard */,
+				04F7F6BD266961AE00213DE3 /* CheckProfileCollectionViewCell.swift */,
 				049852022628A7E100D523CF /* HomeCollectionViewCell.swift */,
 				04F0087E2624FBDB0013D71E /* HomeViewController.swift */,
 				041A8D47265F12C800B1CC47 /* CheckProfileViewController.swift */,
@@ -456,6 +459,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				047CF302265C77F800C0F6C9 /* MakeProfileTwoViewController.swift in Sources */,
+				04F7F6BE266961AE00213DE3 /* CheckProfileCollectionViewCell.swift in Sources */,
 				0494A1D226275FB9007F8D66 /* EditProfileViewController.swift in Sources */,
 				04F0087F2624FBDB0013D71E /* HomeViewController.swift in Sources */,
 				047CF304265C8B1900C0F6C9 /* MakeProfileThreeViewController.swift in Sources */,
