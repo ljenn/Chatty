@@ -22,6 +22,7 @@ class MakeProfileThreeViewController: UIViewController {
     var theDOB: Date!
     
 
+    @IBOutlet weak var ProfileThreeScrollView: UIScrollView!
     
     
     @IBOutlet weak var menuView1: UIView!
@@ -75,6 +76,8 @@ class MakeProfileThreeViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        ProfileThreeScrollView.keyboardDismissMode = .interactive
         
         
         story1txt.layer.borderColor = UIColor.purple.cgColor
