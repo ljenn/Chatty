@@ -68,7 +68,9 @@ class ChatViewController: UIViewController, UITableViewDelegate, UITableViewData
         mySearchBar.delegate = self
         
         
-
+        ChatTV.keyboardDismissMode = .interactive
+                
+        ChatTV.separatorStyle = UITableViewCell.SeparatorStyle.none
         
         //check if still needed if we have our own cell blueprint
         ChatTV.register(UITableViewCell.self, forCellReuseIdentifier: "cell")

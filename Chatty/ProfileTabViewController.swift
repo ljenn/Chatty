@@ -31,7 +31,7 @@ class ProfileTabViewController: UIViewController {
     @IBOutlet weak var moodTXT: UILabel!
     @IBOutlet weak var storyCollectionView: UICollectionView!
     
-//    var storiesArray = Story.getStories()
+
     var storiesArray = [Story]()
     
     

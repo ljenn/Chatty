@@ -17,9 +17,14 @@ class EditStory {
     let storyPromptMenu: DropDown = {
         let storyPromptMenu = DropDown()
         storyPromptMenu.dataSource = [
-            "ONE Prompt",
-            "TWO Prompt",
-            "THREE Prompt"
+            "Last week...",
+            "My happiest moment was when...",
+            "An embarrassing story:",
+            "The one time I was a genius:",
+            "My most miraculous story:",
+            "I did this, but never again.",
+            "Best vacation EVER:",
+            "Tell me a story that should be illegal but isn't."
         ]
         return storyPromptMenu
     }()

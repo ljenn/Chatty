@@ -34,10 +34,10 @@ class MakeProfileTwoViewController: UIViewController {
     let moodMenu: DropDown = {
         let moodMenu = DropDown()
         moodMenu.dataSource = [
-            "Studying",
-            "Partying",
-            "Exercising",
-            "Eating",
+            "Hustling",
+            "Wild",
+            "Outdoorsy",
+            "Hungry",
         ]
         return moodMenu
     }()
