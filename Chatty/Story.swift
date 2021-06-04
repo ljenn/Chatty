@@ -29,11 +29,11 @@ class Story {
             var cellColor = UIColor()
             switch i {
             case 0:
-                cellColor = UIColor.systemIndigo
+                cellColor = UIColor(red: 0.90, green: 0.71, blue: 0.98, alpha: 1.00)
             case 1:
-                cellColor = UIColor.systemBlue
+                cellColor = UIColor(red: 0.63, green: 0.86, blue: 0.98, alpha: 1.00)
             default:
-                cellColor = UIColor.systemGreen
+                cellColor = UIColor(red: 0.78, green: 0.98, blue: 0.71, alpha: 1.00)
             }
             
             storyObjects.append(Story(color: cellColor, prompt: promptList[i], storyContent: storyList[i]))

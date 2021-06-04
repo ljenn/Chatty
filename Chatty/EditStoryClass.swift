@@ -42,9 +42,9 @@ class EditStory {
         //replace string in return array with variable
         
         return [
-            EditStory(color: UIColor.systemIndigo, prompt: prompt1, storyContent: story1),
-            EditStory(color: UIColor.systemBlue, prompt: prompt2, storyContent: story2),
-            EditStory(color: UIColor.systemGreen, prompt: prompt3, storyContent: story3)]
+            EditStory(color: UIColor(red: 0.90, green: 0.71, blue: 0.98, alpha: 1.00), prompt: prompt1, storyContent: story1),
+            EditStory(color: UIColor(red: 0.63, green: 0.86, blue: 0.98, alpha: 1.00), prompt: prompt2, storyContent: story2),
+            EditStory(color: UIColor(red: 0.78, green: 0.98, blue: 0.71, alpha: 1.00), prompt: prompt3, storyContent: story3)]
     }
     
     
