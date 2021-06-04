@@ -79,6 +79,7 @@ class ConvoViewController: MessagesViewController, MessagesDataSource, MessagesL
 //    }
     
     
+    
     override func viewDidAppear(_ animated: Bool) {
         
         //hide senders' profile image...
@@ -161,7 +162,9 @@ class ConvoViewController: MessagesViewController, MessagesDataSource, MessagesL
     
 
     override func viewDidLoad() {
+        //let timer = Timer.scheduledTimer(timeInterval: 5, target: self, selector: #selector(update), userInfo: nil, repeats: true)
         
+
         
         super.viewDidLoad()
 
@@ -189,6 +192,10 @@ class ConvoViewController: MessagesViewController, MessagesDataSource, MessagesL
         
     }
     
+//    @objc func update(){
+//        viewDidAppear(true)
+//        print("updating!")
+//    }
     
     
     
