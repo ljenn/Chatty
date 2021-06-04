@@ -12,10 +12,7 @@ import Toast_Swift
 import DropDown
 import InputBarAccessoryView
 
-
 class HomeViewController: UIViewController, UICollectionViewDataSource, UICollectionViewDelegate,InputBarAccessoryViewDelegate {
-    
-
     
     @IBOutlet weak var homeCollectionView: UICollectionView!
     
@@ -138,6 +135,8 @@ class HomeViewController: UIViewController, UICollectionViewDataSource, UICollec
         
         print("in appear")
         self.myfilterBTN.setTitle("All", for: .normal)
+        self.myfilterBTN.layer.borderColor = UIColor.systemGray5.cgColor
+        self.myfilterBTN.layer.borderWidth = 2
         
         ProfileCollection.removeAll()
         filteredProfileCollection.removeAll()
@@ -264,8 +263,6 @@ class HomeViewController: UIViewController, UICollectionViewDataSource, UICollec
     }
     
     
-    
-    
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         return filteredProfileCollection.count
     }
@@ -332,8 +329,8 @@ class HomeViewController: UIViewController, UICollectionViewDataSource, UICollec
                 }
  
 
-                myCell.CellScrollV = UIScrollView(frame: CGRect(x: 20, y: 300, width: 375, height: 300))
-                myCell.CellScrollV.backgroundColor = UIColor.systemTeal
+                myCell.CellScrollV = UIScrollView(frame: CGRect(x: 20, y: 300, width: 350, height: 260))
+                myCell.CellScrollV.backgroundColor = UIColor.systemGray6
                 myCell.CellScrollV.layer.cornerRadius = 20
                 myCell.CellScrollV.indicatorStyle = .black
                 myCell.CellScrollV.showsHorizontalScrollIndicator = false
@@ -355,6 +352,7 @@ class HomeViewController: UIViewController, UICollectionViewDataSource, UICollec
                     frame_prompt.size = CGSize(width: myCell.CellScrollV.frame.size.width - 20, height: (myCell.CellScrollV.frame.size.height) * 0.2)
 
                     let promptLableView = UILabel(frame: frame_prompt)
+                    promptLableView.font = UIFont.systemFont(ofSize: 25.0)
 
                     //label layout
                     promptLableView.lineBreakMode = .byWordWrapping
@@ -364,7 +362,8 @@ class HomeViewController: UIViewController, UICollectionViewDataSource, UICollec
                     //hook up prompt data:
                     let txt_title = myCell.promptArray[i]
                     promptLableView.text = txt_title
-
+                    
+                    
                     //put frame into scroll veiw.
                     myCell.CellScrollV.addSubview(promptLableView)
 
@@ -386,7 +385,8 @@ class HomeViewController: UIViewController, UICollectionViewDataSource, UICollec
                     storyLableView.lineBreakMode = .byWordWrapping
                     storyLableView.numberOfLines = 0
                     storyLableView.backgroundColor = .clear
-
+                    storyLableView.font = UIFont.boldSystemFont(ofSize: 30.0)
+                    
                     //put frame into scroll veiw.
                     myCell.CellScrollV.addSubview(storyLableView)
 
@@ -414,8 +414,8 @@ class HomeViewController: UIViewController, UICollectionViewDataSource, UICollec
                 //need to know which profile is selected and access they keyboard appearance
                 myCell.cellProfile = singleProfile
                 myCell.homeVC = self
-                
-                
+                myCell.layer.borderColor = UIColor(red: 0.22, green: 0.71, blue: 1.00, alpha: 1.00).cgColor
+                myCell.layer.borderWidth = 1 
                 
                 return myCell
     }
