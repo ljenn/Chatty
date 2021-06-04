@@ -264,6 +264,8 @@ class HomeViewController: UIViewController, UICollectionViewDataSource, UICollec
     }
     
     
+    
+    
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         return filteredProfileCollection.count
     }
@@ -316,8 +318,9 @@ class HomeViewController: UIViewController, UICollectionViewDataSource, UICollec
         }
         
 
-                myCell.CellScrollV = UIScrollView(frame: CGRect(x: 0, y: 0, width: 320, height: 150))
-                myCell.CellScrollV.backgroundColor = UIColor.lightGray
+                myCell.CellScrollV = UIScrollView(frame: CGRect(x: 6, y: 290, width: 400, height: 300))
+                myCell.CellScrollV.layer.cornerRadius = 20
+                myCell.CellScrollV.backgroundColor = UIColor.clear
                 myCell.CellScrollV.indicatorStyle = .black
                 myCell.CellScrollV.showsHorizontalScrollIndicator = false
                 myCell.CellScrollV.delegate = self
@@ -330,90 +333,129 @@ class HomeViewController: UIViewController, UICollectionViewDataSource, UICollec
 
 
 
-                myCell.pgControl = UIPageControl(frame: CGRect(x: 0, y: 155, width: 320, height: 40))
-
-                myCell.pgControl.numberOfPages = myCell.storyArray.count ?? 0
-                myCell.pgControl.currentPage = 0
-                myCell.pgControl.backgroundColor = UIColor.red
-                myCell.pgControl.tintColor = UIColor.white
-//                myCell.pgControl.backgroundColor = UIColor.systemBackground
-//                myCell.pgControl.tintColor = UIColor.systemTeal
-                myCell.contentView.addSubview(myCell.pgControl)
-
-
-                for i in 0..<myCell.storyArray.count {
-
-                    //MARK: change the frame layout here!!
-                    //set up prompt label
-                    var frame_prompt = CGRect()
-                    frame_prompt.origin.x = (myCell.CellScrollV.frame.size.width * CGFloat(i)) + 10
-                    frame_prompt.origin.y = 0
-                    frame_prompt.size = CGSize(width: myCell.CellScrollV.frame.size.width - 20, height: (myCell.CellScrollV.frame.size.height) * 0.2)
-
-                    let promptLableView = UILabel(frame: frame_prompt)
-
-                    //label layout
-                    promptLableView.lineBreakMode = .byWordWrapping
-                    promptLableView.numberOfLines = 0
-                    promptLableView.backgroundColor = .cyan
-
-                    //hook up prompt data:
-                    let txt_title = myCell.promptArray[i]
-                    promptLableView.text = txt_title
-
-                    //put frame into scroll veiw.
-                    myCell.CellScrollV.addSubview(promptLableView)
+//                myCell.pgControl = UIPageControl(frame: CGRect(x: 6, y: 640, width: 320, height: 40))
+//                myCell.pgControl.numberOfPages = myCell.storyArray.count ?? 0
+//                myCell.pgControl.currentPage = 0
+//                myCell.pgControl.backgroundColor = UIColor.clear
+//                myCell.pgControl.tintColor = UIColor.clear
+////                myCell.pgControl.backgroundColor = UIColor.systemBackground
+////                myCell.pgControl.tintColor = UIColor.systemTeal
+//                myCell.contentView.addSubview(myCell.pgControl)
 
 
-
-
-
-                    //set up story label
-                    var frame_story = CGRect()
-                    frame_story.origin.x = (myCell.CellScrollV.frame.size.width * CGFloat(i)) + 10
-                    frame_story.origin.y = (myCell.CellScrollV.frame.size.height) * 0.2
-                    frame_story.size = CGSize(width: myCell.CellScrollV.frame.size.width - 20, height: (myCell.CellScrollV.frame.size.height) * 0.75)
-
-                    //label data
-                    let storyLableView = UILabel(frame: frame_story)
-                    storyLableView.text = myCell.storyArray[i]
-
-                    //hook up story data
-                    storyLableView.lineBreakMode = .byWordWrapping
-                    storyLableView.numberOfLines = 0
-                    storyLableView.backgroundColor = .green
-
-                    //put frame into scroll veiw.
-                    myCell.CellScrollV.addSubview(storyLableView)
-
-
-
-
-
-                    //MARK: update data source count!
-                    let countNum = myCell.storyArray.count
-                    let theWidth = Int(myCell.CellScrollV.frame.size.width) * countNum
-                    let theHeight = Int(myCell.CellScrollV.frame.size.height)
-
-                    myCell.CellScrollV.contentSize = CGSize(width: theWidth, height: theHeight)
-
+        for i in 1...3 {
+                    
+                    let storyIndex = "Story" + String(i)
+                    if (singleProfile[storyIndex] != nil && singleProfile[storyIndex] as! String != ""){
+                        myCell.storyArray.append(singleProfile[storyIndex] as! String)
+                    }
+                    
+                    let promptIndex = "Prompt" + String(i)
+                    if (singleProfile[promptIndex] != nil && singleProfile[promptIndex] as! String != ""){
+                        myCell.promptArray.append(singleProfile[promptIndex] as! String)
+                    }
                 }
+                
+
+                        myCell.CellScrollV = UIScrollView(frame: CGRect(x: 20, y: 300, width: 375, height: 300))
+                        myCell.CellScrollV.backgroundColor = UIColor.systemTeal
+                myCell.CellScrollV.layer.cornerRadius = 20
+                        myCell.CellScrollV.indicatorStyle = .black
+                        myCell.CellScrollV.showsHorizontalScrollIndicator = false
+                        myCell.CellScrollV.delegate = self
+
+                        myCell.CellScrollV.showsVerticalScrollIndicator = true
+                        myCell.CellScrollV.bounces = true
+                        myCell.CellScrollV.isPagingEnabled = true
+                        myCell.CellScrollV.contentSize = CGSize(width: 640, height: 30)
 
 
 
 
-                myCell.contentView.addSubview(myCell.CellScrollV)
-     
+        //                myCell.pgControl = UIPageControl(frame: CGRect(x: 0, y: 155, width: 320, height: 40))
+        //
+        //                myCell.pgControl.numberOfPages = myCell.storyArray.count ?? 0
+        //                myCell.pgControl.currentPage = 0
+        //                myCell.pgControl.backgroundColor = UIColor.red
+        //                myCell.pgControl.tintColor = UIColor.white
+        ////                myCell.pgControl.backgroundColor = UIColor.systemBackground
+        ////                myCell.pgControl.tintColor = UIColor.systemTeal
+        //                myCell.contentView.addSubview(myCell.pgControl)
 
-        
-        //PartII: pass over information in cell for chatting btn (Table View Cell)
-        //need to know which profile is selected and access they keyboard appearance
-        myCell.cellProfile = singleProfile
-        myCell.homeVC = self
-        
-        
-        
-        return myCell
+
+                        for i in 0..<myCell.storyArray.count {
+
+                            //MARK: change the frame layout here!!
+                            //set up prompt label
+                            var frame_prompt = CGRect()
+                            frame_prompt.origin.x = (myCell.CellScrollV.frame.size.width * CGFloat(i)) + 10
+                            frame_prompt.origin.y = 0
+                            frame_prompt.size = CGSize(width: myCell.CellScrollV.frame.size.width - 20, height: (myCell.CellScrollV.frame.size.height) * 0.2)
+
+                            let promptLableView = UILabel(frame: frame_prompt)
+
+                            //label layout
+                            promptLableView.lineBreakMode = .byWordWrapping
+                            promptLableView.numberOfLines = 0
+                            promptLableView.backgroundColor = .clear
+
+                            //hook up prompt data:
+                            let txt_title = myCell.promptArray[i]
+                            promptLableView.text = txt_title
+
+                            //put frame into scroll veiw.
+                            myCell.CellScrollV.addSubview(promptLableView)
+
+
+
+
+
+                            //set up story label
+                            var frame_story = CGRect()
+                            frame_story.origin.x = (myCell.CellScrollV.frame.size.width * CGFloat(i)) + 10
+                            frame_story.origin.y = (myCell.CellScrollV.frame.size.height) * 0.2
+                            frame_story.size = CGSize(width: myCell.CellScrollV.frame.size.width - 20, height: (myCell.CellScrollV.frame.size.height) * 0.75)
+
+                            //hook up story data
+                            let storyLableView = UILabel(frame: frame_story)
+                            storyLableView.text = myCell.storyArray[i]
+
+                            //label layout
+                            storyLableView.lineBreakMode = .byWordWrapping
+                            storyLableView.numberOfLines = 0
+                            storyLableView.backgroundColor = .clear
+
+                            //put frame into scroll veiw.
+                            myCell.CellScrollV.addSubview(storyLableView)
+
+
+
+
+
+                            //MARK: update data source count!
+                            let countNum = myCell.storyArray.count
+                            let theWidth = Int(myCell.CellScrollV.frame.size.width) * countNum
+                            let theHeight = Int(myCell.CellScrollV.frame.size.height)
+
+                            myCell.CellScrollV.contentSize = CGSize(width: theWidth, height: theHeight)
+
+                        }
+
+
+
+
+                        myCell.contentView.addSubview(myCell.CellScrollV)
+             
+
+                
+                //PartII: pass over information in cell for chatting btn (Table View Cell)
+                //need to know which profile is selected and access they keyboard appearance
+                myCell.cellProfile = singleProfile
+                myCell.homeVC = self
+                
+                
+                
+                return myCell
     }
     
 //    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
