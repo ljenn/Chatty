@@ -331,7 +331,7 @@
                                 </collectionViewFlowLayout>
                                 <cells>
                                     <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="HomeCollectionViewCell" id="Rm4-6p-Zh0" customClass="HomeCollectionViewCell" customModule="Chatty" customModuleProvider="target">
-                                        <rect key="frame" x="12" y="13" width="390" height="580"/>
+                                        <rect key="frame" x="12.5" y="13" width="390" height="580"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         <collectionViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" id="hfg-Z6-7o4">
                                             <rect key="frame" x="0.0" y="0.0" width="390" height="580"/>
@@ -1451,13 +1451,6 @@
                         <rect key="frame" x="0.0" y="0.0" width="414" height="842"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Current status" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="4mr-gB-RDG">
-                                <rect key="frame" x="50" y="482" width="133" height="24"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="20"/>
-                                <color key="textColor" red="0.18196082120000001" green="0.71219396589999995" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                <nil key="highlightedColor"/>
-                            </label>
                             <textField opaque="NO" contentMode="scaleToFill" verticalHuggingPriority="252" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="AGd-cd-uYO">
                                 <rect key="frame" x="50" y="521" width="314" height="34"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
@@ -1608,7 +1601,7 @@
                                                                             <constraint firstItem="VCs-Qq-fa3" firstAttribute="centerX" secondItem="mXG-Un-TwM" secondAttribute="centerX" id="dJ8-Wj-2XR"/>
                                                                         </constraints>
                                                                     </view>
-                                                                    <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" text="Text here..." textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="c8u-IC-KCV">
+                                                                    <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="c8u-IC-KCV">
                                                                         <rect key="frame" x="0.0" y="70" width="314" height="96"/>
                                                                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                                                         <color key="textColor" systemColor="labelColor"/>
@@ -1675,7 +1668,7 @@
                                                                             <constraint firstItem="4ad-a8-1cd" firstAttribute="centerX" secondItem="6rh-sB-5zZ" secondAttribute="centerX" id="fav-5g-JwQ"/>
                                                                         </constraints>
                                                                     </view>
-                                                                    <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" text="Text here..." textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="vAb-wJ-NnQ">
+                                                                    <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="vAb-wJ-NnQ">
                                                                         <rect key="frame" x="0.0" y="72" width="314" height="96"/>
                                                                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                                                         <constraints>
@@ -1745,7 +1738,7 @@
                                                                             <constraint firstItem="DyY-lo-cKv" firstAttribute="centerY" secondItem="wGH-Ra-UkK" secondAttribute="centerY" id="zPS-Aj-UqL"/>
                                                                         </constraints>
                                                                     </view>
-                                                                    <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" text="Text here..." textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="Ae9-GK-LCQ">
+                                                                    <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="Ae9-GK-LCQ">
                                                                         <rect key="frame" x="0.0" y="66" width="314" height="96"/>
                                                                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                                                         <color key="textColor" systemColor="labelColor"/>
