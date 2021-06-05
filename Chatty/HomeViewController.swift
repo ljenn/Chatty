@@ -135,7 +135,7 @@ class HomeViewController: UIViewController, UICollectionViewDataSource, UICollec
         print("in appear")
         self.myfilterBTN.setTitle("All", for: .normal)
         self.myfilterBTN.layer.borderColor = UIColor.systemGray5.cgColor
-        self.myfilterBTN.layer.borderWidth = 2
+        self.myfilterBTN.layer.borderWidth = 1
         
         ProfileCollection.removeAll()
         filteredProfileCollection.removeAll()
@@ -329,7 +329,7 @@ class HomeViewController: UIViewController, UICollectionViewDataSource, UICollec
  
 
                 myCell.CellScrollV = UIScrollView(frame: CGRect(x: 20, y: 300, width: 350, height: 260))
-                myCell.CellScrollV.backgroundColor = UIColor.systemGray6
+                myCell.CellScrollV.backgroundColor = UIColor(red: 0.93, green: 0.96, blue: 1.00, alpha: 1.00)
                 myCell.CellScrollV.layer.cornerRadius = 20
                 myCell.CellScrollV.indicatorStyle = .black
                 myCell.CellScrollV.showsHorizontalScrollIndicator = false
@@ -346,16 +346,16 @@ class HomeViewController: UIViewController, UICollectionViewDataSource, UICollec
                     //MARK: change the frame layout here!!
                     //set up prompt label
                     var frame_prompt = CGRect()
-                    frame_prompt.origin.x = (myCell.CellScrollV.frame.size.width * CGFloat(i)) + 10
-                    frame_prompt.origin.y = 0
-                    frame_prompt.size = CGSize(width: myCell.CellScrollV.frame.size.width - 20, height: (myCell.CellScrollV.frame.size.height) * 0.2)
+                    frame_prompt.origin.x = (myCell.CellScrollV.frame.size.width * CGFloat(i)) + 20
+                    frame_prompt.origin.y = 10
+                    frame_prompt.size = CGSize(width: myCell.CellScrollV.frame.size.width - 20, height: (myCell.CellScrollV.frame.size.height) * 0.25)
 
                     let promptLableView = UILabel(frame: frame_prompt)
-                    promptLableView.font = UIFont.systemFont(ofSize: 25.0)
+                    promptLableView.font = UIFont.systemFont(ofSize: 22.0)
 
                     //label layout
                     promptLableView.lineBreakMode = .byWordWrapping
-                    promptLableView.numberOfLines = 0
+                    promptLableView.numberOfLines = 2
                     promptLableView.backgroundColor = .clear
 
                     //hook up prompt data:
@@ -372,7 +372,7 @@ class HomeViewController: UIViewController, UICollectionViewDataSource, UICollec
 
                     //set up story label
                     var frame_story = CGRect()
-                    frame_story.origin.x = (myCell.CellScrollV.frame.size.width * CGFloat(i)) + 10
+                    frame_story.origin.x = (myCell.CellScrollV.frame.size.width * CGFloat(i)) + 20
                     frame_story.origin.y = (myCell.CellScrollV.frame.size.height) * 0.2
                     frame_story.size = CGSize(width: myCell.CellScrollV.frame.size.width - 20, height: (myCell.CellScrollV.frame.size.height) * 0.75)
 
@@ -384,7 +384,7 @@ class HomeViewController: UIViewController, UICollectionViewDataSource, UICollec
                     storyLableView.lineBreakMode = .byWordWrapping
                     storyLableView.numberOfLines = 0
                     storyLableView.backgroundColor = .clear
-                    storyLableView.font = UIFont.boldSystemFont(ofSize: 30.0)
+                    storyLableView.font = UIFont.boldSystemFont(ofSize: 24.0)
                     
                     //put frame into scroll veiw.
                     myCell.CellScrollV.addSubview(storyLableView)
@@ -413,7 +413,8 @@ class HomeViewController: UIViewController, UICollectionViewDataSource, UICollec
                 //need to know which profile is selected and access they keyboard appearance
                 myCell.cellProfile = singleProfile
                 myCell.homeVC = self
-                myCell.layer.borderColor = UIColor(red: 0.22, green: 0.71, blue: 1.00, alpha: 1.00).cgColor
+                myCell.layer.borderColor = UIColor.systemGray3.cgColor
+//                    UIColor(red: 0.22, green: 0.71, blue: 1.00, alpha: 1.00).cgColor
                 myCell.layer.borderWidth = 1 
                 
                 return myCell

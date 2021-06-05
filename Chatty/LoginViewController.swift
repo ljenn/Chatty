@@ -12,6 +12,7 @@ import Toast_Swift
 
 class LoginViewController: UIViewController {
     
+    
     @IBOutlet weak var tfUsername: UITextField!
     
     @IBOutlet weak var tfPassword: UITextField!
@@ -49,7 +50,7 @@ class LoginViewController: UIViewController {
       let options: UIView.AnimationOptions = [.curveEaseInOut, .repeat, .autoreverse]
 
         UIView.animate(withDuration: 3.0,
-                       delay: 3.0,
+                       delay: 1.0,
                        options: options,
                        animations: { [weak self] in
                         self?.kiteStackViewLogin.frame.size.height *= 1.15

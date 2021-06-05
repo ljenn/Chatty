@@ -28,9 +28,11 @@ class MakeProfileViewController: UIViewController, UIImagePickerControllerDelega
     
 
     func showFormattedDatePicker(){
+        if #available(iOS 13.4, *) {
+                myDatePicker.preferredDatePickerStyle = .wheels
+            }
         myDatePicker.datePickerMode =  .date
         tfAge.inputView = myDatePicker
-        
         let myToolBar = UIToolbar()
         myToolBar.sizeToFit()
         
