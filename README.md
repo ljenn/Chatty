@@ -172,9 +172,6 @@ Chatty is a Tinder Clone. It lets the user sign up and log in, giving them acces
 
 
 ### REAME GIF
-### Part III walkthrough
-<img src='https://github.com/Freebee2day/Chatty/blob/main/Chatty_III.gif' title='Full Video Walkthrough' width='' alt='Video Walkthrough' />
-
 ### Part II walkthrough
 <img src='https://github.com/Freebee2day/Chatty/blob/main/Chatty_II.gif' title='Full Video Walkthrough' width='' alt='Video Walkthrough' />
 
