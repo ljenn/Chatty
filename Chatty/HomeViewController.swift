@@ -214,6 +214,9 @@ class HomeViewController: UIViewController, UICollectionViewDataSource, UICollec
         friendListquery.includeKeys(["User","owner"])
         friendListquery.whereKey("owner", equalTo: PFUser.current() as Any)
         friendListquery.findObjectsInBackground { (result, error) in
+            
+            if result != nil{
+            
             let tempArray = result!
             self.myProfile = tempArray[0]
             
@@ -239,6 +242,8 @@ class HomeViewController: UIViewController, UICollectionViewDataSource, UICollec
             }
 
         self.homeCollectionView.reloadData();
+                
+            }
 
         }
 
